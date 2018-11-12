@@ -1,90 +1,72 @@
-﻿using TimeAnalyzer.Domain.Models.Users;
-using System;
-using TimeAnalyzer.Domain.Interfaces;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
-using TimeAnalyzer.Core.Static;
+﻿using TimeAnalyzer.Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
+using TimeAnalyzer.Core.Interfaces;
+using TimeAnalyzer.Models;
+using System.Security.Claims;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using TimeAnalyzer.Domain.Models.Users;
+using System;
+using TimeAnalyzer.Core.Static;
+using TimeAnalyzer.Core.Exceptions;
 
 namespace TimeAnalyzer.Core.Users
 {
-    public class UserManager
+    public class UserManager : IUserManager
     {
-        private readonly ICredentialTypesRepository credentialTypesRepository;
-        private readonly ICredentialsRepository credentialsRepository;
-        private readonly IUsersRepository usersRepository;
+        private readonly IUsersRepository userRepository;
 
         public UserManager(
-            ICredentialTypesRepository credentialTypesRepository,
-            ICredentialsRepository credentialsRepository,
-            IUsersRepository usersRepository)
+            IUsersRepository userRepository
+            )
         {
-            this.credentialTypesRepository = credentialTypesRepository;
-            this.credentialsRepository = credentialsRepository;
-            this.usersRepository = usersRepository;
+            this.userRepository = userRepository;
         }
 
-        public async Task<User> ValidateAsync(string loginTypeCode, string identifier, string secret)
+        public async Task SignInAsync(HttpContext httpContext, UserLoginModel userLoginInfo)
         {
-            CredentialType credentialType = await this.credentialTypesRepository.GetByCodeAsync(loginTypeCode);
+            User user = await this.GetApprovedUser(userLoginInfo);
 
-            if (credentialType == null)
+            if(user==null)
             {
-                return null;
+                throw new IncorrectLogInInfoException("The credentials are invalid. Try again");
             }
 
-            IEnumerable<Credential> credentials = await this.credentialsRepository.GetCredentialsByTypeAsync(credentialType.Id);
-            Credential credential = credentials.FirstOrDefault(c => string.Equals(c.Identifier == identifier, StringComparison.OrdinalIgnoreCase) && c.Secret == MD5Hasher.CalculateHash(secret));
-
-            if (credential == null)
-                return null;
-
-            return await usersRepository.GetById(credential.UserId);
-        }
-
-        public async void SignInAsync(HttpContext httpContext, User user, bool isPersistent = false)
-        {
-            ClaimsIdentity identity = this.GetUserIdentity(user);
-
-            DateTime currentTime = DateTime.Now;
-            JwtSecurityToken jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.Issuer,
-                    audience: AuthOptions.Audeince,
-                    notBefore: currentTime,
-                    claims: identity.Claims,
-                    expires: currentTime.Add(TimeSpan.FromMinutes(AuthOptions.Lifetime)),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
-
-            string encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-
-            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-            await httpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties() { IsPersistent = isPersistent }
-                );
-        }
-
-        private ClaimsIdentity GetUserIdentity(User user)
-        {
-            List<Claim> claims = new List<Claim>
+            var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Name)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
+                new Claim("Email",user.Email)
             };
-            claims.AddRange(this.GetUserRoleClaims());
-            ClaimsIdentity identity = new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            return identity;
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+
+            await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
         }
 
-        private IEnumerable<Claim> GetUserRoleClaims()
+        public async Task Logout(HttpContext httpContext)
         {
-            return Enumerable.Empty<Claim>();
+            await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        }
+
+        private async Task<User> GetApprovedUser(UserLoginModel userLoginInfo)
+        {
+            User user = await this.userRepository.GetByEmail(userLoginInfo.Email);
+
+            if(user!=null && this.UserCredentialsAreValid(user,userLoginInfo))
+            {
+                return user;
+            }
+
+            return null;
+        }
+
+        private bool UserCredentialsAreValid(User realUser, UserLoginModel loginInfo)
+        {
+            string userPasswordHash = MD5Hasher.CalculateHash(loginInfo.Password);
+            return realUser.Name == loginInfo.Email && realUser.PasswordHash == userPasswordHash;
         }
     }
 }

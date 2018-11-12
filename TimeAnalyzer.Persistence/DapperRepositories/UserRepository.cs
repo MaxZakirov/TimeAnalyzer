@@ -36,9 +36,17 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public async Task<User> GetById(int Id)
         {   
-            string query = $"SELECT Id, Name, Created FROM Users WHERE Id = @id";
+            string query = $"SELECT Id, Name, Email, Password FROM Users WHERE Id = @id";
             var dbArgs = new DynamicParameters();
             dbArgs.Add("id", Id);
+            return await queryExecuter.GetAsync(query, dbArgs);
+        }
+
+        public async Task<User> GetByEmail(string name)
+        {
+            string query = $"SELECT Id, Name, Email, Password FROM Users WHERE Email = @Email";
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("name", name);
             return await queryExecuter.GetAsync(query, dbArgs);
         }
 

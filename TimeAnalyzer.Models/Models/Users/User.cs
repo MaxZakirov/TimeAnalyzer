@@ -9,7 +9,9 @@ namespace TimeAnalyzer.Domain.Models.Users
 
         public string Name { get; }
 
-        public DateTime Created { get; set; }
+        public string Email { get; set; }
+
+        public string PasswordHash { get; set; }
 
         public ICollection<TimeReport> TimeReports { get; set; }
     }

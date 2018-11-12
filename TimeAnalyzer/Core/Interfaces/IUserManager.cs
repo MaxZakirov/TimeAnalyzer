@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Models.Users;
+using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Core.Interfaces
 {
     public interface IUserManager
     {
-        Task<User> ValidateAsync(string loginTypeCode, string identifier, string secret);
+        //Task<User> ValidateAsync(string loginTypeCode, string identifier, string secret);
+        Task SignInAsync(HttpContext httpContext, UserLoginModel user);
 
-        void SignInAsync(HttpContext httpContext, User user, bool isPersistent = false);
+        Task Logout(HttpContext httpContext);
     }
 }
