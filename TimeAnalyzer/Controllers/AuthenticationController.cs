@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeAnalyzer.Core.Exceptions;
 using TimeAnalyzer.Core.Interfaces;
+using TimeAnalyzer.Domain.Models.Users;
 using TimeAnalyzer.Models;
+
 
 namespace TimeAnalyzer.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/Authentication")]
     public class AuthenticationController : Controller
@@ -21,12 +21,14 @@ namespace TimeAnalyzer.Controllers
             this.userManager = userManager;
         }
 
-        public async Task<IActionResult> SignIn(UserLoginModel loginInfo)
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> SignIn([FromBody]UserLoginModel loginInfo)
         {
             try
             {
-                await this.userManager.SignInAsync(this.HttpContext, loginInfo);
-                return this.Ok();
+                User userData = await this.userManager.Authenticate(this.HttpContext, loginInfo);
+                return this.Ok(userData);
             }
             catch(IncorrectLogInInfoException ex)
             {
@@ -34,6 +36,7 @@ namespace TimeAnalyzer.Controllers
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> LogOut()
         {
             await this.userManager.Logout(this.HttpContext);

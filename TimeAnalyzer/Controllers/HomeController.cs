@@ -1,22 +1,20 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeAnalyzer.Domain.Interfaces;
 
 namespace TimeAnalyzer.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        private readonly ICredentialTypesRepository credentialTypesRepository;
-
-        public HomeController(ICredentialTypesRepository credentialTypesRepository)
+        public HomeController()
         {
-            this.credentialTypesRepository = credentialTypesRepository;
         }
-
+        
         public async Task<IActionResult> Index()
         {
-            var c = await credentialTypesRepository.GetByCodeAsync("aaa");
             return View();
         }
 

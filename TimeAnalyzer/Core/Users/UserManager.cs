@@ -12,21 +12,27 @@ using TimeAnalyzer.Domain.Models.Users;
 using System;
 using TimeAnalyzer.Core.Static;
 using TimeAnalyzer.Core.Exceptions;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace TimeAnalyzer.Core.Users
 {
     public class UserManager : IUserManager
     {
         private readonly IUsersRepository userRepository;
+        private readonly AppSettings appSettings;
 
         public UserManager(
-            IUsersRepository userRepository
+            IUsersRepository userRepository,
+            AppSettings appSettings
             )
         {
             this.userRepository = userRepository;
+            this.appSettings = appSettings;
         }
 
-        public async Task SignInAsync(HttpContext httpContext, UserLoginModel userLoginInfo)
+        public async Task<User> Authenticate(HttpContext httpContext, UserLoginModel userLoginInfo)
         {
             User user = await this.GetApprovedUser(userLoginInfo);
 
@@ -35,15 +41,23 @@ namespace TimeAnalyzer.Core.Users
                 throw new IncorrectLogInInfoException("The credentials are invalid. Try again");
             }
 
-            var claims = new List<Claim>
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
-                new Claim("Email",user.Email)
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            user.Token = tokenHandler.WriteToken(token);
 
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            user.PasswordHash = null;
 
-            await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+            return user;
         }
 
         public async Task Logout(HttpContext httpContext)
@@ -55,7 +69,7 @@ namespace TimeAnalyzer.Core.Users
         {
             User user = await this.userRepository.GetByEmail(userLoginInfo.Email);
 
-            if(user!=null && this.UserCredentialsAreValid(user,userLoginInfo))
+            if(user!=null && this.UserPasswordIsValid(user,userLoginInfo))
             {
                 return user;
             }
@@ -63,10 +77,10 @@ namespace TimeAnalyzer.Core.Users
             return null;
         }
 
-        private bool UserCredentialsAreValid(User realUser, UserLoginModel loginInfo)
+        private bool UserPasswordIsValid(User realUser, UserLoginModel loginInfo)
         {
             string userPasswordHash = MD5Hasher.CalculateHash(loginInfo.Password);
-            return realUser.Name == loginInfo.Email && realUser.PasswordHash == userPasswordHash;
+            return realUser.PasswordHash == userPasswordHash;
         }
     }
 }

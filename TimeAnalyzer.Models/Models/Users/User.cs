@@ -13,6 +13,8 @@ namespace TimeAnalyzer.Domain.Models.Users
 
         public string PasswordHash { get; set; }
 
+        public string Token { get; set; }
+
         public ICollection<TimeReport> TimeReports { get; set; }
     }
 }
