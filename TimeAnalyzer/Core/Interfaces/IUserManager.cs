@@ -7,8 +7,9 @@ namespace TimeAnalyzer.Core.Interfaces
 {
     public interface IUserManager
     {
-        //Task<User> ValidateAsync(string loginTypeCode, string identifier, string secret);
-        Task<User> Authenticate(HttpContext httpContext, UserLoginModel user);
+        Task<User> Authenticate(UserLoginModel user);
+
+        User CheckIn(UserCheckinModel user);
 
         Task Logout(HttpContext httpContext);
     }

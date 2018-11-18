@@ -6,13 +6,14 @@ using TimeAnalyzer.Domain.Interfaces;
 
 namespace TimeAnalyzer.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public HomeController()
         {
         }
         
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }
