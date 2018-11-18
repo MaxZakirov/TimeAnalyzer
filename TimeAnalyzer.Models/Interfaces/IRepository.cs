@@ -12,7 +12,7 @@ namespace TimeAnalyzer.Domain.Interfaces
 
         void Remove(int Id);
 
-        Task<int> AddAssync(T entity);
+        int Add(T entity);
 
         void Edit(T entity);
     }

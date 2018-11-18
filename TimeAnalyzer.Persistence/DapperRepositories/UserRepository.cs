@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Domain.Models.Users;
+using System.Linq;
 
 namespace TimeAnalyzer.Persistence.DapperRepositories
 {
@@ -19,9 +20,17 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             this.queryExecuter = queryExecuter;
         }
 
-        public Task<int> AddAssync(User entity)
+        public int Add(User entity)
         {
-            throw new NotImplementedException();
+            string query = $"INSERT INTO Users(Name,Email,Password) VALUES (@name, @email, @password); SELECT CAST(SCOPE_IDENTITY() AS INT)";
+
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("name", entity.Name);
+            dbArgs.Add("email", entity.Email);
+            dbArgs.Add("password", entity.Password);
+
+            int newUserId = queryExecuter.Connection.Query<int>(query, dbArgs).Single();
+            return newUserId;
         }
 
         public void Edit(User entity)
@@ -44,9 +53,9 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public async Task<User> GetByEmail(string name)
         {
-            string query = $"SELECT Id, Name, Email, Password FROM Users WHERE Email = @Email";
+            string query = $"SELECT Id, Name, Email, Password FROM Users WHERE Email = @email";
             var dbArgs = new DynamicParameters();
-            dbArgs.Add("name", name);
+            dbArgs.Add("email", name);
             return await queryExecuter.GetAsync(query, dbArgs);
         }
 

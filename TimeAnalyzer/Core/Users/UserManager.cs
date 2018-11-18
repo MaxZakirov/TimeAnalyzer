@@ -15,6 +15,7 @@ using TimeAnalyzer.Core.Exceptions;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
 
 namespace TimeAnalyzer.Core.Users
 {
@@ -25,39 +26,35 @@ namespace TimeAnalyzer.Core.Users
 
         public UserManager(
             IUsersRepository userRepository,
-            AppSettings appSettings
+            IOptions<AppSettings> appSettings
             )
         {
             this.userRepository = userRepository;
-            this.appSettings = appSettings;
+            this.appSettings = appSettings.Value;
         }
 
-        public async Task<User> Authenticate(HttpContext httpContext, UserLoginModel userLoginInfo)
+        public async Task<User> Authenticate(UserLoginModel userLoginInfo)
         {
             User user = await this.GetApprovedUser(userLoginInfo);
 
-            if(user==null)
+            if (user == null)
             {
                 throw new IncorrectLogInInfoException("The credentials are invalid. Try again");
             }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
-
-            user.PasswordHash = null;
-
+            user.Token = GenerateNewToken(user.Name);
+            user.Password = null;
             return user;
+        }
+
+        public User CheckIn(UserCheckinModel user)
+        {
+            string cryptedPassword = MD5Hasher.CalculateHash(user.Password);
+            User newUser = new User(user.Name, user.Email, cryptedPassword);
+            newUser.Id = userRepository.Add(newUser);
+
+            newUser.Token = GenerateNewToken(newUser.Name);
+            return newUser;
         }
 
         public async Task Logout(HttpContext httpContext)
@@ -65,11 +62,30 @@ namespace TimeAnalyzer.Core.Users
             await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
+        private string GenerateNewToken(string userName)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(appSettings.Secret);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, userName.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
         private async Task<User> GetApprovedUser(UserLoginModel userLoginInfo)
         {
             User user = await this.userRepository.GetByEmail(userLoginInfo.Email);
 
-            if(user!=null && this.UserPasswordIsValid(user,userLoginInfo))
+            if (user != null && this.UserPasswordIsValid(user, userLoginInfo))
             {
                 return user;
             }
@@ -80,7 +96,7 @@ namespace TimeAnalyzer.Core.Users
         private bool UserPasswordIsValid(User realUser, UserLoginModel loginInfo)
         {
             string userPasswordHash = MD5Hasher.CalculateHash(loginInfo.Password);
-            return realUser.PasswordHash == userPasswordHash;
+            return realUser.Password == userPasswordHash;
         }
     }
 }

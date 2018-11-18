@@ -11,7 +11,7 @@ namespace TimeAnalyzer.Controllers
 {
     [Authorize]
     [Produces("application/json")]
-    [Route("api/Authentication")]
+    [Route("api/[controller]")]
     public class AuthenticationController : Controller
     {
         private readonly IUserManager userManager;
@@ -22,18 +22,32 @@ namespace TimeAnalyzer.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("[action]")]
         public async Task<IActionResult> SignIn([FromBody]UserLoginModel loginInfo)
         {
             try
             {
-                User userData = await this.userManager.Authenticate(this.HttpContext, loginInfo);
+                User userData = await this.userManager.Authenticate(loginInfo);
                 return this.Ok(userData);
             }
             catch(IncorrectLogInInfoException ex)
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult Check()
+        {
+            return Ok("It's working");
+        }
+
+        [AllowAnonymous]
+        [HttpPost("[action]")]
+        public IActionResult CheckIn([FromBody]UserCheckinModel loginInfo)
+        {
+            User userData = this.userManager.CheckIn(loginInfo);
+            return this.Ok(userData);
         }
 
         [HttpPost]
