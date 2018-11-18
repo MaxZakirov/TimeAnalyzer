@@ -9,6 +9,7 @@ using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class AuthenticationController : Controller
@@ -33,6 +34,12 @@ namespace TimeAnalyzer.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult Check()
+        {
+            return Ok("It's working");
         }
 
         [AllowAnonymous]

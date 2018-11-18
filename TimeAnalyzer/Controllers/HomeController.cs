@@ -6,7 +6,6 @@ using TimeAnalyzer.Domain.Interfaces;
 
 namespace TimeAnalyzer.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public HomeController()
