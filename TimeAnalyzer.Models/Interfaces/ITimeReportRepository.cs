@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Models;
 
 namespace TimeAnalyzer.Domain.Interfaces
 {
-    public interface ITimeReportsRepository : IRepository<TimeReport>
+    public interface ITimeReportRepository : IRepository<TimeReport>
     {
-        IEnumerable<TimeReport> GetAllUserReports(int userId);
+        Task<IEnumerable<TimeReport>> GetAllUserReports(int userId);
 
         IEnumerable<TimeReport> GetDayUserReports(int userId, DateTime date);
 

@@ -5,7 +5,7 @@ using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Core.Interfaces
 {
-    public interface IUserManager
+    public interface IAuthenticationManager
     {
         Task<User> Authenticate(UserLoginModel user);
 
