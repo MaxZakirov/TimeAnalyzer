@@ -50579,12 +50579,12 @@ module.exports = deprecate;
  * Mark that a method should not be used.
  * Returns a modified function which warns once by default.
  *
- * If `localStorage.noDeprecation = true` is set, then it is a no-op.
+ * If `window.localStorage.noDeprecation = true` is set, then it is a no-op.
  *
- * If `localStorage.throwDeprecation = true` is set, then deprecated functions
+ * If `window.localStorage.throwDeprecation = true` is set, then deprecated functions
  * will throw an Error when invoked.
  *
- * If `localStorage.traceDeprecation = true` is set, then deprecated functions
+ * If `window.localStorage.traceDeprecation = true` is set, then deprecated functions
  * will invoke `console.trace()` instead of `console.error()`.
  *
  * @param {Function} fn - the function to deprecate
@@ -50617,7 +50617,7 @@ function deprecate (fn, msg) {
 }
 
 /**
- * Checks `localStorage` for boolean values for the given `name`.
+ * Checks `window.localStorage` for boolean values for the given `name`.
  *
  * @param {String} name
  * @returns {Boolean}
@@ -50625,13 +50625,13 @@ function deprecate (fn, msg) {
  */
 
 function config (name) {
-  // accessing global.localStorage can trigger a DOMException in sandboxed iframes
+  // accessing global.window.localStorage can trigger a DOMException in sandboxed iframes
   try {
-    if (!global.localStorage) return false;
+    if (!global.window.localStorage) return false;
   } catch (_) {
     return false;
   }
-  var val = global.localStorage[name];
+  var val = global.window.localStorage[name];
   if (null == val) return false;
   return String(val).toLowerCase() === 'true';
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { ApplicationState }  from '../store';
 import * as CounterStore from '../store/Counter';
 import * as WeatherForecasts from '../store/WeatherForecasts';
+import withAuth from './withAuth';
 
 type CounterProps =
     CounterStore.CounterState
@@ -25,7 +26,7 @@ class Counter extends React.Component<CounterProps, {}> {
 }
 
 // Wire up the React component to the Redux store
-export default connect(
+export default withAuth(connect(
     (state: ApplicationState) => state.counter, // Selects which state properties are merged into the component's props
     CounterStore.actionCreators                 // Selects which action creators are merged into the component's props
-)(Counter) as typeof Counter;
+)(Counter) as typeof Counter);
