@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Routing;
+using TimeAnalyzer.Core.TimeReports;
 
 namespace TimeAnalyzer
 {
@@ -86,8 +87,11 @@ namespace TimeAnalyzer
         private void RegisterAppDependencies(IServiceCollection services)
         {
             services.AddTransient(typeof(IDapperQueryExecuter<>), typeof(DapperQueryExecuter<>));
-            services.AddTransient<IUsersRepository, UserRepository>();
-            services.AddTransient<IUserManager, UserManager>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IAuthenticationManager, AuthenticationManager>();
+            services.AddTransient<ITimeReportRepository, TimeReportRepository>();
+            services.AddTransient<ITimeReportService, TimeReportService>();
+            services.AddTransient<IActivityRepository, ActivityRepository>();
         }
 
         private void ConfigureJWTAuthentication(IServiceCollection services, byte[] key)

@@ -8,13 +8,15 @@ namespace TimeAnalyzer.Domain.Models
     {
         public int Id { get; set; }
 
-        public DateTime Day { get; set; }
+        public DateTime Date { get; set; }
 
         public short Duration { get; set; }
 
-        public ActivityType Activity { get; set; }
+        public int ActivityId { get; set; }
 
-        public Guid UserId { get; set; }
+        public Activity Activity { get; set; }
+
+        public int UserId { get; set; }
 
         public User User { get; set; }
     }

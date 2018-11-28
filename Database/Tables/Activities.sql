@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Activities]
+(
+	[Id] INT NOT NULL PRIMARY KEY,
+	[Name] NVARCHAR(50) NOT NULL,
+	[IconPath] NVARCHAR(50) NULL
+)

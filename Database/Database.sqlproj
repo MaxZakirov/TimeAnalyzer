@@ -66,6 +66,7 @@
     <Build Include="Tables\User\Users.sql" />
     <Build Include="Tables\User\Credentials.sql" />
     <Build Include="Tables\User\CredentialTypes.sql" />
+    <Build Include="Tables\Activities.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Database.refactorlog" />

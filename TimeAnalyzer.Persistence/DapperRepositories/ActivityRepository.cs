@@ -1,0 +1,48 @@
+﻿using Dapper;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using TimeAnalyzer.Domain.Interfaces;
+using TimeAnalyzer.Domain.Models;
+
+namespace TimeAnalyzer.Persistence.DapperRepositories
+{
+    public class ActivityRepository : IActivityRepository
+    {
+        private readonly IDapperQueryExecuter<Activity> queryExecuter;
+
+        public ActivityRepository(IDapperQueryExecuter<Activity> queryExecuter)
+        {
+            this.queryExecuter = queryExecuter;
+        }
+
+        public int Add(Activity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(Activity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Activity> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Activity> GetById(int Id)
+        {
+            string query = $"SELECT Id, Name, IconPath FROM Users WHERE Id = @id";
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("id", Id);
+            return await queryExecuter.GetAsync(query, dbArgs);
+        }
+    }
+}

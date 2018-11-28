@@ -19,13 +19,13 @@ using Microsoft.Extensions.Options;
 
 namespace TimeAnalyzer.Core.Users
 {
-    public class UserManager : IUserManager
+    public class AuthenticationManager : IAuthenticationManager
     {
-        private readonly IUsersRepository userRepository;
+        private readonly IUserRepository userRepository;
         private readonly AppSettings appSettings;
 
-        public UserManager(
-            IUsersRepository userRepository,
+        public AuthenticationManager(
+            IUserRepository userRepository,
             IOptions<AppSettings> appSettings
             )
         {
@@ -54,6 +54,7 @@ namespace TimeAnalyzer.Core.Users
             newUser.Id = userRepository.Add(newUser);
 
             newUser.Token = GenerateNewToken(newUser.Name);
+            newUser.Password = null;
             return newUser;
         }
 

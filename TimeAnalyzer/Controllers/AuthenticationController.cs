@@ -14,9 +14,9 @@ namespace TimeAnalyzer.Controllers
     [Route("api/[controller]")]
     public class AuthenticationController : Controller
     {
-        private readonly IUserManager userManager;
+        private readonly IAuthenticationManager userManager;
 
-        public AuthenticationController(IUserManager userManager)
+        public AuthenticationController(IAuthenticationManager userManager)
         {
             this.userManager = userManager;
         }
@@ -46,8 +46,15 @@ namespace TimeAnalyzer.Controllers
         [HttpPost("[action]")]
         public IActionResult CheckIn([FromBody]UserCheckinModel loginInfo)
         {
-            User userData = this.userManager.CheckIn(loginInfo);
-            return this.Ok(userData);
+            try
+            {
+                User userData = this.userManager.CheckIn(loginInfo);
+                return this.Ok(userData);
+            }
+            catch(DuplicateNameException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
