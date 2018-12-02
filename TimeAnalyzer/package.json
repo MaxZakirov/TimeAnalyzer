@@ -24,7 +24,7 @@
     "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "0.11.2",
     "history": "4.6.3",
-    "jquery": "3.2.1",
+    "jquery": "^3.2.1",
     "node-noop": "1.0.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
@@ -42,9 +42,15 @@
     "webpack-merge": "4.1.0"
   },
   "dependencies": {
+    "@types/chart.js": "^2.7.40",
+    "@types/jquery": "^3.3.22",
     "@types/jwt-decode": "^2.2.1",
     "axios": "^0.18.0",
+    "bootstrap-daterangepicker": "^3.0.3",
+    "chart.js": "^2.7.3",
     "jwt-decode": "^2.2.0",
+    "react-bootstrap": "^0.32.4",
+    "react-chartjs-2": "^2.7.4",
     "reactjs-localstorage": "0.0.7"
   }
 }

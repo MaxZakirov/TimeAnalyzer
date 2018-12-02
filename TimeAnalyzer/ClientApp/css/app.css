@@ -1,0 +1,66 @@
+
+
+.container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.chart {
+    width: 40%;
+    height: 30%;
+    position: relative;
+    display: inline-block;
+}
+
+.form {
+    margin-top: 1em;
+    display: inline-block;
+    top: 0;
+    text-align: left;
+}
+
+form {
+    width: 268px;
+    padding: 10px;
+    border: 1px solid;
+}
+
+label {
+    margin-top: -130px;
+    height: 40px;
+    font-size: 35px;
+    font-weight: lighter;
+}
+
+p {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    margin-top: 1em;
+    height: 30px;
+    text-align: center;
+}
+
+.check {
+    margin: 0;
+    padding: 0;
+    margin-right: 2em;
+    width: 40px;
+    height: 23px;
+    bottom: 0;
+    background-color: blueviolet;
+    color: aqua;
+}
+
+button {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    border: 0px solid;
+    height: 34px;
+}

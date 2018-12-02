@@ -1,17 +1,14 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as JWT from "jwt-decode"
-import { RouteComponentProps } from 'react-router-dom';
-import axios from 'axios'
+import * as JWT from "jwt-decode";
+import axios from 'axios';
 
 
 
-interface AuthServiceState { domain: any, exp: any }
 
 export default class AuthService extends React.Component<any, any> {
 
     self = this;
-// Initializing important variables
+    // Initializing important variables
     constructor() {
         super();
         this.state = {
@@ -32,8 +29,8 @@ export default class AuthService extends React.Component<any, any> {
         });
         // console.log(body);
         return axios.post(`/api/Authentication/SignIn`, {
-                email,
-                password
+            email,
+            password
         })
             .then((response: any) => {
                 this.setToken(response.data.token) // Setting the token in this.ls
@@ -51,15 +48,15 @@ export default class AuthService extends React.Component<any, any> {
         // console.log(body);
 
         return axios.post('/api/Authentication/CheckIn', {
-                name: name,
-                email: email,
-                password: password
-              } 
-          )
-          .then((response) =>  {
+            name: name,
+            email: email,
+            password: password
+        }
+        )
+            .then((response) => {
                 this.setToken(response.data.token) // Setting the token in this.ls
                 return Promise.resolve(response);
-          });
+            });
         // Get a token from api server using the fetch api
         // return this.fetch(`${this.state.domain}/CheckIn`, {
         //     headers: {
@@ -84,7 +81,6 @@ export default class AuthService extends React.Component<any, any> {
     isTokenExpired(token: any) {
         try {
             const decoded: any = JWT(token);
-            console.log(decoded.exp);
             if (decoded.exp > (Date.now() / 1000)) { // Checking if token is expired.
                 return false;
             }
@@ -97,34 +93,35 @@ export default class AuthService extends React.Component<any, any> {
     }
 
     setToken(idToken: any) {
-        if (typeof (Storage) !== "undefined") {
-            localStorage.setItem('id_token', idToken)
+        if (typeof (window) !== "undefined") {
+            console.log('zahodit')
+            window.localStorage.setItem('id_token', JSON.stringify(idToken))
         }
-            
-        
+
+
         // Saves user token to this.ls
-        
+
     }
 
     getToken(): any {
-        if (typeof (Storage) !== "undefined") {
-            return localStorage.getItem('id_token') || "Andrey";
+        if (typeof (window) !== "undefined") {
+            return window.localStorage.getItem('id_token') || "";
         }
-            
-        
+
+
         // Retrieves the user token from this.ls
-        
+
     }
 
     logout(): any {
-        if (typeof (Storage) !== "undefined") {
-            localStorage.removeItem('id_token');
+        if (typeof (window) !== "undefined") {
+            console.log("vihodim")
+            window.localStorage.removeItem('id_token');
         }
     }
 
     getProfile(): any {
         // Using jwt-decode npm package to decode the token
-        console.log("huy",JWT(this.getToken()))
         return JWT(this.getToken());
     }
 
@@ -150,7 +147,7 @@ export default class AuthService extends React.Component<any, any> {
             .then(response => response)
     }
 
-    _checkStatus(response:any) {
+    _checkStatus(response: any) {
         // raises an error in case response status is not a success
         if (response.status >= 200 && response.status < 300) { // Success status lies between 200 to 300
             return response

@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 export default function withAuth(AuthComponent: any) {
     const Auth = new AuthService();
-    return class AuthWrapped extends Component <any,any> {
+    return class AuthWrapped extends Component<any, any> {
         constructor() {
             super();
             this.state = {
@@ -13,42 +13,38 @@ export default function withAuth(AuthComponent: any) {
             }
         }
 
-        componentWillMount() {
+        componentDidMount() {
             if (!Auth.loggedIn()) {
-                return <Redirect
-                    to={{
-                        pathname: "/login",
-                    }}
-                />
+                return window.location.replace("/login")
             }
             else {
                 try {
                     if (Auth.loggedIn()) {
-                    const profile = Auth.getProfile()
-                    this.setState({
-                    user: profile
-                    })
+                        const profile = Auth.getProfile()
+                        this.setState({
+                            user: profile
+                        })
                     }
-                    
+
                 }
                 catch (err) {
-                    console.log(err);
+                    console.log("errorrrrrr", err);
                 }
             }
         }
 
         render() {
-            console.log(Auth.loggedIn())
-            if (Auth.loggedIn()) {
-                return (
-                    <AuthComponent history={this.props.history} user={this.state.user} />
-                )
-            }
-            else {
-                return (
-                    <Redirect to={{ pathname: "/login" }} />
+            console.log("authLogged", Auth.loggedIn())
+                if(!Auth.loggedIn()){
+                    return <Redirect to={{pathname: "/login"}} />
+                    
+                }else{
+                    return (
+                        <AuthComponent history={this.props.history} user={this.state.user} />
                     )
-            }
+                }
+                
+
         }
     }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps, Redirect } from 'react-router-dom';
 import AuthService from './AuthService';
+import Login from './Login';
 
 interface RegistrationState { fields: any, errors: any }
 
@@ -45,12 +46,12 @@ export default class Registration extends React.Component<RouteComponentProps<{}
         console.log(name);
         console.log(email);
         console.log(password);
-        service.checkIn(name, email, password); 
+        service.checkIn(name, email, password);
         <Redirect
-                    to={{
-                        pathname: "/",
-                    }}
-                />
+            to={{
+                pathname: "/",
+            }}
+        />
     }
 
 
@@ -67,7 +68,7 @@ export default class Registration extends React.Component<RouteComponentProps<{}
         }
 
         if (typeof fields["username"] !== "undefined") {
-            if (!fields["username"].match(/^[a-zA-Z ]*$/)) {
+            if (!fields["username"].match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/)) {
                 formIsValid = false;
                 errors["username"] = "*Please enter alphabet characters only.";
             }
@@ -138,26 +139,26 @@ export default class Registration extends React.Component<RouteComponentProps<{}
                             <div className="errorMsg">{this.state.errors.email}</div>
                             <label htmlFor="email" id="email">Email</label>
                         </div>
-                    <div className="group">
+                        <div className="group">
 
                             <input className="in" type="password" name="password" value={this.state.fields.password || ''} onChange={this.handleChange} />
-                        <div className="errorMsg">{this.state.errors.password}</div>
-                        <label htmlFor="password" id="pass">Enter yout password</label>
+                            <div className="errorMsg">{this.state.errors.password}</div>
+                            <label htmlFor="password" id="pass">Enter yout password</label>
 
-                    </div>
-                    <div className="group">
+                        </div>
+                        <div className="group">
 
                             <input className="in" type="password" name="passwordConfirm" value={this.state.fields.passwordConfirm || ''} onChange={this.handleChange} />
-                        <div className="errorMsg">{this.state.errors.passwordConfirm}</div>
-                        <label htmlFor="passwordConfirm" id="passConf">Confirm your password</label>
+                            <div className="errorMsg">{this.state.errors.passwordConfirm}</div>
+                            <label htmlFor="passwordConfirm" id="passConf">Confirm your password</label>
 
-                    </div>
+                        </div>
 
-                    <input type="submit" className="button" value="Register" />
-                    <p>Already have an account?</p>
-                    <a href="http://localhost:3000/Login">log in</a>
+                        <input type="submit" className="button" value="Register" />
+                        <p>Already have an account?</p>
+                        <a href="/login">Login</a>
                     </form>
-            </div>
+                </div>
             </div >
 
         );

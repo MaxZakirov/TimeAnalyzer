@@ -3,22 +3,30 @@ import { Component } from 'react';
 import AuthService from './AuthService';
 import withAuth from './withAuth';
 import { Redirect } from 'react-router-dom'
+import Chart from './Chart'
 const Auth = new AuthService();
 
 
 class App extends Component<any, any>{
+
+    componentDidMount() {
+        if (!Auth.loggedIn()) {
+            return window.location.replace("/login")
+        }
+    }
+
     public render() {
-        if (Auth.loggedIn()) {
+
             return (
                 <div className="App">
-                    <button onClick={Auth.logout()}>Hey</button>
+                    <Chart />
+                    <form>
+                        <input type="submit" value="Get Out" onClick={()=>Auth.logout()} ></input>
+                    </form>
+                    
                 </div>
             )
-        } else {
-            return (
-                <Redirect to={{ pathname: "/login" }} />
-                )
-        }
+
         
         
     }
