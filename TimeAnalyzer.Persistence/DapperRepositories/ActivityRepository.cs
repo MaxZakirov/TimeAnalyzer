@@ -27,9 +27,10 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Activity> GetAll()
+        public async Task<IEnumerable<Activity>> GetAll()
         {
-            throw new NotImplementedException();
+            string query = $"SELECT Id, Name, IconPath FROM Activities";
+            return await queryExecuter.GetManyAsync(query);
         }
 
         public void Remove(int Id)
@@ -39,7 +40,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public async Task<Activity> GetById(int Id)
         {
-            string query = $"SELECT Id, Name, IconPath FROM Users WHERE Id = @id";
+            string query = $"SELECT Id, Name, IconPath FROM Activities WHERE Id = @id";
             var dbArgs = new DynamicParameters();
             dbArgs.Add("id", Id);
             return await queryExecuter.GetAsync(query, dbArgs);

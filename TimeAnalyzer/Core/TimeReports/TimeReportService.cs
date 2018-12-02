@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Domain.Models;
+using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Core.TimeReports
 {
@@ -12,6 +13,7 @@ namespace TimeAnalyzer.Core.TimeReports
         private readonly ITimeReportRepository timeReportRepository;
         private readonly IActivityRepository activityRepository;
         private readonly IUserRepository userRepository;
+        private string userName;
 
         public TimeReportService(
             ITimeReportRepository timeReportRepository,
@@ -22,11 +24,22 @@ namespace TimeAnalyzer.Core.TimeReports
             this.timeReportRepository = timeReportRepository;
             this.activityRepository = activityRepository;
             this.userRepository = userRepository;
+            this.userName = null;
         }
 
-        public async Task<IEnumerable<TimeReport>> GetAllUserTimeReports(string userName)
+        public void SetUserName(string userName)
         {
-            var user = await this.userRepository.GetByName(userName);
+            this.userName = userName;
+        }
+
+        public int AddTimeReport(TimeReportViewModel viewModel)
+        {
+           
+        }
+
+        public async Task<IEnumerable<TimeReport>> GetAllUserTimeReports()
+        {
+            var user = await this.userRepository.GetByName(this.userName);
             IEnumerable<TimeReport> timeReports = await this.timeReportRepository.GetAllUserReports(user.Id);
 
             return timeReports;

@@ -47,7 +47,7 @@ namespace TimeAnalyzer.Persistence
             }
         }
 
-        public async Task<IEnumerable<T>> GetManyAsync(string query, object param)
+        public async Task<IEnumerable<T>> GetManyAsync(string query, object param = null)
         {
             using (IDbConnection connection = this.Connection)
             {

@@ -29,7 +29,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TimeReport> GetAll()
+        public Task<IEnumerable<TimeReport>> GetAll()
         {
             throw new NotImplementedException();
         }

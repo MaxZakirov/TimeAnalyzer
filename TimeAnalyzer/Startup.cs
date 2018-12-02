@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Routing;
 using TimeAnalyzer.Core.TimeReports;
+using TimeAnalyzer.Core.Activities;
 
 namespace TimeAnalyzer
 {
@@ -92,6 +93,7 @@ namespace TimeAnalyzer
             services.AddTransient<ITimeReportRepository, TimeReportRepository>();
             services.AddTransient<ITimeReportService, TimeReportService>();
             services.AddTransient<IActivityRepository, ActivityRepository>();
+            services.AddTransient<IActivityService, ActivityService>();
         }
 
         private void ConfigureJWTAuthentication(IServiceCollection services, byte[] key)

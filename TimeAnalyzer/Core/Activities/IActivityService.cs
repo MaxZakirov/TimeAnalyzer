@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TimeAnalyzer.Domain.Models;
 
 namespace TimeAnalyzer.Core.Activities
 {
-    public class IActivityService
+    public interface IActivityService
     {
-        
+        Task<IEnumerable<Activity>> GetAllActivities();
     }
 }
