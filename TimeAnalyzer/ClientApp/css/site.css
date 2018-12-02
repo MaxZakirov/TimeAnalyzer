@@ -2,6 +2,11 @@
     margin-right: 10px;
 }
 
+.container-fluid{
+    width: 100%;
+}
+
+
 /* Highlighting rules for nav menu items */
 .main-nav li a.active,
 .main-nav li a.active:hover,
@@ -9,58 +14,355 @@
     background-color: #4189C7;
     color: white;
 }
+/*Login page*/
 
-/* Keep the nav menu independent of scrolling and on top of other items */
-.main-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
+.bodyLogin {
+    width: 100vw;
+    height: 100vh;
+    background: #1f2933;
 }
+
+h1 {
+    text-align: center;
+}
+
+label {
+    font-size: 1.8vh;
+    margin-bottom: 0.5vh;
+}
+
+.containerLogin {
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.card {
+    background: rgba(44, 44, 44, 0.8);
+    color: rgb(255, 255, 255);
+    width: 45%;
+    height: 60%;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+
+.leftSide {
+    height: 100%;
+    width: 40%;
+    background: url("https://cdn.arstechnica.net/wp-content/uploads/2013/10/ACGA_SP_114_CaribbeanSea_NavalMines.jpg") top left no-repeat/cover;
+    float: left;
+    position: relative;
+}
+
+.leftSideContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: rgba(44, 44, 44, 0.4);
+    text-align: center;
+}
+
+    .leftSideContent h1 {
+        height: 6vh;
+        font-size: 7vh;
+    }
+
+    .leftSideContent h2 {
+        font-size: 3vh;
+        height: 3vh;
+    }
+
+    .leftSideContent h6 {
+        height: 6vh;
+    }
+
+    .leftSideContent p {
+        width: 90%;
+        margin: 0 auto;
+        font-size: 1.4vh;
+    }
+
+    .leftSideContent ul {
+        position: absolute;
+        bottom: 0;
+        font-size: 1.6vh;
+        text-align: left;
+    }
+
+.leftSideContant li {
+    padding-left: 10px;
+}
+
+.rightSide {
+    height: 100%;
+    width: 60%;
+    background: #fff;
+    float: right;
+    position: relative;
+}
+
+.rightSideContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+    .rightSideContent h2 {
+        color: rgba(68, 68, 68, 0.5);
+        font-size: 2vh;
+        margin-top: 3.1vh;
+        font-weight: bold;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .rightSideContent h1 {
+        color: rgba(68, 68, 68, 1);
+        font-size: 2vh;
+        margin-top: 3.1vh;
+        font-weight: bold;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .rightSideContent h3{
+        text-align: center;
+        margin-top: 4vh;
+        font-size: 4vh;
+        color: #444;
+    }
+    .rightSideContent h4{
+        font-size: 2vh;
+        color: #444;
+    }
+    
+    .reg{
+        margin-top: 2vh;
+    }
+
+label {
+    color: rgb(22, 81, 150);
+}
+
+.rightSideContent input {
+    display: block;
+    text-align: left;
+    font-size: 1.8vh;
+    font-weight: bold;
+    width: 100%;
+    height: 4vh;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom-width: 0.1vh;
+    border-radius:0;
+    text-indent: 0.5vw;
+    margin-bottom: 2vh;
+    box-shadow: 0px 0px 0px 0px #eee;
+}
+.form-control:focus{
+    outline: none;
+    box-shadow: 0px 0px 0px 0px #eee;
+}
+.inputs {
+    margin-top: 6vh;
+}
+
+::placeholder {
+    font-size: 1.8vh;
+    font-weight: bold;
+    opacity: 1; /* Firefox */
+}
+
+:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+:focus::-moz-placeholder {
+    color: transparent
+}
+
+:focus:-moz-placeholder {
+    color: transparent
+}
+
+:focus:-ms-input-placeholder {
+    color: transparent
+}
+
+input::-webkit-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+input::-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+input:-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+input:-ms-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+input:focus::-webkit-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+input:focus::-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+input:focus:-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+input:focus:-ms-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: 0px 0px 0px 0px #eee;
+}
+.errorMsg{
+    position: absolute;
+    margin-top: -1.9vh;
+    font-size: 1.4vh;
+    background: #da4c4cc4;
+    color: #fff;
+}
+
+.btn {
+    margin-top: 2.5vh;
+    width: 15vw;
+    height: 5vh;
+    font-size: 2vh;
+    background: transparent;
+    color: rgb(22, 81, 150);
+    border: 1px solid rgb(22, 81, 150);
+    border-radius: 2vh;
+    float: right;
+    transition: 0.3s;
+    outline: none;
+    box-shadow: 0px 0px 0px 0px #eee;
+}
+
+    .btn:hover {
+        background: rgb(22, 81, 150);
+        color: #fff;
+    }
+
+    .btn:active, .btn:focus {
+        outline: none;
+        box-shadow: 0px 0px 0px 0px #eee;
+    }
+    .btn-primary{
+        outline: none;
+        box-shadow: 0px 0px 0px 0px #eee;
+    }
+
+.inCard {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.inv{
+    display: none;
+}
+.blue{
+    color: rgb(22, 81, 150)!important;
+    transition: 0.4s;
+}
+
+
+
+
+
+/*Main page*/
+/* .container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.chart {
+    width: 40%;
+    height: 30%;
+    position: relative;
+    display: inline-block;
+}
+
+.form {
+    margin-top: 1em;
+    display: inline-block;
+    top: 0;
+    text-align: left;
+}
+
+form {
+    width: 268px;
+    padding: 10px;
+}
+
+label {
+    margin-top: -130px;
+    height: 40px;
+    font-size: 35px;
+    font-weight: lighter;
+}
+
+p {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    margin-top: 1em;
+    height: 30px;
+    text-align: center;
+}
+
+.check {
+    margin: 0;
+    padding: 0;
+    margin-right: 2em;
+    width: 40px;
+    height: 23px;
+    bottom: 0;
+    background-color: blueviolet;
+    color: aqua;
+}
+
+button {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    border: 0px solid;
+    height: 34px;
+} */
 
 @media (max-width: 767px) {
     /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
-    body {
-        padding-top: 50px;
-    }
+
 }
 
 @media (min-width: 768px) {
     /* On small screens, convert the nav menu to a vertical sidebar */
-    .main-nav {
-        height: 100%;
-        width: calc(25% - 20px);
-    }
-    .main-nav .navbar {
-        border-radius: 0px;
-        border-width: 0px;
-        height: 100%;
-    }
-    .main-nav .navbar-header {
-        float: none;
-    }
-    .main-nav .navbar-collapse {
-        border-top: 1px solid #444;
-        padding: 0px;
-    }
-    .main-nav .navbar ul {
-        float: none;
-    }
-    .main-nav .navbar li {
-        float: none;
-        font-size: 15px;
-        margin: 6px;
-    }
-    .main-nav .navbar li a {
-        padding: 10px 16px;
-        border-radius: 4px;
-    }
-    .main-nav .navbar a {
-        /* If a menu item's text is too long, truncate it */
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+
 }

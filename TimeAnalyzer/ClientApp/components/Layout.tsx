@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { NavMenu } from './NavMenu';
+import AuthService from './AuthService';
+
+
+
+
 
 export class Layout extends React.Component<{}, {}> {
-    handleLogout() {
+     public render() {
+        const Auth = new AuthService();
 
-    }
-
-    public render() {
-        return <div className='container-fluid'>
-            <div className='row'>
-                <div className='col-sm-3'>
-                    <NavMenu />
-                </div>
-                <div className='col-sm-9'>
+            return <div>
+            <div>
+                <div>
                     { this.props.children }
                 </div>
             </div>
         </div>;
+
+        }
     }
-}
+
