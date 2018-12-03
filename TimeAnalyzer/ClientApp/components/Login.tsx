@@ -138,9 +138,8 @@ export default class Login extends React.Component<any, any>{
         this.Auth.login(this.state.email, this.state.password)
             .then(response => {
                 console.log("response", response)
-                if (true) {
-                    <Redirect to={{pathname: "/"}} />
-                }
+                window.location.replace("/")
+                window.location.reload();
             })
             .catch(err => {
                 alert(err);
