@@ -34,7 +34,7 @@ namespace TimeAnalyzer.Core.TimeReports
 
         public int AddTimeReport(TimeReportViewModel viewModel)
         {
-           
+            return 0;
         }
 
         public async Task<IEnumerable<TimeReport>> GetAllUserTimeReports()
