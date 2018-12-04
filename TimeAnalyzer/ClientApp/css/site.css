@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+body{
+    background:url(../img/loadBack.png) no-repeat top center / cover;
+}
+
 
 /* Highlighting rules for nav menu items */
 .main-nav li a.active,
@@ -26,7 +30,7 @@ h1 {
     text-align: center;
 }
 
-label {
+.rightSide label {
     font-size: 1.8vh;
     margin-bottom: 0.5vh;
 }
@@ -145,7 +149,7 @@ label {
         margin-top: 2vh;
     }
 
-label {
+.rightSide label {
     color: rgb(22, 81, 150);
 }
 
@@ -293,69 +297,116 @@ input:focus {
 
 
 /*Main page*/
-/* .container {
+.mainPage{
+    width: 100%;
+}
+.topbar{
     position: relative;
-    margin: 0;
-    padding: 0;
+    widows: 100%;
+    height: 8vh;
+    background: #4189C7;
+
+}
+.getOut{
+    float: right;
+    height: 8vh;
+    width: 8vh;
+    border: 0;
+    font-size: 1.8vh;
+    font-weight: bold;
+    color: #eee;
+    background: #4189C7;
+    transition: 0.3s;
+}
+.getOut:hover{
+    color: rgb(44, 44, 44);
 }
 
-.chart {
-    width: 40%;
-    height: 30%;
+.navbarBrand{
+    position: absolute;
+    left: 1%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #eee!important;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+.mainPage{
+    width: 100%;
+    height: 92vh;
+    background: #1f2933;
     position: relative;
-    display: inline-block;
 }
 
-.form {
-    margin-top: 1em;
-    display: inline-block;
-    top: 0;
-    text-align: left;
+.center{
+    position: absolute;
+    display: block;
+    width: 80vw;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(238, 238, 238, 0.021);
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.356);
 }
 
-form {
-    width: 268px;
-    padding: 10px;
+.chartContainer{
+    display: block;
+    position: absolute;
+    width: 26.3vw;
+    height: 32vh;
+    margin-left: 2vh;
+    margin-top: 2vh;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.356);
+    background: #2a3846;
 }
 
-label {
-    margin-top: -130px;
-    height: 40px;
-    font-size: 35px;
-    font-weight: lighter;
+.chart{
+    display: block;
+    position: absolute;
+    width: 29vw;
+    height: 30vh;
+    padding: 2vh;
 }
 
-p {
-    height: 40px;
-    margin: 0;
-    padding: 0;
+.formContainer{
+    display: block;
+    position: absolute;
+    width: 26.3vw;
+    height: 32vh;
+    margin-left: 60vh;
+    margin-top: 2vh;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.356);
+    background: #2a3846;
 }
 
-input {
-    margin: 0;
-    padding: 0;
-    margin-top: 1em;
-    height: 30px;
-    text-align: center;
+.form{
+    position: relative;
+    width: 26.3vw;
+    height: 32vh;
 }
 
-.check {
-    margin: 0;
-    padding: 0;
-    margin-right: 2em;
-    width: 40px;
-    height: 23px;
-    bottom: 0;
-    background-color: blueviolet;
-    color: aqua;
+.choise{
+    padding: 1vh;
 }
 
-button {
-    background-color: cornflowerblue;
-    color: aliceblue;
-    border: 0px solid;
-    height: 34px;
-} */
+.change{
+    width: 95%;
+    margin: auto;
+    position: relative;
+}
+
+.form p{
+    height: 2vh;
+    text-indent: 1vh;
+}
+.form label{
+    margin-left: 1vh;
+    color: #eee;
+}
+
+
 
 @media (max-width: 767px) {
     /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */

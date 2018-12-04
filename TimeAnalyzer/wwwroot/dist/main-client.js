@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "de43fc31bd5bbeecf711"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4733b8f3a338ba67ed9d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -631,9 +631,7 @@
 /******/ 		}
 /******/ 	
 /******/ 		hotSetStatus("idle");
-/******/ 		return new Promise(function(resolve) {
-/******/ 			resolve(outdatedModules);
-/******/ 		});
+/******/ 		return Promise.resolve(outdatedModules);
 /******/ 	}
 /******/
 /******/ 	// The module cache
@@ -5873,7 +5871,7 @@ module.exports = getNative;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(81),
-    isLength = __webpack_require__(46);
+    isLength = __webpack_require__(47);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -8238,7 +8236,7 @@ var AuthService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (AuthService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -8250,7 +8248,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Layout__ = __webpack_require__(408);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_App__ = __webpack_require__(406);
@@ -8264,7 +8262,7 @@ var routes = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPO
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/login', component: __WEBPACK_IMPORTED_MODULE_3__components_Login__["a" /* default */] }));
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -8287,7 +8285,7 @@ var reducers = {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -8304,6 +8302,12 @@ module.exports = (__webpack_require__(4))(136);
 
 /***/ }),
 /* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(4))(144);
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8407,7 +8411,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(13),
@@ -8420,7 +8424,7 @@ module.exports = Map;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var mapCacheClear = __webpack_require__(353),
@@ -8458,7 +8462,7 @@ module.exports = MapCache;
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__(72);
@@ -8489,7 +8493,7 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqualDeep = __webpack_require__(310),
@@ -8523,12 +8527,12 @@ module.exports = baseIsEqual;
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseMatches = __webpack_require__(316),
     baseMatchesProperty = __webpack_require__(317),
-    identity = __webpack_require__(44),
+    identity = __webpack_require__(45),
     isArray = __webpack_require__(9),
     property = __webpack_require__(387);
 
@@ -8560,7 +8564,7 @@ module.exports = baseIteratee;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -8591,7 +8595,7 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(9),
@@ -8626,7 +8630,7 @@ module.exports = isKey;
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 /**
@@ -8653,7 +8657,7 @@ module.exports = identity;
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(309),
@@ -8695,7 +8699,7 @@ module.exports = isArguments;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -8734,12 +8738,6 @@ function isLength(value) {
 
 module.exports = isLength;
 
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(4))(144);
 
 /***/ }),
 /* 48 */
@@ -11674,7 +11672,7 @@ module.exports = Html5Entities;
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(38),
+var MapCache = __webpack_require__(39),
     setCacheAdd = __webpack_require__(365),
     setCacheHas = __webpack_require__(366);
 
@@ -11793,7 +11791,7 @@ module.exports = arrayPush;
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(39),
+var baseAssignValue = __webpack_require__(40),
     eq = __webpack_require__(29);
 
 /** Used for built-in method references. */
@@ -11887,7 +11885,7 @@ module.exports = baseGet;
 /* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(44),
+var identity = __webpack_require__(45),
     overRest = __webpack_require__(364),
     setToString = __webpack_require__(368);
 
@@ -11950,7 +11948,7 @@ module.exports = cacheHas;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(9),
-    isKey = __webpack_require__(43),
+    isKey = __webpack_require__(44),
     stringToPath = __webpack_require__(376),
     toString = __webpack_require__(393);
 
@@ -24323,7 +24321,7 @@ if (true) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -24803,7 +24801,7 @@ module.exports = __webpack_require__(218);
 var utils = __webpack_require__(6);
 var bind = __webpack_require__(52);
 var Axios = __webpack_require__(220);
-var defaults = __webpack_require__(36);
+var defaults = __webpack_require__(37);
 
 /**
  * Create an instance of Axios
@@ -24923,7 +24921,7 @@ module.exports = CancelToken;
 "use strict";
 
 
-var defaults = __webpack_require__(36);
+var defaults = __webpack_require__(37);
 var utils = __webpack_require__(6);
 var InterceptorManager = __webpack_require__(221);
 var dispatchRequest = __webpack_require__(222);
@@ -25071,7 +25069,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(6);
 var transformData = __webpack_require__(225);
 var isCancel = __webpack_require__(50);
-var defaults = __webpack_require__(36);
+var defaults = __webpack_require__(37);
 var isAbsoluteURL = __webpack_require__(230);
 var combineURLs = __webpack_require__(228);
 
@@ -36858,10 +36856,10 @@ module.exports = arrayIncludesWith;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseTimes = __webpack_require__(321),
-    isArguments = __webpack_require__(45),
+    isArguments = __webpack_require__(46),
     isArray = __webpack_require__(9),
     isBuffer = __webpack_require__(80),
-    isIndex = __webpack_require__(42),
+    isIndex = __webpack_require__(43),
     isTypedArray = __webpack_require__(82);
 
 /** Used for built-in method references. */
@@ -37334,7 +37332,7 @@ module.exports = baseIsEqualDeep;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(62),
-    baseIsEqual = __webpack_require__(40);
+    baseIsEqual = __webpack_require__(41);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -37473,7 +37471,7 @@ module.exports = baseIsNative;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(20),
-    isLength = __webpack_require__(46),
+    isLength = __webpack_require__(47),
     isObjectLike = __webpack_require__(15);
 
 /** `Object#toString` result references. */
@@ -37602,10 +37600,10 @@ module.exports = baseMatches;
 /* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqual = __webpack_require__(40),
+var baseIsEqual = __webpack_require__(41),
     get = __webpack_require__(381),
     hasIn = __webpack_require__(382),
-    isKey = __webpack_require__(43),
+    isKey = __webpack_require__(44),
     isStrictComparable = __webpack_require__(76),
     matchesStrictComparable = __webpack_require__(77),
     toKey = __webpack_require__(28);
@@ -37685,7 +37683,7 @@ module.exports = basePropertyDeep;
 
 var constant = __webpack_require__(378),
     defineProperty = __webpack_require__(72),
-    identity = __webpack_require__(44);
+    identity = __webpack_require__(45);
 
 /**
  * The base implementation of `setToString` without support for hot loop shorting.
@@ -37781,7 +37779,7 @@ module.exports = baseToString;
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(65),
-    baseAssignValue = __webpack_require__(39);
+    baseAssignValue = __webpack_require__(40);
 
 /**
  * Copies properties of `source` to `object`.
@@ -37840,7 +37838,7 @@ module.exports = coreJsData;
 
 var arrayAggregator = __webpack_require__(294),
     baseAggregator = __webpack_require__(300),
-    baseIteratee = __webpack_require__(41),
+    baseIteratee = __webpack_require__(42),
     isArray = __webpack_require__(9);
 
 /**
@@ -37979,7 +37977,7 @@ module.exports = createBaseFor;
 /* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIteratee = __webpack_require__(41),
+var baseIteratee = __webpack_require__(42),
     isArrayLike = __webpack_require__(14),
     keys = __webpack_require__(22);
 
@@ -38364,7 +38362,7 @@ module.exports = getSymbols;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DataView = __webpack_require__(287),
-    Map = __webpack_require__(37),
+    Map = __webpack_require__(38),
     Promise = __webpack_require__(289),
     Set = __webpack_require__(290),
     WeakMap = __webpack_require__(292),
@@ -38447,10 +38445,10 @@ module.exports = getValue;
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(71),
-    isArguments = __webpack_require__(45),
+    isArguments = __webpack_require__(46),
     isArray = __webpack_require__(9),
-    isIndex = __webpack_require__(42),
-    isLength = __webpack_require__(46),
+    isIndex = __webpack_require__(43),
+    isLength = __webpack_require__(47),
     toKey = __webpack_require__(28);
 
 /**
@@ -38630,7 +38628,7 @@ module.exports = hashSet;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(19),
-    isArguments = __webpack_require__(45),
+    isArguments = __webpack_require__(46),
     isArray = __webpack_require__(9);
 
 /** Built-in value references. */
@@ -38657,7 +38655,7 @@ module.exports = isFlattenable;
 
 var eq = __webpack_require__(29),
     isArrayLike = __webpack_require__(14),
-    isIndex = __webpack_require__(42),
+    isIndex = __webpack_require__(43),
     isObject = __webpack_require__(21);
 
 /**
@@ -38879,7 +38877,7 @@ module.exports = listCacheSet;
 
 var Hash = __webpack_require__(288),
     ListCache = __webpack_require__(24),
-    Map = __webpack_require__(37);
+    Map = __webpack_require__(38);
 
 /**
  * Removes all key-value entries from the map.
@@ -39414,8 +39412,8 @@ module.exports = stackHas;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(24),
-    Map = __webpack_require__(37),
-    MapCache = __webpack_require__(38);
+    Map = __webpack_require__(38),
+    MapCache = __webpack_require__(39);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -39651,7 +39649,7 @@ module.exports = difference;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFindIndex = __webpack_require__(66),
-    baseIteratee = __webpack_require__(41),
+    baseIteratee = __webpack_require__(42),
     toInteger = __webpack_require__(391);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -39829,7 +39827,7 @@ module.exports = isArrayLikeObject;
 /* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqual = __webpack_require__(40);
+var baseIsEqual = __webpack_require__(41);
 
 /**
  * Performs a deep comparison between two values to determine if they are
@@ -39870,7 +39868,7 @@ module.exports = isEqual;
 /* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(39),
+var baseAssignValue = __webpack_require__(40),
     createAggregator = __webpack_require__(325);
 
 /**
@@ -39912,7 +39910,7 @@ module.exports = keyBy;
 /* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(38);
+var MapCache = __webpack_require__(39);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -39993,7 +39991,7 @@ module.exports = memoize;
 
 var baseProperty = __webpack_require__(318),
     basePropertyDeep = __webpack_require__(319),
-    isKey = __webpack_require__(43),
+    isKey = __webpack_require__(44),
     toKey = __webpack_require__(28);
 
 /**
@@ -41548,7 +41546,8 @@ if (!module.hot || process.env.NODE_ENV === 'production') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AuthService__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__withAuth__ = __webpack_require__(410);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Chart__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Chart__ = __webpack_require__(407);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -41559,6 +41558,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -41577,16 +41577,18 @@ var App = (function (_super) {
     };
     App.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "App" },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Chart__["a" /* default */], null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("form", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: "submit", value: "Get Out", onClick: function () { return Auth.logout(); } }))));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "topbar" },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "navbarBrand" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Link"], { to: "/", style: { color: "#eee", textDecoration: "none" } }, "TimeAnalyzer")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: "submit", className: "getOut", value: "Get Out", onClick: function () { return Auth.logout(); } })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Chart__["a" /* default */], null)));
     };
     return App;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 /* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__withAuth__["a" /* default */])(App));
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -41620,6 +41622,7 @@ var Chart = (function (_super) {
         _this.tigran = 200;
         _this.tyulya = 300;
         _this.mops = 400;
+        _this.huch = 250;
         _this.state = {
             fields: {},
             name: '',
@@ -41683,85 +41686,94 @@ var Chart = (function (_super) {
             this.tyulya = +fields["field"];
             console.log(this.tyulya);
         }
+        else if (this.state.selectedOption === 'option8') {
+            formIsValid = true;
+            this.huch = +fields["field"];
+            console.log(this.huch);
+        }
         return formIsValid;
     };
     Chart.prototype.render = function () {
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "container" },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "chart" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Doughnut */], { data: {
-                        labels: ['Mops', 'Drus', 'Liokha', 'Denis', 'Misha', 'Tigran', 'Tyulya'],
-                        datasets: [{
-                                label: 'Power',
-                                data: [
-                                    this.mops,
-                                    this.drus,
-                                    this.liokha,
-                                    this.denis,
-                                    this.misha,
-                                    this.tigran,
-                                    this.tyulya
-                                ],
-                                backgroundColor: [
-                                    '#F44336',
-                                    '#9C27B0',
-                                    '#FFFF00',
-                                    '#2962FF',
-                                    '#FF6E40',
-                                    '#D50000',
-                                    'rgba(0,255,255,0.6)'
-                                ],
-                                borderWidth: 0,
-                                borderColor: '#fff',
-                                hoverBorderWidth: 2,
-                                hoverBorderColor: '#999'
-                            }]
-                    }, options: {
-                        title: {
-                            display: true,
-                            text: 'The POWER of Gays',
-                            fontSize: 25
-                        },
-                        legend: {
-                            display: true,
-                            position: 'left',
-                            labels: {
-                                fontSize: 15,
-                                fontColor: '#000'
-                            }
-                        }
-                    } })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("form", { onSubmit: this.submit },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option1", name: "check", type: "radio", checked: this.state.selectedOption === 'option1', onChange: this.handleChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Mops")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option2", name: "check", type: "radio", checked: this.state.selectedOption === 'option2', onChange: this.handleChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Liokha")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option3", name: "check", type: "radio", checked: this.state.selectedOption === 'option3', onChange: this.handleChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Denis")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option4", name: "check", type: "radio", checked: this.state.selectedOption === 'option4', onChange: this.handleChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Drus")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option5", name: "check", type: "radio", checked: this.state.selectedOption === 'option5', onChange: this.handleChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Misha")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option6", name: "check", type: "radio", checked: this.state.selectedOption === 'option6', onChange: this.handleChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Tigran")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option7", name: "check", type: "radio", checked: this.state.selectedOption === 'option7', onChange: this.handleChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Tyulya")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: "text", name: "field", value: this.state.fields.field || "", onChange: this.handleChange, placeholder: "type your value" }),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit" }, "Change value")))));
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "mainPage" },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "center" },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "chartContainer" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "chart" },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Doughnut */], { data: {
+                                labels: ['Mops', 'Drus', 'Liokha', 'Denis', 'Misha', 'Tigran', 'Tyulya', 'Huch'],
+                                datasets: [{
+                                        label: 'Power',
+                                        data: [
+                                            this.mops,
+                                            this.drus,
+                                            this.liokha,
+                                            this.denis,
+                                            this.misha,
+                                            this.tigran,
+                                            this.tyulya,
+                                            this.huch
+                                        ],
+                                        backgroundColor: [
+                                            '#56e2cf',
+                                            '#5668e2',
+                                            '#cf56e2',
+                                            '#e25668',
+                                            '#e2cf56',
+                                            '#68e256',
+                                            '#e28956',
+                                            '#56e289'
+                                        ],
+                                        borderWidth: 2,
+                                        borderColor: '#fff',
+                                        hoverBorderWidth: 2,
+                                        hoverBorderColor: '#eee'
+                                    }]
+                            }, options: {
+                                legend: {
+                                    display: true,
+                                    position: 'left',
+                                    labels: {
+                                        fontSize: 15,
+                                        fontColor: '#eee'
+                                    }
+                                }
+                            } }))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "formContainer" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("form", { className: "form", onSubmit: this.submit },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "choise" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "change" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: "text", name: "field", value: this.state.fields.field || "", onChange: this.handleChange, placeholder: "type your value" }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit" }, "Change value")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option1", name: "check", type: "radio", checked: this.state.selectedOption === 'option1', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Mops")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option2", name: "check", type: "radio", checked: this.state.selectedOption === 'option2', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Liokha")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option3", name: "check", type: "radio", checked: this.state.selectedOption === 'option3', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Denis")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option4", name: "check", type: "radio", checked: this.state.selectedOption === 'option4', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Drus")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option5", name: "check", type: "radio", checked: this.state.selectedOption === 'option5', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Misha")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option6", name: "check", type: "radio", checked: this.state.selectedOption === 'option6', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Tigran")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option7", name: "check", type: "radio", checked: this.state.selectedOption === 'option7', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Tyulya")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", value: "option8", name: "check", type: "radio", checked: this.state.selectedOption === 'option8', onChange: this.handleChange }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Huch"))))))));
     };
     return Chart;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 /* harmony default export */ __webpack_exports__["a"] = (Chart);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -41801,7 +41813,7 @@ var Layout = (function (_super) {
 
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -41812,7 +41824,7 @@ var Layout = (function (_super) {
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AuthService__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery__ = __webpack_require__(435);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_jquery__);
 var __extends = (this && this.__extends) || (function () {
@@ -41944,9 +41956,8 @@ var Login = (function (_super) {
         this.Auth.login(this.state.email, this.state.password)
             .then(function (response) {
             console.log("response", response);
-            if (true) {
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: { pathname: "/" } });
-            }
+            window.location.replace("/");
+            window.location.reload();
         })
             .catch(function (err) {
             alert(err);
@@ -42012,7 +42023,7 @@ var Login = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (Login);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42024,7 +42035,7 @@ var Login = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AuthService__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(36);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -42070,7 +42081,7 @@ function withAuth(AuthComponent) {
         };
         AuthWrapped.prototype.render = function () {
             console.log("authLogged", Auth.loggedIn());
-            if (!Auth.loggedIn()) {
+            if (!Auth.loggedIn() && typeof (Storage) !== "undefined") {
                 return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: { pathname: "/login" } });
             }
             else {
@@ -42082,7 +42093,7 @@ function withAuth(AuthComponent) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42123,7 +42134,7 @@ function buildRootReducer(allReducers) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42158,7 +42169,7 @@ var reducer = function (state, action) {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42219,7 +42230,7 @@ var reducer = function (state, incomingAction) {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
