@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Interfaces;
@@ -21,7 +23,24 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public int Add(TimeReport entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string query = $"INSERT INTO TimeReports(Date,Duration,ActivityId, UserId) " +
+                    $"VALUES (@date, @duration, @activity, @userId); SELECT CAST(SCOPE_IDENTITY() AS INT)";
+
+                var dbArgs = new DynamicParameters();
+                dbArgs.Add("date", entity.Date);
+                dbArgs.Add("duration", entity.Duration);
+                dbArgs.Add("activity", entity.ActivityId);
+                dbArgs.Add("userId", entity.UserId);
+
+                int newtimeReportId = queryExecuter.Connection.Query<int>(query, dbArgs).Single();
+                return newtimeReportId;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
 
         public void Edit(TimeReport entity)

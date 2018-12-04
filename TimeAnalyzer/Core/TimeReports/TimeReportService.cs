@@ -4,15 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Domain.Models;
+using TimeAnalyzer.Mappers;
 using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Core.TimeReports
 {
     public class TimeReportService : ITimeReportService
     {
+        private const int UserIdIsUnknownValue = -1;
         private readonly ITimeReportRepository timeReportRepository;
         private readonly IActivityRepository activityRepository;
         private readonly IUserRepository userRepository;
+        private int userId;
         private string userName;
 
         public TimeReportService(
@@ -24,7 +27,7 @@ namespace TimeAnalyzer.Core.TimeReports
             this.timeReportRepository = timeReportRepository;
             this.activityRepository = activityRepository;
             this.userRepository = userRepository;
-            this.userName = null;
+            this.userId = UserIdIsUnknownValue;
         }
 
         public void SetUserName(string userName)
@@ -32,17 +35,27 @@ namespace TimeAnalyzer.Core.TimeReports
             this.userName = userName;
         }
 
-        public int AddTimeReport(TimeReportViewModel viewModel)
+        public async Task<int> AddTimeReport(TimeReportViewModel viewModel)
         {
-            return 0;
+            TimeReport timeReport = viewModel.ToTimeReport(await this.GetUserId(this.userName));
+            return this.timeReportRepository.Add(timeReport);
         }
 
         public async Task<IEnumerable<TimeReport>> GetAllUserTimeReports()
         {
-            var user = await this.userRepository.GetByName(this.userName);
-            IEnumerable<TimeReport> timeReports = await this.timeReportRepository.GetAllUserReports(user.Id);
-
+            IEnumerable<TimeReport> timeReports = await this.timeReportRepository.GetAllUserReports(await this.GetUserId(this.userName));
             return timeReports;
+        }
+
+        private async Task<int> GetUserId(string userName)
+        {
+            if (userId == UserIdIsUnknownValue)
+            {
+                var user = await this.userRepository.GetByName(userName);
+                this.userId = user.Id;
+            }
+
+            return this.userId;
         }
     }
 }

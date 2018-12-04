@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4733b8f3a338ba67ed9d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f44debfa9b8b120d9401"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -631,7 +631,9 @@
 /******/ 		}
 /******/ 	
 /******/ 		hotSetStatus("idle");
-/******/ 		return Promise.resolve(outdatedModules);
+/******/ 		return new Promise(function(resolve) {
+/******/ 			resolve(outdatedModules);
+/******/ 		});
 /******/ 	}
 /******/
 /******/ 	// The module cache
@@ -8236,7 +8238,7 @@ var AuthService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (AuthService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -8262,7 +8264,7 @@ var routes = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPO
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/login', component: __WEBPACK_IMPORTED_MODULE_3__components_Login__["a" /* default */] }));
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -8285,7 +8287,7 @@ var reducers = {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -24321,7 +24323,7 @@ if (true) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -41588,7 +41590,7 @@ var App = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__withAuth__["a" /* default */])(App));
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -41773,7 +41775,7 @@ var Chart = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (Chart);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -41813,7 +41815,7 @@ var Layout = (function (_super) {
 
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42023,7 +42025,7 @@ var Login = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (Login);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Login.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42093,7 +42095,7 @@ function withAuth(AuthComponent) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42134,7 +42136,7 @@ function buildRootReducer(allReducers) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42169,7 +42171,7 @@ var reducer = function (state, action) {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
@@ -42230,7 +42232,7 @@ var reducer = function (state, incomingAction) {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),

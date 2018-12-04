@@ -1,11 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using TimeAnalyzer.Core.Static;
+using TimeAnalyzer.Domain.Models;
+using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Mappers
 {
-    public class TimeReportMapper
+    public static class TimeReportMapper
     {
+        public static TimeReport ToTimeReport(this TimeReportViewModel timeReportView, int userId)
+        {
+            DateTime date = TimeConverter.ToDateTime(timeReportView.Date);
+            return new TimeReport(
+                timeReportView.Id,
+                date,
+                timeReportView.Duration,
+                timeReportView.ActivityId,
+                timeReportView.Activity,
+                userId);
+        }
     }
 }

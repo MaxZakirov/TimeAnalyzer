@@ -1,24 +1,21 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using TimeAnalyzer.Core.Users;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using TimeAnalyzer.Core.Activities;
 using TimeAnalyzer.Core.Interfaces;
+using TimeAnalyzer.Core.TimeReports;
+using TimeAnalyzer.Core.Users;
 using TimeAnalyzer.Domain.Interfaces;
+using TimeAnalyzer.Models;
 using TimeAnalyzer.Persistence;
 using TimeAnalyzer.Persistence.DapperRepositories;
-using TimeAnalyzer.Models;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Rewrite;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Routing;
-using TimeAnalyzer.Core.TimeReports;
-using TimeAnalyzer.Core.Activities;
 
 namespace TimeAnalyzer
 {
@@ -94,6 +91,8 @@ namespace TimeAnalyzer
             services.AddTransient<ITimeReportService, TimeReportService>();
             services.AddTransient<IActivityRepository, ActivityRepository>();
             services.AddTransient<IActivityService, ActivityService>();
+            services.AddTransient<ITimeReportService, TimeReportService>();
+            services.AddTransient<ITimeReportServiceFactory, TimeReportServiceFactory>();
         }
 
         private void ConfigureJWTAuthentication(IServiceCollection services, byte[] key)

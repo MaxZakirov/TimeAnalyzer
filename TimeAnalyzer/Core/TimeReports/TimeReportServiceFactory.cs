@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TimeAnalyzer.Core.TimeReports
+﻿namespace TimeAnalyzer.Core.TimeReports
 {
-    public class CurrentUserTimeReportServiceFactory : ITimeReportServiceFactory
+    public class TimeReportServiceFactory : ITimeReportServiceFactory
     {
         private readonly TimeReportService reportService;
 
-        public CurrentUserTimeReportServiceFactory(ITimeReportService reportService)
+        public TimeReportServiceFactory(ITimeReportService reportService)
         {
             this.reportService = (TimeReportService)reportService;
         }

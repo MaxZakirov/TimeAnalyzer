@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Models;
 using TimeAnalyzer.Models;
@@ -11,6 +9,6 @@ namespace TimeAnalyzer.Core.TimeReports
     {
         Task<IEnumerable<TimeReport>> GetAllUserTimeReports();
 
-        int AddTimeReport(TimeReportViewModel viewModel);
+        Task<int> AddTimeReport(TimeReportViewModel viewModel);
     }
 }
