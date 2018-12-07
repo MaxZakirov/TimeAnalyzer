@@ -30,11 +30,11 @@ export default class Login extends React.Component<any, any>{
         });
     }
 
-    reg() {
-        if ($('.reg').hasClass('inv')) {
-            $('.reg').removeClass('inv')
+    registration() {
+        if ($('.registration').hasClass('inv')) {
+            $('.registration').removeClass('inv')
             $('.log').addClass('inv')
-            $('.regLabel').addClass('blue')
+            $('.registrationLabel').addClass('blue')
             $('.logLabel').removeClass('blue')
             return false;
         }
@@ -42,9 +42,9 @@ export default class Login extends React.Component<any, any>{
     log() {
         if ($('.log').hasClass('inv')) {
             $('.log').removeClass('inv')
-            $('.reg').addClass('inv')
+            $('.registration').addClass('inv')
             $('.logLabel').addClass('blue')
-            $('.regLabel').removeClass('blue')
+            $('.registrationLabel').removeClass('blue')
             return false;
         }
     }
@@ -62,9 +62,6 @@ export default class Login extends React.Component<any, any>{
             var name: any = this.state.fields.username;
             var email: any = this.state.fields.email;
             var password: any = this.state.fields.password;
-            console.log(name);
-            console.log(email);
-            console.log(password);
             service.checkIn(name, email, password);
             window.location.replace("/")
         }
@@ -133,8 +130,6 @@ export default class Login extends React.Component<any, any>{
 
     handleFormSubmit(e: any) {
         e.preventDefault();
-        console.log(this.state);
-        console.log("privet")
         this.Auth.login(this.state.email, this.state.password)
             .then(response => {
                 console.log("response", response)
@@ -185,9 +180,9 @@ export default class Login extends React.Component<any, any>{
                                 <div className="rightSideContent">
 
                                     <div className="inCard">
-                                        <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.reg} className="regLabel">Registration</h2>
+                                        <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">Registration</h2>
 
-                                        <form className="reg inv" onSubmit={this.submituserRegistrationForm}>
+                                        <form className="registration inv" onSubmit={this.submituserRegistrationForm}>
 
 
                                             <div className="group">

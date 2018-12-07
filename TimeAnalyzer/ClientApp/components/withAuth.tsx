@@ -28,13 +28,12 @@ export default function withAuth(AuthComponent: any) {
 
                 }
                 catch (err) {
-                    console.log("errorrrrrr", err);
+                    console.log("error", err);
                 }
             }
         }
 
         render() {
-            console.log("authLogged", Auth.loggedIn())
             if (!Auth.loggedIn() && typeof (Storage) !== "undefined"){
                     return <Redirect to={{pathname: "/login"}} />
                     
