@@ -6,7 +6,7 @@ namespace TimeAnalyzer.Domain.Interfaces
     public interface IRepository<T> 
         where T : class
     {
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
 
         Task<T> GetById(int Id);
 

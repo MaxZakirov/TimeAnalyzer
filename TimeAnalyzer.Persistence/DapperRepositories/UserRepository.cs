@@ -42,8 +42,10 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
                 {
                     throw new DuplicateNameException($"The name {entity.Name} is already exists");
                 }
-
-                throw ex;
+                else
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -52,7 +54,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAll()
+        public Task<IEnumerable<User>> GetAll()
         {
             throw new NotImplementedException();
         }

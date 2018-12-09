@@ -10,7 +10,7 @@ namespace TimeAnalyzer.Persistence
 
         Task<T> GetAsync(string query, object param);
 
-        Task<IEnumerable<T>> GetManyAsync(string query, object param);
+        Task<IEnumerable<T>> GetManyAsync(string query, object param = null);
 
         void Execute(string query, object param);
 

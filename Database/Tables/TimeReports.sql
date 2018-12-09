@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[TimeReports]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[Id] INT NOT NULL IDENTITY PRIMARY KEY,
 	[Date] DATE NOT NULL,
 	[Duration] INT NOT NULL,
 	[ActivityId] INT NOT NULL,

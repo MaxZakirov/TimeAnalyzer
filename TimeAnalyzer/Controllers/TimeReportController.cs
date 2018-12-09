@@ -1,9 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 using TimeAnalyzer.Core.TimeReports;
+using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Controllers
 {
@@ -13,17 +14,31 @@ namespace TimeAnalyzer.Controllers
     public class TimeReportController : Controller
     {
         private readonly ITimeReportService timeReportService;
+        private readonly Func<ITimeReportService> timeReportServiceInsatller;
 
-        public TimeReportController(ITimeReportService timeReportService)
+        public TimeReportController(ITimeReportServiceFactory timeReportServiceFactory)
         {
-            this.timeReportService = timeReportService;
+            timeReportService = null;
+            this.timeReportServiceInsatller = () => timeReportServiceFactory.CreateTimeReportService(HttpContext.User.Identity.Name);
         }
 
         [HttpGet("[action]")]
         public async Task<IActionResult> GetUserTimeReports()
         {
-            var reports = await this.timeReportService.GetAllUserTimeReports(HttpContext.User.Identity.Name);
+            var reports = await GetReportService().GetAllUserTimeReports();
             return Ok(reports);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> AddTimeReport([FromBody]TimeReportViewModel timeReport)
+        {
+            timeReport.Id = await GetReportService().AddTimeReport(timeReport);
+            return Ok(timeReport);
+        }
+
+        private ITimeReportService GetReportService()
+        {
+            return timeReportService ?? timeReportServiceInsatller.Invoke();
         }
     }
 }

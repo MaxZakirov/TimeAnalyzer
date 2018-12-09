@@ -6,6 +6,22 @@ namespace TimeAnalyzer.Domain.Models
 {
     public class TimeReport
     {
+        public TimeReport(
+            int id,
+            DateTime date,
+            short duration,
+            int activityId,
+            Activity activity,
+            int userId
+            )
+        {
+            Id = id;
+            Date = date;
+            Duration = duration;
+            ActivityId = activityId;
+            UserId = userId;
+        }
+
         public int Id { get; set; }
 
         public DateTime Date { get; set; }
@@ -17,7 +33,5 @@ namespace TimeAnalyzer.Domain.Models
         public Activity Activity { get; set; }
 
         public int UserId { get; set; }
-
-        public User User { get; set; }
     }
 }
