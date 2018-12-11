@@ -6,6 +6,11 @@ namespace TimeAnalyzer.Domain.Models
 {
     public class TimeReport
     {
+        public TimeReport()
+        {
+
+        }
+
         public TimeReport(
             int id,
             DateTime date,

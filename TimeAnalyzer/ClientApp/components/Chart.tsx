@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Pie, Doughnut, Radar, Polar } from 'react-chartjs-2';
 import Profile from './ChartRadioButton';
+import TimeReportApiService from './TimeReportApiService'
 
 
 export default class Chart extends React.Component<any, any> {
 
+    Report: TimeReportApiService;
+
     currentTypedValue: any;
-    AllMinutesInDay: any = 1440;
 
     constructor(props: any) {
         super(props);
@@ -17,12 +19,12 @@ export default class Chart extends React.Component<any, any> {
             selectedActivityId: 0,
             selectedOption: 'mops'
         }
-
+        this.Report = new TimeReportApiService();
         this.currentTypedValue = 0;
     }
 
     initializeChartData(): any {
-        Server.getData()
+        this.Report.getTimeReports(this.state.Id, this.state.Date, this.state.Duration, this.state.ActivityId, this.state.Activity)
             .then((res: any) => {
                 res.unshift(this.state.chartData);
                 this.setState({
@@ -63,7 +65,7 @@ export default class Chart extends React.Component<any, any> {
         return (
             <div className="mainPage">
 
-                <div className="center">
+                 <div className="center">
                     <div className="chartContainer">
                         <div className="chart">
                             <Doughnut
@@ -116,7 +118,7 @@ export default class Chart extends React.Component<any, any> {
 
                         </form>
                     </div>
-                </div>
+                </div> 
             </div>
         )
     }

@@ -7,7 +7,7 @@ import * as $ from 'jquery';
 
 
 
-export default class Login extends React.Component<any, any>{
+export default class AuthPage extends React.Component<any, any>{
     Auth: AuthService;
     constructor() {
         super();
@@ -16,7 +16,7 @@ export default class Login extends React.Component<any, any>{
             errors: {}
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.loginFormSubmit = this.loginFormSubmit.bind(this);
         this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
         this.Auth = new AuthService();
     }
@@ -128,7 +128,7 @@ export default class Login extends React.Component<any, any>{
         return formIsValid;
     }
 
-    handleFormSubmit(e: any) {
+    loginFormSubmit(e: any) {
         e.preventDefault();
         this.Auth.login(this.state.email, this.state.password)
             .then(response => {
@@ -167,9 +167,9 @@ export default class Login extends React.Component<any, any>{
                                     <h6>You feel you waste your time?</h6>
                                     <p>However after loading the components the body style is not present in the page.It shows up in the console though. Is there a way to display a background image in the main page whilst having the CSS rule in the CSS file that is loaded by webpack?Is this because reactjs does something I am not aware off?</p>
                                     <ul>
-                                        <li>Мопс педор</li>
-                                        <li>А я люблю певко</li>
-                                        <li>Где мое пивко?</li>
+                                        <li>Mops</li>
+                                        <li>Beer</li>
+                                        <li>Bar</li>
                                     </ul>
                                 </div>
                             </div>
@@ -220,7 +220,7 @@ export default class Login extends React.Component<any, any>{
 
                                         </form>
 
-                                        <form className="log" onSubmit={this.handleFormSubmit}>
+                                        <form className="log" onSubmit={this.loginFormSubmit}>
                                             <h3>Welcome to our community!</h3>
                                             <div className="inputs">
                                                 <div className="form-group">

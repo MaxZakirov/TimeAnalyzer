@@ -43,8 +43,16 @@ namespace TimeAnalyzer.Core.TimeReports
 
         public async Task<IEnumerable<TimeReport>> GetAllUserTimeReports()
         {
-            IEnumerable<TimeReport> timeReports = await this.timeReportRepository.GetAllUserReports(await this.GetUserId(this.userName));
-            return timeReports;
+            try
+            {
+                IEnumerable<TimeReport> timeReports = await this.timeReportRepository.GetAllUserReports(await this.GetUserId(this.userName));
+
+                return timeReports;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private async Task<int> GetUserId(string userName)
