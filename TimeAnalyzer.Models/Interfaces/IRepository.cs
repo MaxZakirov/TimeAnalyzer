@@ -14,6 +14,6 @@ namespace TimeAnalyzer.Domain.Interfaces
 
         int Add(T entity);
 
-        void Edit(T entity);
+        void Update(T entity);
     }
 }

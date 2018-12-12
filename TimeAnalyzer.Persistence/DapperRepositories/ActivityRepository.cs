@@ -1,10 +1,10 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Domain.Models;
+using TimeAnalyzer.Persistence.QueryExecuters;
 
 namespace TimeAnalyzer.Persistence.DapperRepositories
 {
@@ -22,7 +22,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             throw new NotImplementedException();
         }
 
-        public void Edit(Activity entity)
+        public void Update(Activity entity)
         {
             throw new NotImplementedException();
         }

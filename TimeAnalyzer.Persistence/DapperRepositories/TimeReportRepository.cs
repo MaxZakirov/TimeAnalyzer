@@ -1,22 +1,24 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Domain.Models;
+using TimeAnalyzer.Persistence.QueryExecuters;
 
 namespace TimeAnalyzer.Persistence.DapperRepositories
 {
     public class TimeReportRepository : ITimeReportRepository
     {
         private readonly IDapperQueryExecuter<TimeReport> queryExecuter;
+        private readonly string getAllSQL = $"SELECT t.Id,t.Date,t.UserId,t.Duration,t.ActivityId,a.Id,a.IconPath,a.Name " +
+                $"FROM TimeReports t JOIN Activities a ON a.Id = t.ActivityId WHERE t.UserId = @userId";
 
         public TimeReportRepository(
-          IDapperQueryExecuter<TimeReport> queryExecuter
-          )
+          IDapperQueryExecuter<TimeReport> queryExecuter)
         {
             this.queryExecuter = queryExecuter;
         }
@@ -43,9 +45,17 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             }
         }
 
-        public void Edit(TimeReport entity)
+        public void Update(TimeReport entity)
         {
-            throw new NotImplementedException();
+            string query = $"UPDATE TimeReports SET Date=@date, Duration=@duration, ActivityId=@activityId WHERE Id=@id";
+
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("id", entity.Id);
+            dbArgs.Add("date", entity.Date);
+            dbArgs.Add("duration", entity.Duration);
+            dbArgs.Add("activityId", entity.ActivityId);
+
+            queryExecuter.Execute(query, dbArgs);
         }
 
         public Task<IEnumerable<TimeReport>> GetAll()
@@ -55,12 +65,11 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public async Task<IEnumerable<TimeReport>> GetAllUserReports(int userId)
         {
-            string query = $"SELECT t.Id,t.Date,t.UserId,t.Duration,t.ActivityId,a.Id,a.IconPath,a.Name " +
-                $"FROM TimeReports t JOIN Activities a ON a.Id = t.ActivityId WHERE t.UserId = @userId";
             var dbArgs = new DynamicParameters();
             dbArgs.Add("userId", userId);
-            return await queryExecuter.Connection.QueryAsync<TimeReport,Activity,TimeReport>(query,
-                map: (tr,a) => {
+            return await queryExecuter.Connection.QueryAsync<TimeReport, Activity, TimeReport>(getAllSQL,
+                map: (tr, a) =>
+                {
                     tr.Activity = a;
 
                     return tr;
@@ -74,29 +83,45 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TimeReport> GetDayUserReports(int userId, DateTime date)
+        public async Task<IEnumerable<TimeReport>> GetDayUserReports(int userId, DateTime date)
+        {
+            string query = getAllSQL + $" AND t.Date = @date";
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("userId", userId);
+            dbArgs.Add("date", date.Date);
+            return await queryExecuter.Connection.QueryAsync<TimeReport, Activity, TimeReport>(query,
+                map: (tr, a) =>
+                {
+                    tr.Activity = a;
+                    tr.ActivityId = a.Id;
+
+                    return tr;
+                },
+                splitOn: "ActivityId",
+                param: dbArgs);
+        }
+
+        public Task<IEnumerable<TimeReport>> GetInterimUserReports(int id, DateTime startDate, DateTime endDate)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TimeReport> GetInterimUserReports(int id, DateTime startDate, DateTime endDate)
+        public Task<IEnumerable<TimeReport>> GetMonthUserReports(int id, byte monthNumber)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TimeReport> GetMonthUserReports(int id, byte monthNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<TimeReport> GetYearUserReports(int id, short yearNumber)
+        public Task<IEnumerable<TimeReport>> GetYearUserReports(int id, short yearNumber)
         {
             throw new NotImplementedException();
         }
 
         public void Remove(int Id)
         {
-            throw new NotImplementedException();
+            string query = $"DELETE FROM TimeReports WHERE Id=@id";
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("id", Id);
+            queryExecuter.Execute(query, dbArgs);
         }
     }
 }

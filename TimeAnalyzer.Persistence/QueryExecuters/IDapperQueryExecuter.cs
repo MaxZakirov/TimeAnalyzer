@@ -2,7 +2,7 @@
 using System.Data;
 using System.Threading.Tasks;
 
-namespace TimeAnalyzer.Persistence
+namespace TimeAnalyzer.Persistence.QueryExecuters
 {
     public interface IDapperQueryExecuter<T>
     {

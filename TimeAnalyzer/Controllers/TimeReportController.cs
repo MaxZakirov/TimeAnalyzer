@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TimeAnalyzer.Core.TimeReports;
 using TimeAnalyzer.Models;
+using TimeAnalyzer.Models.Reports;
 
 namespace TimeAnalyzer.Controllers
 {
@@ -25,15 +27,29 @@ namespace TimeAnalyzer.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetUserTimeReports()
         {
-            var reports = await GetReportService().GetAllUserTimeReports();
+            IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetAllUserTimeReports();
+            return Ok(reports);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetDayTimeReport(string stringDate)
+        {
+            IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetDayTimeReportAsync(stringDate);
             return Ok(reports);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddTimeReport([FromBody]TimeReportViewModel timeReport)
+        public async Task<IActionResult> AddTimeReport([FromBody]DayTimeReportViewModel timeReport)
         {
             timeReport.Id = await GetReportService().AddTimeReport(timeReport);
             return Ok(timeReport);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> UpdateTimeReport([FromBody]DayTimeReportViewModel timeReport)
+        {
+            await GetReportService().Update(timeReport);
+            return Ok();
         }
 
         private ITimeReportService GetReportService()

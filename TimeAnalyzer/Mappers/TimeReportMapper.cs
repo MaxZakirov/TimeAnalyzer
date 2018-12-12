@@ -1,13 +1,13 @@
 ﻿using System;
 using TimeAnalyzer.Core.Static;
 using TimeAnalyzer.Domain.Models;
-using TimeAnalyzer.Models;
+using TimeAnalyzer.Models.Reports;
 
 namespace TimeAnalyzer.Mappers
 {
     public static class TimeReportMapper
     {
-        public static TimeReport ToTimeReport(this TimeReportViewModel timeReportView, int userId)
+        public static TimeReport ToTimeReport(this DayTimeReportViewModel timeReportView, int userId)
         {
             DateTime date = TimeConverter.ToDateTime(timeReportView.Date);
             return new TimeReport(
@@ -17,6 +17,17 @@ namespace TimeAnalyzer.Mappers
                 timeReportView.ActivityId,
                 timeReportView.Activity,
                 userId);
+        }
+
+        public static DayTimeReportViewModel ToViewTimeReport(this TimeReport timeReport)
+        {
+            string stringDate = TimeConverter.ToJSONString(timeReport.Date);
+            return new DayTimeReportViewModel(
+                timeReport.Id,
+                timeReport.Duration,
+                timeReport.ActivityId,
+                timeReport.Activity,
+                stringDate);
         }
     }
 }

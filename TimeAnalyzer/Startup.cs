@@ -16,6 +16,7 @@ using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Models;
 using TimeAnalyzer.Persistence;
 using TimeAnalyzer.Persistence.DapperRepositories;
+using TimeAnalyzer.Persistence.QueryExecuters;
 
 namespace TimeAnalyzer
 {
@@ -85,8 +86,11 @@ namespace TimeAnalyzer
         private void RegisterAppDependencies(IServiceCollection services)
         {
             services.AddTransient(typeof(IDapperQueryExecuter<>), typeof(DapperQueryExecuter<>));
+            services.AddTransient<ITransactableQueryExecuterFactory, TransactableQueryExecuterFactory>();
+            services.AddTransient<IDapperRepositoriesFactory, DapperRepositoriesFactory>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IAuthenticationManager, AuthenticationManager>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<ITimeReportRepository, TimeReportRepository>();
             services.AddTransient<ITimeReportService, TimeReportService>();
             services.AddTransient<IActivityRepository, ActivityRepository>();

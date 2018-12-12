@@ -8,7 +8,6 @@ namespace TimeAnalyzer.Domain.Models
     {
         public TimeReport()
         {
-
         }
 
         public TimeReport(
@@ -17,8 +16,7 @@ namespace TimeAnalyzer.Domain.Models
             short duration,
             int activityId,
             Activity activity,
-            int userId
-            )
+            int userId)
         {
             Id = id;
             Date = date;

@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TimeAnalyzer.Core.Static;
+using TimeAnalyzer.Core.TimeReports.UpdateStrategy;
 using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Domain.Models;
 using TimeAnalyzer.Mappers;
-using TimeAnalyzer.Models;
+using TimeAnalyzer.Models.Reports;
 
 namespace TimeAnalyzer.Core.TimeReports
 {
     public class TimeReportService : ITimeReportService
     {
         private const int UserIdIsUnknownValue = -1;
+        private readonly IUnitOfWork unitOfWork;
         private readonly ITimeReportRepository timeReportRepository;
         private readonly IActivityRepository activityRepository;
         private readonly IUserRepository userRepository;
@@ -19,15 +22,17 @@ namespace TimeAnalyzer.Core.TimeReports
         private string userName;
 
         public TimeReportService(
+            IUnitOfWork unitOfWork,
             ITimeReportRepository timeReportRepository,
             IActivityRepository activityRepository,
             IUserRepository userRepository
             )
         {
+            this.unitOfWork = unitOfWork;
             this.timeReportRepository = timeReportRepository;
             this.activityRepository = activityRepository;
             this.userRepository = userRepository;
-            this.userId = UserIdIsUnknownValue;
+            userId = UserIdIsUnknownValue;
         }
 
         public void SetUserName(string userName)
@@ -35,35 +40,67 @@ namespace TimeAnalyzer.Core.TimeReports
             this.userName = userName;
         }
 
-        public async Task<int> AddTimeReport(TimeReportViewModel viewModel)
+        public void DeleteTimeReport(int timeReportId)
         {
-            TimeReport timeReport = viewModel.ToTimeReport(await this.GetUserId(this.userName));
-            return this.timeReportRepository.Add(timeReport);
+            timeReportRepository.Remove(timeReportId);
         }
 
-        public async Task<IEnumerable<TimeReport>> GetAllUserTimeReports()
+        public async Task<int> AddTimeReport(DayTimeReportViewModel viewModel)
         {
-            try
-            {
-                IEnumerable<TimeReport> timeReports = await this.timeReportRepository.GetAllUserReports(await this.GetUserId(this.userName));
-
-                return timeReports;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+            TimeReport timeReport = viewModel.ToTimeReport(await GetUserId());
+            timeReport.Id = GlobalConstants.NullId;
+            CreateTimeReportUpdateStrategy timeReportUpdateStrategy = (CreateTimeReportUpdateStrategy)(await this.GetTimeReportUpdateStrategy(timeReport));
+            timeReportUpdateStrategy.Update();
+            return timeReportUpdateStrategy.NewTimeReportId;
         }
 
-        private async Task<int> GetUserId(string userName)
+        public async Task<IEnumerable<DayTimeReportViewModel>> GetAllUserTimeReports()
+        {
+            IEnumerable<TimeReport> timeReports = await timeReportRepository.GetAllUserReports(await GetUserId());
+            return timeReports.Select(tr => tr.ToViewTimeReport());
+        }
+
+        public async Task<IEnumerable<DayTimeReportViewModel>> GetDayTimeReportAsync(string stringDate)
+        {
+            DateTime date = TimeConverter.ToDateTime(stringDate);
+            var timeReports = await timeReportRepository.GetDayUserReports(await GetUserId(), date);
+            return timeReports.AsParallel().Select(tr => tr.ToViewTimeReport());
+        }
+
+        public async Task Update(DayTimeReportViewModel viewModel)
+        {
+            TimeReport newTimeReport = viewModel.ToTimeReport(await GetUserId());
+            TimeReportUpdateStrategy timeReportUpdateStrategy = await this.GetTimeReportUpdateStrategy(newTimeReport);
+            timeReportUpdateStrategy.Update();
+        }
+
+        private async Task<TimeReportUpdateStrategy> GetTimeReportUpdateStrategy(TimeReport newTimeReport)
+        {
+            var dateTimeRepotrs = await timeReportRepository.GetDayUserReports(newTimeReport.UserId, newTimeReport.Date);
+            dateTimeRepotrs = dateTimeRepotrs.Where(r => r.Id != newTimeReport.Id).ToList();
+
+            if (newTimeReport.Id == GlobalConstants.NullId)
+            {
+                return new CreateTimeReportUpdateStrategy(timeReportRepository, dateTimeRepotrs, newTimeReport);
+            }
+
+            var sameActivityTimeReport = dateTimeRepotrs.FirstOrDefault(r => r.ActivityId == newTimeReport.ActivityId);
+
+            if (sameActivityTimeReport == null)
+                return new NewActivityUpdateTimeReportStrategy(timeReportRepository, dateTimeRepotrs, newTimeReport);
+
+            return new ChangedActivityUpdateTimeReportStrategy(unitOfWork, dateTimeRepotrs, newTimeReport, sameActivityTimeReport);
+        }
+
+        private async Task<int> GetUserId()
         {
             if (userId == UserIdIsUnknownValue)
             {
-                var user = await this.userRepository.GetByName(userName);
-                this.userId = user.Id;
+                var user = await userRepository.GetByName(userName);
+                userId = user.Id;
             }
 
-            return this.userId;
+            return userId;
         }
     }
 }
