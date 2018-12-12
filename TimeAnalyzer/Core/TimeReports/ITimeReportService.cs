@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TimeAnalyzer.Domain.Models;
-using TimeAnalyzer.Models;
+using TimeAnalyzer.Models.Reports;
 
 namespace TimeAnalyzer.Core.TimeReports
 {
     public interface ITimeReportService
     {
-        Task<IEnumerable<TimeReport>> GetAllUserTimeReports();
+        Task<IEnumerable<DayTimeReportViewModel>> GetAllUserTimeReports();
 
-        Task<int> AddTimeReport(TimeReportViewModel viewModel);
+        Task<int> AddTimeReport(DayTimeReportViewModel viewModel);
+
+        Task Update(DayTimeReportViewModel viewModel);
+
+        void DeleteTimeReport(int timeReportId);
+
+        Task<IEnumerable<DayTimeReportViewModel>> GetDayTimeReportAsync(string stringDate);
     }
 }

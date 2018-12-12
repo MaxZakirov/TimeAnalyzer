@@ -7,6 +7,7 @@ using TimeAnalyzer.Domain.Models.Users;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Data;
+using TimeAnalyzer.Persistence.QueryExecuters;
 
 namespace TimeAnalyzer.Persistence.DapperRepositories
 {
@@ -49,7 +50,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             }
         }
 
-        public void Edit(User entity)
+        public void Update(User entity)
         {
             throw new NotImplementedException();
         }

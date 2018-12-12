@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeAnalyzer.Persistence
+namespace TimeAnalyzer.Persistence.QueryExecuters
 {
     public class DapperQueryExecuter<T> : IDapperQueryExecuter<T>
     {
@@ -29,7 +29,11 @@ namespace TimeAnalyzer.Persistence
 
         public void Execute(string query, object param)
         {
-            throw new NotImplementedException();
+            using (IDbConnection connection = this.Connection)
+            {
+                connection.Open();
+                this.Connection.Execute(query, param);
+            }
         }
 
         public void ExecuteWithOut(string query, object param)
@@ -42,8 +46,7 @@ namespace TimeAnalyzer.Persistence
             using (IDbConnection connection = this.Connection)
             {
                 connection.Open();
-                var res = await connection.QueryAsync<T>(query, param);
-                return res.FirstOrDefault();
+                return (await connection.QueryAsync<T>(query, param)).FirstOrDefault();
             }
         }
 
@@ -52,8 +55,7 @@ namespace TimeAnalyzer.Persistence
             using (IDbConnection connection = this.Connection)
             {
                 connection.Open();
-                var res = await connection.QueryAsync<T>(query, param);
-                return res;
+                return await connection.QueryAsync<T>(query, param);
             }
         }
     }

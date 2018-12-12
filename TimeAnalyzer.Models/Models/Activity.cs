@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TimeAnalyzer.Domain.Models
+﻿namespace TimeAnalyzer.Domain.Models
 {
     public class Activity
     {
@@ -11,5 +7,7 @@ namespace TimeAnalyzer.Domain.Models
         public string Name { get; set; }
 
         public string IconPath { get; set; }
+
+        public string ColorValue { get; set; }
     }
 }
