@@ -11,6 +11,7 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
 
     getConfig(): any {
         var token = this.Auth.getToken();
+        
         return { headers: { Authorization: "Bearer ".concat(token.substr(1,token.length-2)) } };
     };
 

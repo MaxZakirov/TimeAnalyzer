@@ -1,0 +1,78 @@
+import  * as React  from 'react';
+import Chart from './Chart';
+import RadioButton from './ChartRadioButton';
+import TimeReportApiService from './TimeReportApiService'
+
+
+export default class ChangeValueForm extends React.Component<any,any>{
+    timeReport: TimeReportApiService;
+
+    currentTypedValue: any;
+
+    
+
+    constructor(props: any) {
+        super(props);
+        var data = [{ }]
+        this.timeReport = new TimeReportApiService();
+        this.state = {
+            chartData: data,
+            selectedActivityId: 0
+        }
+        this.currentTypedValue = 0;
+    }
+
+    setNewSelectedActivity(ActivityId: any) {
+        this.setState({
+            selectedActivityId: ActivityId
+        });
+    }
+
+    updateCurrentTypedValue(e: any) {
+        this.currentTypedValue = e.target.value;
+    }
+
+    changeSelectedActivityValue(e: any) {
+        var selectedTimeReport = this.state.chartData
+            .filter((dataObject: any) => dataObject.Activity.Id == this.state.selectedActivityId)[0];
+    }
+
+    validateNewActivityTimeValue(value: any) {
+        var leftMinutes = 1440 - this.getActivitiesDurationSumWithoutSelectedActivityId() - value;
+        return leftMinutes >= 0;
+    }
+
+    getActivitiesDurationSumWithoutSelectedActivityId() {
+        return this.state.chartData
+            .filter((timeReport: any) => timeReport.Activity.Id !== this.state.selectedActivityId)
+            .map((timeReport: any) => timeReport.Duration)
+            .reduce((accumulator: any, currentValue: any) => accumulator + currentValue)
+    }
+    
+    render(){
+        return(
+            <div className="formContainer">
+                        <form className="form" onSubmit={this.changeSelectedActivityValue}>
+                            <div className="choise">
+
+                                <div className="changeValue">
+                                    <input type="number" value={this.currentTypedValue}
+                                        onChange={this.updateCurrentTypedValue}
+                                        placeholder="type your value"></input>
+                                    <button type="submit">Change value</button>
+                                </div>
+
+                                {this.state.chartData.map((dataObject: any) => {
+                                    return <RadioButton
+                                        checked={dataObject.Activity.Id == this.state.selectedActivityId}
+                                        labelName={dataObject.Activity.Name}
+                                        handleChange={this.setNewSelectedActivity}
+                                    />
+                                })}
+                            </div>
+
+                        </form>
+                    </div>
+        )
+    }
+}

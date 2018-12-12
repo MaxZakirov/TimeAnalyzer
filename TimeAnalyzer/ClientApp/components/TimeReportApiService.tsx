@@ -10,12 +10,8 @@ export default class TimeReportApiService extends React.Component<any, any>{
         this.AuthorizedApi = new AuthorizeHttpRequestService();
     }
     
-    getTimeReports(Id: any, Date: any, Duration: any, ActivityId: any, Activity:any) {
-        
+    getAllUserTimeReports(){  
         return this.AuthorizedApi.authorizedGet('http://localhost:54953/api/TimeReport/GetUserTimeReports', null)
-        .then((response: any) => {
-            return Promise.resolve(response);
-        });
     }
 
     addTimeReport(Id: any, Date: any, Duration: any, ActivityId: any, Activity: any) {

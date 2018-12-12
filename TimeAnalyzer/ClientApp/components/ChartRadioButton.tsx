@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Profile = (props: any) => {
+const RadioButton = (props: any) => {
     return (
         <p>
             <input
@@ -14,4 +14,4 @@ const Profile = (props: any) => {
     );
 };
 
-export default Profile;
+export default RadioButton;
