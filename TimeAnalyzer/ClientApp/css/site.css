@@ -145,7 +145,7 @@ h1 {
         color: #444;
     }
     
-    .reg{
+    .registration{
         margin-top: 2vh;
     }
 
@@ -391,7 +391,7 @@ input:focus {
     padding: 1vh;
 }
 
-.change{
+.changeValue{
     width: 95%;
     margin: auto;
     position: relative;

@@ -21,31 +21,27 @@ export default class AuthService extends React.Component<any, any> {
 
 
     login(email: any, password: any) {
-        // Get a token from api server using the fetch api
-        console.log(this.state.domain);
+        // Get a token from api server using the fetch apiF
         var body = JSON.stringify({
             email,
             password,
         });
-        // console.log(body);
         return axios.post(`/api/Authentication/SignIn`, {
             email,
             password
         })
             .then((response: any) => {
-                this.setToken(response.data.token) // Setting the token in this.ls
+                this.setToken(response.data.token) // Setting the token in localStorage
                 return Promise.resolve(response);
             });
     }
 
     checkIn(name: any, email: any, password: any) {
-        console.log(this.state.domain);
         var body = JSON.stringify({
             name,
             password,
             email
         });
-        // console.log(body);
 
         return axios.post('/api/Authentication/CheckIn', {
             name: name,
@@ -54,27 +50,14 @@ export default class AuthService extends React.Component<any, any> {
         }
         )
             .then((response) => {
-                this.setToken(response.data.token) // Setting the token in this.ls
+                this.setToken(response.data.token) // Setting the token in localStorage
                 return Promise.resolve(response);
             });
-        // Get a token from api server using the fetch api
-        // return this.fetch(`${this.state.domain}/CheckIn`, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     },
-        //     method: 'POST',
-        //     body: body
-        // }).then(res => {
-        //     console.log(res)
-        //     this.setToken(res.token) // Setting the token in this.ls
-        //     return Promise.resolve(res);
-        // })
     }
 
     loggedIn() {
         // Checks if there is a saved token and it's still valid
-        const token = this.getToken() // GEtting token from this.ls
+        const token = this.getToken() // GEtting token from localStorage
         return !!token && !this.isTokenExpired(token) // handwaiving here
     }
 
@@ -94,12 +77,11 @@ export default class AuthService extends React.Component<any, any> {
 
     setToken(idToken: any) {
         if (typeof (window) !== "undefined") {
-            console.log('zahodit')
             window.localStorage.setItem('id_token', JSON.stringify(idToken))
         }
 
 
-        // Saves user token to this.ls
+        // Saves user token to localStorage
 
     }
 
@@ -109,13 +91,12 @@ export default class AuthService extends React.Component<any, any> {
         }
 
 
-        // Retrieves the user token from this.ls
+        // Retrieves the user token from localStorage
 
     }
 
     logout(): any {
         if (typeof (window) !== "undefined") {
-            console.log("vihodim")
             window.localStorage.removeItem('id_token');
         }
     }
