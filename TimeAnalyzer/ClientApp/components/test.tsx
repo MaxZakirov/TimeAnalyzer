@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AuthorizeHttpRequestService from './AuthorizeHttpRequestService';
+import AuthorizeHttpRequestService from './services/AuthorizeHttpRequestService';
 
 export default class Test extends React.Component<any,any>{
     Authorize:AuthorizeHttpRequestService;

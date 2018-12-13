@@ -14,7 +14,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
     public class TimeReportRepository : ITimeReportRepository
     {
         private readonly IDapperQueryExecuter<TimeReport> queryExecuter;
-        private readonly string getAllSQL = $"SELECT t.Id,t.Date,t.UserId,t.Duration,t.ActivityId,a.Id,a.IconPath,a.Name " +
+        private readonly string getAllSQL = $"SELECT t.Id,t.Date,t.UserId,t.Duration,t.ActivityId,a.Id,a.IconPath,a.Name,a.ColorValue " +
                 $"FROM TimeReports t JOIN Activities a ON a.Id = t.ActivityId WHERE t.UserId = @userId";
 
         public TimeReportRepository(

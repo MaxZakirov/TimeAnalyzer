@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import AuthService from './AuthService';
+import AuthService from './services/AuthService';
 import withAuth from './withAuth';
 import { Link } from 'react-router-dom'
 import Chart from './Chart'

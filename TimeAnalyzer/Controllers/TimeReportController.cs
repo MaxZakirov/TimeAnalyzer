@@ -12,7 +12,7 @@ namespace TimeAnalyzer.Controllers
 {
     [Authorize]
     [Produces("application/json")]
-    [Route("api/TimeReport")]
+    [Route("api/[controller]/[action]")]
     public class TimeReportController : Controller
     {
         private readonly ITimeReportService timeReportService;
@@ -24,28 +24,28 @@ namespace TimeAnalyzer.Controllers
             this.timeReportServiceInsatller = () => timeReportServiceFactory.CreateTimeReportService(HttpContext.User.Identity.Name);
         }
 
-        [HttpGet("[action]")]
-        public async Task<IActionResult> GetUserTimeReports()
+        [HttpGet()]
+        public async Task<IActionResult> GetAllTimeReports()
         {
             IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetAllUserTimeReports();
             return Ok(reports);
         }
 
-        [HttpGet("[action]")]
-        public async Task<IActionResult> GetDayTimeReport(string stringDate)
+        [HttpGet("{date}")]
+        public async Task<IActionResult> GetDayTimeReports(string date)
         {
-            IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetDayTimeReportAsync(stringDate);
+            IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetDayTimeReportAsync(date);
             return Ok(reports);
         }
 
-        [HttpPost("[action]")]
+        [HttpPost()]
         public async Task<IActionResult> AddTimeReport([FromBody]DayTimeReportViewModel timeReport)
         {
             timeReport.Id = await GetReportService().AddTimeReport(timeReport);
             return Ok(timeReport);
         }
 
-        [HttpPost("[action]")]
+        [HttpPost()]
         public async Task<IActionResult> UpdateTimeReport([FromBody]DayTimeReportViewModel timeReport)
         {
             await GetReportService().Update(timeReport);

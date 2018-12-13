@@ -9,29 +9,38 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
         this.Auth = new AuthService();
     }
 
-    getConfig(): any {
+    getHeaders(): any {
         var token = this.Auth.getToken();
-        return { headers: { Authorization: "Bearer ".concat(token.substr(1,token.length-2)) } };
+        return { Authorization: "Bearer ".concat(token.substr(1,token.length-2)) };
     };
 
     authorizedPost(url: any, params: any) {
         return axios.post(
             url,
             params,
-            this.getConfig()
+            this.getHeaders()
         )
-    }
+    };
 
     authorizedGet(url: any, params: any) {
-        var token = this.getConfig().headers;
-        console.log(token);
+        
+        if(params!=null)
+        {
+            url += this.initializeUrlParams(params);
+        }
+
+        console.log(url);
 
         return axios.get(
             url,
             {
-                data: params,
-                headers: token 
+                headers: this.getHeaders() 
             }
         )
+    };
+
+    initializeUrlParams(params: any) {
+        console.log(params);
+        return params.map((p: any) => '/' + p).join();
     }
 }

@@ -8,6 +8,7 @@
 
 body{
     background:url(../img/loadBack.png) no-repeat top center / cover;
+    color: lightyellow;
 }
 
 
@@ -300,6 +301,11 @@ input:focus {
 .mainPage{
     width: 100%;
 }
+
+.mainDate {
+    margin-bottom: 15px;
+}
+
 .topbar{
     position: relative;
     widows: 100%;
@@ -404,16 +410,4 @@ input:focus {
 .form label{
     margin-left: 1vh;
     color: #eee;
-}
-
-
-
-@media (max-width: 767px) {
-    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
-
-}
-
-@media (min-width: 768px) {
-    /* On small screens, convert the nav menu to a vertical sidebar */
-
 }
