@@ -286,7 +286,7 @@ input:focus {
 .rightSide{
     width: 100%;
 }
-.btn{
+.rightSide ~ .btn{
     font-size: 4vh;
     width: 100%;
     height: 8vh;
@@ -477,10 +477,33 @@ input:focus {
     position: absolute;
     bottom: 0px;
     margin-bottom: 20px;
+    border-radius: 10px;
     background-color: #4189C7;
-    border-radius: 5%;
 }
 
+.closeAddReport{
+    position: absolute;
+    top: 2vh;
+    right: 1vw;
+    background: transparent;
+    border: none;
+}
+
+.addReport{
+    position: fixed;
+    bottom: 0;
+}
 .windowNuts {
     margin: 15px;
+}
+
+
+@media (max-width: 426px) { 
+    .option{
+        text-align: center;
+    }
+    .editWindow{
+        margin: 0 auto;
+        width: 93%;
+    }
 }

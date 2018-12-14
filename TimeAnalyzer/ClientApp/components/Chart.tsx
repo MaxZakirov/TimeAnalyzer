@@ -43,7 +43,9 @@ export default class Chart extends React.Component<any, any> {
     }
 
     toggleForm() {
-        $('.editWindow').toggle("slow");
+        
+        $(".addReport").fadeToggle(0);
+         $('.editWindow').toggle("slow");
     }
 
     getTimeIntervalOptions() {
@@ -209,14 +211,18 @@ export default class Chart extends React.Component<any, any> {
                     <div>
                         <div className="col-sm-4 editWindow">
                             <ChangeValueForm chartData={this.state.chartData} />
+                            <button className="closeAddReport" onClick={this.toggleForm}>
+                            <i className="glyphicon glyphicon-remove"></i>
+                            </button>
                         </div>
                         <div>
-                            <button className="btn btn-primary" onClick={this.toggleForm}>
+                            <button className="btn btn-primary addReport" onClick={this.toggleForm}>
                                 Add new report
                             </button>
                         </div>
                     </div>
                 </div>
+                    
             </div>
         )
     }
