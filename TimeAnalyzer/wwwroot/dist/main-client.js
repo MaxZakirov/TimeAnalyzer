@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "94de989a9fe4b00fa1f6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d038d33a3a8ec9c09f0b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -24364,6 +24364,11 @@ var TimeConverterService = (function (_super) {
         var second = +date.getSeconds() >= 10 ? date.getSeconds() : '0' + date.getSeconds();
         return day + "&" + month + "&" + year + "_" + hour + ':' + minute + ':' + second;
     };
+    TimeConverterService.prototype.fromServerDate = function (date) {
+        date = date.substring(0, 10);
+        date = date.split('&');
+        return new Date(date[2], date[1], date[0]);
+    };
     TimeConverterService.prototype.getMonthName = function (monthId) {
         var monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
@@ -42019,6 +42024,7 @@ var AuthPage = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ChartRadioButton__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_TimeReportApiService__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_ActivitiesService__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_TimeConverterService__ = __webpack_require__(210);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -42033,19 +42039,22 @@ var __extends = (this && this.__extends) || (function () {
 
 
 
+
 var ChangeValueForm = (function (_super) {
     __extends(ChangeValueForm, _super);
     function ChangeValueForm(props) {
-        var _this = _super.call(this, props) || this;
-        var data = [{}];
+        var _this = this;
+        debugger;
+        _this = _super.call(this, props) || this;
         _this.timeReport = new __WEBPACK_IMPORTED_MODULE_2__services_TimeReportApiService__["a" /* default */]();
         _this.state = {
             activities: [],
             date: new Date(),
             minutes: 60,
-            selectedActivityId: 0
+            selectedActivityId: -1
         };
         _this.ActivitiesService = new __WEBPACK_IMPORTED_MODULE_3__services_ActivitiesService__["a" /* default */]();
+        _this.TimeConverterService = new __WEBPACK_IMPORTED_MODULE_4__services_TimeConverterService__["a" /* default */]();
         _this.updateRepotrActivity = _this.updateRepotrActivity.bind(_this);
         _this.updateReportDate = _this.updateReportDate.bind(_this);
         _this.updateReportMinutes = _this.updateReportMinutes.bind(_this);
@@ -42056,14 +42065,27 @@ var ChangeValueForm = (function (_super) {
         var _this = this;
         this.ActivitiesService.getAllActivities()
             .then(function (res) {
+            if (_this.state.selectedActivityId == -1)
+                var activityId = res.data[0].id;
+            else
+                var activityId = _this.state.selectedActivityId;
             _this.setState({
-                selectedActivityId: res.data[0].id,
+                selectedActivityId: activityId,
                 activities: res.data
             });
         });
     };
     ChangeValueForm.prototype.componentDidMount = function () {
         this.initializeActivities();
+    };
+    ChangeValueForm.prototype.componentWillReceiveProps = function (props) {
+        if (props.selectedReport != null) {
+            this.setState({
+                date: this.TimeConverterService.fromServerDate(props.selectedReport.date),
+                minutes: props.selectedReport.duration,
+                selectedActivityId: props.selectedReport.activityId
+            });
+        }
     };
     ChangeValueForm.prototype.updateRepotrActivity = function (activityId) {
         this.setState({
@@ -42170,7 +42192,8 @@ var Chart = (function (_super) {
             selectedDate: new Date(),
             monthCounter: new Date(),
             selectedTimeInterval: _this.getTimeIntervalOptions()[0],
-            showEditWindow: false
+            showEditWindow: false,
+            selectedReport: null
         };
         _this.ChartService = new __WEBPACK_IMPORTED_MODULE_3__services_DayChartService__["a" /* default */]();
         _this.ReportsApi = new __WEBPACK_IMPORTED_MODULE_2__services_TimeReportApiService__["a" /* default */]();
@@ -42300,6 +42323,9 @@ var Chart = (function (_super) {
     Chart.prototype.onClickChart = function (e, data) {
         if (data[0]) {
             var selectedReport = this.state.chartData[data[0]._index];
+            this.setState({
+                selectedReport: selectedReport
+            });
         }
     };
     Chart.prototype.render = function () {
@@ -42314,7 +42340,7 @@ var Chart = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Doughnut */], { data: this.getChartData(), options: this.getChartOptions() }),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4 editWindow" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__ChangeValueForm__["a" /* default */], { chartData: this.state.chartData })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__ChangeValueForm__["a" /* default */], { selectedReport: this.state.selectedReport })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn btn-primary", onClick: this.toggleForm }, "Add new report"))))));
     };

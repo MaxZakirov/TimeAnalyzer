@@ -25,7 +25,8 @@ export default class Chart extends React.Component<any, any> {
             selectedDate: new Date(),
             monthCounter: new Date(),
             selectedTimeInterval: this.getTimeIntervalOptions()[0],
-            showEditWindow: false
+            showEditWindow: false,
+            selectedReport: null
         }
 
         this.ChartService = new DayChartService();
@@ -181,6 +182,9 @@ export default class Chart extends React.Component<any, any> {
     onClickChart(e: Event, data: any) {
         if (data[0]) {
             var selectedReport = this.state.chartData[data[0]._index];
+            this.setState({
+                selectedReport: selectedReport
+            });
         }
     }
 
@@ -208,7 +212,8 @@ export default class Chart extends React.Component<any, any> {
                     />
                     <div>
                         <div className="col-sm-4 editWindow">
-                            <ChangeValueForm chartData={this.state.chartData} />
+                            <ChangeValueForm 
+                                selectedReport={this.state.selectedReport} />
                         </div>
                         <div>
                             <button className="btn btn-primary" onClick={this.toggleForm}>

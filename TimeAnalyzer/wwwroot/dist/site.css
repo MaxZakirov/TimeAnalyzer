@@ -411,7 +411,7 @@ input:focus {
 }
 
 .editWindow {
-    display: none;
+    /* display: none; */
     position: absolute;
     bottom: 0px;
     margin-bottom: 20px;

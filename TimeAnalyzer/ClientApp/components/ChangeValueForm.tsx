@@ -3,27 +3,32 @@ import Chart from './Chart';
 import RadioButton from './ChartRadioButton';
 import TimeReportApiService from './services/TimeReportApiService';
 import ActivitiesService from './services/ActivitiesService';
+import TimeConverterService from './services/TimeConverterService';
 
 
 export default class ChangeValueForm extends React.Component<any, any>{
     timeReport: TimeReportApiService;
     ActivitiesService: ActivitiesService;
+    TimeConverterService: TimeConverterService;
 
     currentTypedValue: any;
     currentTypedDate: any;
 
 
     constructor(props: any) {
+        debugger;
         super(props);
-        var data = [{}]
         this.timeReport = new TimeReportApiService();
+
         this.state = {
             activities: [],
             date: new Date(),
             minutes: 60,
-            selectedActivityId: 0
-        }
+            selectedActivityId: -1
+        };
+
         this.ActivitiesService = new ActivitiesService();
+        this.TimeConverterService = new TimeConverterService();
 
         this.updateRepotrActivity = this.updateRepotrActivity.bind(this);
         this.updateReportDate = this.updateReportDate.bind(this);
@@ -34,8 +39,13 @@ export default class ChangeValueForm extends React.Component<any, any>{
     initializeActivities() {
         this.ActivitiesService.getAllActivities()
             .then((res: any) => {
+                if (this.state.selectedActivityId == -1)
+                    var activityId = res.data[0].id;
+                else
+                    var activityId = this.state.selectedActivityId;
+
                 this.setState({
-                    selectedActivityId: res.data[0].id,
+                    selectedActivityId: activityId,
                     activities: res.data
                 });
             })
@@ -43,6 +53,18 @@ export default class ChangeValueForm extends React.Component<any, any>{
 
     componentDidMount() {
         this.initializeActivities();
+    }
+
+    componentWillReceiveProps(props: any)
+    {
+        if(props.selectedReport!=null)
+        {
+            this.setState({
+                date: this.TimeConverterService.fromServerDate(props.selectedReport.date),
+                minutes: props.selectedReport.duration,
+                selectedActivityId: props.selectedReport.activityId
+            });
+        }
     }
 
     updateRepotrActivity(activityId: any) {
