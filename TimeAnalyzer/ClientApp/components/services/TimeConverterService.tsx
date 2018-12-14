@@ -21,7 +21,7 @@ export default class TimeConverterService extends React.Component<any, any> {
         date = date.substring(0,10);
         date = date.split('&');
 
-        return new Date(date[2],date[1],date[0]);
+        return new Date(date[2],+date[1] - 1,date[0]);
     }
 
     getMonthName(monthId: any) {

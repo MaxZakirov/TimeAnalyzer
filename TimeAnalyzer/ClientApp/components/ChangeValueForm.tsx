@@ -16,16 +16,17 @@ export default class ChangeValueForm extends React.Component<any, any>{
 
 
     constructor(props: any) {
-        debugger;
         super(props);
         this.timeReport = new TimeReportApiService();
 
         this.state = {
+            reportId: null,
             activities: [],
             date: new Date(),
             minutes: 60,
             selectedActivityId: -1
         };
+
 
         this.ActivitiesService = new ActivitiesService();
         this.TimeConverterService = new TimeConverterService();
@@ -57,13 +58,29 @@ export default class ChangeValueForm extends React.Component<any, any>{
 
     componentWillReceiveProps(props: any)
     {
+        debugger;
         if(props.selectedReport!=null)
         {
+            var date = this.TimeConverterService.fromServerDate(props.selectedReport.date); 
             this.setState({
-                date: this.TimeConverterService.fromServerDate(props.selectedReport.date),
+                reportId: props.selectedReport.id,
+                date: date,
                 minutes: props.selectedReport.duration,
                 selectedActivityId: props.selectedReport.activityId
             });
+        }
+        else 
+        {
+            this.setState(this.getDefaultState(this.props.selectedDate));
+        }
+    }
+
+    getDefaultState(date: any) {
+        return {
+            reportId: null,
+            date: date,
+            minutes: 60,
+            selectedActivityId: -1
         }
     }
 
@@ -88,25 +105,44 @@ export default class ChangeValueForm extends React.Component<any, any>{
 
     onSumbit(e: any) {
         e.preventDefault();
-        debugger;
         var date = new Date(this.state.date);
         var duration = this.state.minutes;
         var activityId = this.state.selectedActivityId;
-        return this.timeReport.addTimeReport(date, duration, activityId).then((response: any) => {
-            alert('success!');
-        }, (err: any) => {
-            console.log(err);
-        });
+        if(this.state.reportId > 0)
+        {
+            var reportId = this.state.reportId;
+            this.timeReport.updateTimeReport(reportId,date, duration, activityId).then((response: any) => {
+                this.props.onSubmit(date);
+            });
+        }
+        else
+        {
+            this.timeReport.addTimeReport(date, duration, activityId).then((response: any) => {
+                this.props.onSubmit(date);
+            });
+        }
     }
 
     getHtmlFormatDate(date: any) {
         return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     }
 
+    getHeader()
+    {
+        if(this.state.reportId > 0)
+        {
+            return "Update report";
+        }
+        else
+        {
+            return "Add new report";
+        }
+    }
+
     render() {
         return (
             <div className="windowNuts">
-                <h2 className="text-center">Add new report</h2>
+                <h2 className="text-center">{this.getHeader()}</h2>
                 <form onSubmit={this.onSumbit}>
                     <div>
                         <div>

@@ -29,7 +29,7 @@ namespace TimeAnalyzer.Core.TimeReports.UpdateStrategy
 
         public override void UpdateTimeReportDataInRepository()
         {
-            timeReportRepository.Add(newTimeReport);
+            timeReportRepository.Update(newTimeReport);
         }
     }
 }

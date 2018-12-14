@@ -473,7 +473,7 @@ input:focus {
 }
 
 .editWindow {
-    /* display: none; */
+    display: none;
     position: absolute;
     bottom: 0px;
     margin-bottom: 20px;
@@ -491,7 +491,7 @@ input:focus {
 
 .addReport{
     position: fixed;
-    bottom: 0;
+    height: 3em;
 }
 .windowNuts {
     margin: 15px;
