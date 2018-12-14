@@ -24,7 +24,8 @@ export default class ChangeValueForm extends React.Component<any, any>{
             activities: [],
             date: new Date(),
             minutes: 60,
-            selectedActivityId: -1
+            selectedActivityId: -1,
+            error: null
         };
 
 
@@ -35,6 +36,7 @@ export default class ChangeValueForm extends React.Component<any, any>{
         this.updateReportDate = this.updateReportDate.bind(this);
         this.updateReportMinutes = this.updateReportMinutes.bind(this);
         this.onSumbit = this.onSumbit.bind(this);
+        this.onError = this.onError.bind(this);
     }
 
     initializeActivities() {
@@ -58,7 +60,6 @@ export default class ChangeValueForm extends React.Component<any, any>{
 
     componentWillReceiveProps(props: any)
     {
-        debugger;
         if(props.selectedReport!=null)
         {
             var date = this.TimeConverterService.fromServerDate(props.selectedReport.date); 
@@ -112,14 +113,17 @@ export default class ChangeValueForm extends React.Component<any, any>{
         {
             var reportId = this.state.reportId;
             this.timeReport.updateTimeReport(reportId,date, duration, activityId).then((response: any) => {
+                this.setState({
+                    error: null
+                });
                 this.props.onSubmit(date);
-            });
+            }, this.onError);
         }
         else
         {
             this.timeReport.addTimeReport(date, duration, activityId).then((response: any) => {
                 this.props.onSubmit(date);
-            });
+            }, this.onError);
         }
     }
 
@@ -139,6 +143,22 @@ export default class ChangeValueForm extends React.Component<any, any>{
         }
     }
 
+    onError(err: any)
+    {
+        this.setState({
+            error: err.response.data
+        });
+    }
+
+    getError()
+    {
+        if (this.state.error != null) {
+            return <p className="alert alert-danger">
+                {this.state.error}
+            </p>
+        }
+    }
+
     render() {
         return (
             <div className="windowNuts">
@@ -153,7 +173,10 @@ export default class ChangeValueForm extends React.Component<any, any>{
                             </div>
                             <div className="form-group">
                                 <label htmlFor="reportMinutes">Minutes</label>
-                                <input className="form-control" name="reportMinutes" type="number" value={this.state.minutes}
+                                <input className="form-control" name="reportMinutes" 
+                                    min={1}
+                                    max={1440}
+                                    type="number" value={this.state.minutes}
                                     onChange={this.updateReportMinutes}
                                     placeholder="type your value"></input>
                             </div>
@@ -168,6 +191,7 @@ export default class ChangeValueForm extends React.Component<any, any>{
                             />
                         })}
                     </div>
+                    {this.getError()}
                     <button className="form-control btn btn-success" type="submit">Add</button>
                 </form>
             </div>

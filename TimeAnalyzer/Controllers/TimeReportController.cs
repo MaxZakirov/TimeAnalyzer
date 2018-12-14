@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TimeAnalyzer.Core.Exceptions;
 using TimeAnalyzer.Core.TimeReports;
-using TimeAnalyzer.Models;
 using TimeAnalyzer.Models.Reports;
 
 namespace TimeAnalyzer.Controllers
@@ -22,7 +21,7 @@ namespace TimeAnalyzer.Controllers
         public TimeReportController(ITimeReportServiceFactory timeReportServiceFactory)
         {
             timeReportService = null;
-            this.timeReportServiceInsatller = () => timeReportServiceFactory.CreateTimeReportService(HttpContext.User.Identity.Name);
+            timeReportServiceInsatller = () => timeReportServiceFactory.CreateTimeReportService(HttpContext.User.Identity.Name);
         }
 
         [HttpGet()]
@@ -40,7 +39,7 @@ namespace TimeAnalyzer.Controllers
                 IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetDayTimeReportAsync(date);
                 return Ok(reports);
             }
-            catch(IncorrectInputDateException ex)
+            catch (IncorrectInputDateException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -63,15 +62,29 @@ namespace TimeAnalyzer.Controllers
         [HttpPost()]
         public async Task<IActionResult> AddTimeReport([FromBody]DayTimeReportViewModel timeReport)
         {
-            timeReport.Id = await GetReportService().AddTimeReport(timeReport);
-            return Ok(timeReport);
+            try
+            {
+                timeReport.Id = await GetReportService().AddTimeReport(timeReport);
+                return Ok(timeReport);
+            }
+            catch (IncorrectInputDateException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost()]
         public async Task<IActionResult> UpdateTimeReport([FromBody]DayTimeReportViewModel timeReport)
         {
-            await GetReportService().Update(timeReport);
-            return Ok();
+            try
+            {
+                await GetReportService().Update(timeReport);
+                return Ok();
+            }
+            catch (IncorrectInputDateException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         private ITimeReportService GetReportService()

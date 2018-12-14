@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using TimeAnalyzer.Core.Exceptions;
 using TimeAnalyzer.Core.Static;
 using TimeAnalyzer.Domain.Interfaces;
 using TimeAnalyzer.Domain.Models;
@@ -8,14 +10,14 @@ namespace TimeAnalyzer.Core.TimeReports.UpdateStrategy
 {
     public abstract class TimeReportUpdateStrategy
     {
-        protected readonly IEnumerable<TimeReport> dateTimeReports;
+        protected List<TimeReport> dateTimeReports;
         protected readonly TimeReport newTimeReport;
 
         public TimeReportUpdateStrategy(
             IEnumerable<TimeReport> dateTimeReports,
             TimeReport newTimeReport)
         {
-            this.dateTimeReports = dateTimeReports;
+            this.dateTimeReports = dateTimeReports.ToList();
             this.newTimeReport = newTimeReport;
         }
 
@@ -26,7 +28,7 @@ namespace TimeAnalyzer.Core.TimeReports.UpdateStrategy
             var timeDurationTooBig = !ReportsTimeConsistencyChecker.CheckDayConsistency(dateTimeReports);
             if (timeDurationTooBig)
             {
-                throw new Exception();
+                throw new IncorrectInputDateException("The duration of report is too big");
             }
 
             UpdateTimeReportDataInRepository();

@@ -4,16 +4,14 @@ import { Route, Redirect, Router, Switch } from 'react-router-dom';
 import * as $ from 'jquery';
 
 
-
-
-
 export default class AuthPage extends React.Component<any, any>{
     Auth: AuthService;
     constructor() {
         super();
         this.state = {
             fields: {},
-            errors: {}
+            validationErrors: {},
+            error: null
         }
         this.handleChange = this.handleChange.bind(this);
         this.loginFormSubmit = this.loginFormSubmit.bind(this);
@@ -65,31 +63,37 @@ export default class AuthPage extends React.Component<any, any>{
             service.checkIn(name, email, password);
             window.location.replace("/")
         }
+    }
 
-
+    getError() {
+        if (this.state.error != null) {
+            return <p className="alert alert-danger">
+                {this.state.error}
+            </p>
+        }
     }
 
     validateForm() {
 
         let fields = this.state.fields;
-        let errors: any = {};
+        let validationErrors: any = {};
         let formIsValid = true;
 
         if (!fields["username"]) {
             formIsValid = false;
-            errors["username"] = "*Please enter your username.";
+            validationErrors["username"] = "*Please enter your username.";
         }
 
         if (typeof fields["username"] !== "undefined") {
             if (!fields["username"]) {
                 formIsValid = false;
-                errors["username"] = "*Please enter your username";
+                validationErrors["username"] = "*Please enter your username";
             }
         }
 
         if (!fields["email"]) {
             formIsValid = false;
-            errors["email"] = "*Please enter your email-ID.";
+            validationErrors["email"] = "*Please enter your email-ID.";
         }
 
         if (typeof fields["email"] !== "undefined") {
@@ -97,33 +101,31 @@ export default class AuthPage extends React.Component<any, any>{
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
             if (!pattern.test(fields["email"])) {
                 formIsValid = false;
-                errors["email"] = "*Please enter valid email-ID.";
+                validationErrors["email"] = "*Please enter valid email-ID.";
             }
         }
 
         if (!fields["password"].match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/)) {
             formIsValid = false;
-            errors["password"] = "*";
+            validationErrors["password"] = "*";
         }
         if (!fields["password"]) {
             formIsValid = false;
-            errors["password"] = "*Please enter your password.";
+            validationErrors["password"] = "*Please enter your password.";
         }
 
         if (!fields["passwordConfirm"]) {
             formIsValid = false;
-            errors["passwordConfirm"] = "*Please repeat yourpassword.";
+            validationErrors["passwordConfirm"] = "*Please repeat yourpassword.";
         }
 
         if (fields["passwordConfirm"] !== fields["password"]) {
             formIsValid = false;
-            errors["passwordConfirm"] = "*Passwords do not matches";
+            validationErrors["passwordConfirm"] = "*Passwords do not matches";
         }
 
-
-
         this.setState({
-            errors: errors
+            validationErrors: validationErrors
         });
         return formIsValid;
     }
@@ -137,14 +139,11 @@ export default class AuthPage extends React.Component<any, any>{
                 window.location.reload();
             })
             .catch(err => {
-                alert(err);
+                this.setState({
+                    error: err.response.data
+                });
             })
-
-
-
     }
-
-
 
     public render() {
         if (this.Auth.loggedIn()) {
@@ -154,13 +153,9 @@ export default class AuthPage extends React.Component<any, any>{
         } else {
             return (
                 <div className="bodyLogin">
-
                     <div className="loginForm">
-
                         <div className="card">
-
                             <div className="leftSide">
-
                                 <div className="leftSideContent">
                                     <h1>H</h1>
                                     <h2>Hey you!</h2>
@@ -171,55 +166,37 @@ export default class AuthPage extends React.Component<any, any>{
                                         Is this because reactjs does something I am not aware off?</p>
                                 </div>
                             </div>
-
-
                             <div className="rightSide">
-
                                 <div className="rightSideContent">
-
                                     <div className="inCard">
                                         <div className="loginReg">
                                             <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">Registration</h2>
                                         </div>
-
                                         <form className="registration inv" onSubmit={this.submituserRegistrationForm}>
-
-
                                             <div className="group">
-
                                                 <label htmlFor="username" id="name">Name</label>
                                                 <input className="form-control" placeholder="Username goes here..." type="text" name="username" value={this.state.fields.username || ''} onChange={this.handleChange} />
-                                                <div className="errorMsg">{this.state.errors.username}</div>
-
+                                                <div className="errorMsg">{this.state.validationErrors.username}</div>
                                             </div>
                                             <div className="group">
-
                                                 <label htmlFor="email" id="email">Email</label>
                                                 <input className="form-control" placeholder="Email goes here..." type="text" name="email" value={this.state.fields.email || ''} onChange={this.handleChange} />
-                                                <div className="errorMsg">{this.state.errors.email}</div>
-
+                                                <div className="errorMsg">{this.state.validationErrors.email}</div>
                                             </div>
                                             <div className="group">
-
                                                 <label htmlFor="password" id="pass">Enter your password</label>
                                                 <input className="form-control" placeholder="Password goes here..." type="password" name="password" value={this.state.fields.password || ''} onChange={this.handleChange} />
-                                                <div className="errorMsg">{this.state.errors.password}</div>
-
+                                                <div className="errorMsg">{this.state.validationErrors.password}</div>
                                             </div>
                                             <div className="group">
-
                                                 <label htmlFor="passwordConfirm" id="passConf">Confirm your password</label>
                                                 <input className="form-control" placeholder="Confirm your password" type="password" name="passwordConfirm" value={this.state.fields.passwordConfirm || ''} onChange={this.handleChange} />
-                                                <div className="errorMsg">{this.state.errors.passwordConfirm}</div>
-
+                                                <div className="errorMsg">{this.state.validationErrors.passwordConfirm}</div>
                                             </div>
-
                                             <div className="form-group">
                                                 <button type="submit" className="btn btn-primary">SUBMIT</button>
                                             </div>
-
                                         </form>
-
                                         <form className="log" onSubmit={this.loginFormSubmit}>
                                             <h3>Welcome to our community!</h3>
                                             <div className="inputs">
@@ -241,32 +218,22 @@ export default class AuthPage extends React.Component<any, any>{
                                                         type="password"
                                                         onChange={this.handleChange} />
                                                 </div>
+                                                {this.getError()}
                                                 <button
                                                     className="btn btn-primary"
                                                     value="SUBMIT"
-                                                    type="submit"
-                                                >SUBMIT</button>
+                                                    type="submit">SUBMIT</button>
                                             </div>
-
                                         </form>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
-
             );
         }
-
     }
-
-
 }
 
 

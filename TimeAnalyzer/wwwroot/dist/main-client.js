@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f2c6fb17fdebed47d1b2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f388bf4e47b9b33787a2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -41855,7 +41855,8 @@ var AuthPage = (function (_super) {
         var _this = _super.call(this) || this;
         _this.state = {
             fields: {},
-            errors: {}
+            validationErrors: {},
+            error: null
         };
         _this.handleChange = _this.handleChange.bind(_this);
         _this.loginFormSubmit = _this.loginFormSubmit.bind(_this);
@@ -41907,54 +41908,60 @@ var AuthPage = (function (_super) {
             window.location.replace("/");
         }
     };
+    AuthPage.prototype.getError = function () {
+        if (this.state.error != null) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "alert alert-danger" }, this.state.error);
+        }
+    };
     AuthPage.prototype.validateForm = function () {
         var fields = this.state.fields;
-        var errors = {};
+        var validationErrors = {};
         var formIsValid = true;
         if (!fields["username"]) {
             formIsValid = false;
-            errors["username"] = "*Please enter your username.";
+            validationErrors["username"] = "*Please enter your username.";
         }
         if (typeof fields["username"] !== "undefined") {
             if (!fields["username"]) {
                 formIsValid = false;
-                errors["username"] = "*Please enter your username";
+                validationErrors["username"] = "*Please enter your username";
             }
         }
         if (!fields["email"]) {
             formIsValid = false;
-            errors["email"] = "*Please enter your email-ID.";
+            validationErrors["email"] = "*Please enter your email-ID.";
         }
         if (typeof fields["email"] !== "undefined") {
             //regular expression for email validation
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
             if (!pattern.test(fields["email"])) {
                 formIsValid = false;
-                errors["email"] = "*Please enter valid email-ID.";
+                validationErrors["email"] = "*Please enter valid email-ID.";
             }
         }
         if (!fields["password"].match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/)) {
             formIsValid = false;
-            errors["password"] = "*";
+            validationErrors["password"] = "*";
         }
         if (!fields["password"]) {
             formIsValid = false;
-            errors["password"] = "*Please enter your password.";
+            validationErrors["password"] = "*Please enter your password.";
         }
         if (!fields["passwordConfirm"]) {
             formIsValid = false;
-            errors["passwordConfirm"] = "*Please repeat yourpassword.";
+            validationErrors["passwordConfirm"] = "*Please repeat yourpassword.";
         }
         if (fields["passwordConfirm"] !== fields["password"]) {
             formIsValid = false;
-            errors["passwordConfirm"] = "*Passwords do not matches";
+            validationErrors["passwordConfirm"] = "*Passwords do not matches";
         }
         this.setState({
-            errors: errors
+            validationErrors: validationErrors
         });
         return formIsValid;
     };
     AuthPage.prototype.loginFormSubmit = function (e) {
+        var _this = this;
         e.preventDefault();
         this.Auth.login(this.state.email, this.state.password)
             .then(function (response) {
@@ -41963,7 +41970,9 @@ var AuthPage = (function (_super) {
             window.location.reload();
         })
             .catch(function (err) {
-            alert(err);
+            _this.setState({
+                error: err.response.data
+            });
         });
     };
     AuthPage.prototype.render = function () {
@@ -41991,19 +42000,19 @@ var AuthPage = (function (_super) {
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "username", id: "name" }, "Name"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Username goes here...", type: "text", name: "username", value: this.state.fields.username || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.username)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.username)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "email", id: "email" }, "Email"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Email goes here...", type: "text", name: "email", value: this.state.fields.email || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.email)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.email)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "password", id: "pass" }, "Enter your password"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Password goes here...", type: "password", name: "password", value: this.state.fields.password || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.password)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.password)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "passwordConfirm", id: "passConf" }, "Confirm your password"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Confirm your password", type: "password", name: "passwordConfirm", value: this.state.fields.passwordConfirm || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.passwordConfirm)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.passwordConfirm)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit", className: "btn btn-primary" }, "SUBMIT"))),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("form", { className: "log", onSubmit: this.loginFormSubmit },
@@ -42015,6 +42024,7 @@ var AuthPage = (function (_super) {
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Password"),
                                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Type your password here...", name: "password", type: "password", onChange: this.handleChange })),
+                                            this.getError(),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn btn-primary", value: "SUBMIT", type: "submit" }, "SUBMIT"))))))))));
         }
     };
@@ -42062,7 +42072,8 @@ var ChangeValueForm = (function (_super) {
             activities: [],
             date: new Date(),
             minutes: 60,
-            selectedActivityId: -1
+            selectedActivityId: -1,
+            error: null
         };
         _this.ActivitiesService = new __WEBPACK_IMPORTED_MODULE_3__services_ActivitiesService__["a" /* default */]();
         _this.TimeConverterService = new __WEBPACK_IMPORTED_MODULE_4__services_TimeConverterService__["a" /* default */]();
@@ -42070,6 +42081,7 @@ var ChangeValueForm = (function (_super) {
         _this.updateReportDate = _this.updateReportDate.bind(_this);
         _this.updateReportMinutes = _this.updateReportMinutes.bind(_this);
         _this.onSumbit = _this.onSumbit.bind(_this);
+        _this.onError = _this.onError.bind(_this);
         return _this;
     }
     ChangeValueForm.prototype.initializeActivities = function () {
@@ -42090,7 +42102,6 @@ var ChangeValueForm = (function (_super) {
         this.initializeActivities();
     };
     ChangeValueForm.prototype.componentWillReceiveProps = function (props) {
-        debugger;
         if (props.selectedReport != null) {
             var date = this.TimeConverterService.fromServerDate(props.selectedReport.date);
             this.setState({
@@ -42137,13 +42148,16 @@ var ChangeValueForm = (function (_super) {
         if (this.state.reportId > 0) {
             var reportId = this.state.reportId;
             this.timeReport.updateTimeReport(reportId, date, duration, activityId).then(function (response) {
+                _this.setState({
+                    error: null
+                });
                 _this.props.onSubmit(date);
-            });
+            }, this.onError);
         }
         else {
             this.timeReport.addTimeReport(date, duration, activityId).then(function (response) {
                 _this.props.onSubmit(date);
-            });
+            }, this.onError);
         }
     };
     ChangeValueForm.prototype.getHtmlFormatDate = function (date) {
@@ -42155,6 +42169,16 @@ var ChangeValueForm = (function (_super) {
         }
         else {
             return "Add new report";
+        }
+    };
+    ChangeValueForm.prototype.onError = function (err) {
+        this.setState({
+            error: err.response.data
+        });
+    };
+    ChangeValueForm.prototype.getError = function () {
+        if (this.state.error != null) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "alert alert-danger" }, this.state.error);
         }
     };
     ChangeValueForm.prototype.render = function () {
@@ -42169,10 +42193,11 @@ var ChangeValueForm = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", name: "reportDate", type: "date", value: this.getHtmlFormatDate(this.state.date), onChange: this.updateReportDate })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "reportMinutes" }, "Minutes"),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", name: "reportMinutes", type: "number", value: this.state.minutes, onChange: this.updateReportMinutes, placeholder: "type your value" }))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", name: "reportMinutes", min: 1, max: 1440, type: "number", value: this.state.minutes, onChange: this.updateReportMinutes, placeholder: "type your value" }))),
                     this.state.activities.map(function (activity) {
                         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__ChartRadioButton__["a" /* default */], { key: activity.id, checked: activity.id == _this.state.selectedActivityId, labelName: activity.name, handleChange: _this.updateRepotrActivity, id: activity.id });
                     })),
+                this.getError(),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "form-control btn btn-success", type: "submit" }, "Add"))));
     };
     return ChangeValueForm;

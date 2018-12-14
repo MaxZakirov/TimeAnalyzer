@@ -24,7 +24,7 @@ namespace TimeAnalyzer.Core.TimeReports.UpdateStrategy
 
         public override void PrepareDateTimeReportsToValidation()
         {
-            dateTimeReports.ToList().Add(newTimeReport);
+            dateTimeReports.Add(newTimeReport);
         }
 
         public override void UpdateTimeReportDataInRepository()
