@@ -23,8 +23,10 @@ class App extends Component<any, any>{
                         <div className="navbarBrand">
                             <Link to="/" style={{color: "#eee", textDecoration: "none"}}>TimeAnalyzer</Link>
                         </div>
-                        
-                        <input type="submit" className="getOut" value="Get Out" onClick={()=>Auth.logout()} ></input>   
+                        <div className="getOutBtn">   
+                        <Link to="/login" onClick={()=>Auth.logout()} className="getOut">Get Out</Link>
+                        </div>
+                          
                     </div>
                     <Chart />                 
                 </div>

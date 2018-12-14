@@ -180,8 +180,10 @@ export default class AuthPage extends React.Component<any, any>{
                                 <div className="rightSideContent">
 
                                     <div className="inCard">
-                                        <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">Registration</h2>
-
+                                    <div className="loginReg">
+                                         <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">Registration</h2>
+                                    </div>
+                                       
                                         <form className="registration inv" onSubmit={this.submituserRegistrationForm}>
 
 
