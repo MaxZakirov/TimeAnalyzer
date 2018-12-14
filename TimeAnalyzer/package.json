@@ -46,6 +46,7 @@
     "@types/jquery": "^3.3.22",
     "@types/jwt-decode": "^2.2.1",
     "axios": "^0.18.0",
+    "bootstrap-4-react": "0.0.57",
     "bootstrap-daterangepicker": "^3.0.3",
     "chart.js": "^2.7.3",
     "jwt-decode": "^2.2.0",

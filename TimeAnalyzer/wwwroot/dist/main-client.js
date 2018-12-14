@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "58e776357c4ad9dc439a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "69b8d6009b093cdf185b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -24211,100 +24211,8 @@ if (!module.hot || process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 208 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AuthService__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-var AuthorizeHttpRequestService = (function (_super) {
-    __extends(AuthorizeHttpRequestService, _super);
-    function AuthorizeHttpRequestService() {
-        var _this = _super.call(this) || this;
-        _this.Auth = new __WEBPACK_IMPORTED_MODULE_1__AuthService__["a" /* default */]();
-        return _this;
-    }
-    AuthorizeHttpRequestService.prototype.getConfig = function () {
-        var token = this.Auth.getToken();
-        return { headers: { Authorization: "Bearer ".concat(token.substr(1, token.length - 2)) } };
-    };
-    ;
-    AuthorizeHttpRequestService.prototype.authorizedPost = function (url, params) {
-        return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(url, params, this.getConfig());
-    };
-    AuthorizeHttpRequestService.prototype.authorizedGet = function (url, params) {
-        var token = this.getConfig().headers;
-        console.log(token);
-        return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(url, {
-            data: params,
-            headers: token
-        });
-    };
-    return AuthorizeHttpRequestService;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (AuthorizeHttpRequestService);
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthorizeHttpRequestService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthorizeHttpRequestService.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(6)(module)))
-
-/***/ }),
-/* 209 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AuthorizeHttpRequestService__ = __webpack_require__(208);
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-var TimeReportApiService = (function (_super) {
-    __extends(TimeReportApiService, _super);
-    function TimeReportApiService() {
-        var _this = _super.call(this) || this;
-        _this.AuthorizedApi = new __WEBPACK_IMPORTED_MODULE_1__AuthorizeHttpRequestService__["a" /* default */]();
-        return _this;
-    }
-    TimeReportApiService.prototype.getAllUserTimeReports = function () {
-        return this.AuthorizedApi.authorizedGet('http://localhost:54953/api/TimeReport/GetUserTimeReports', null);
-    };
-    TimeReportApiService.prototype.addTimeReport = function (Id, Date, Duration, ActivityId, Activity) {
-    };
-    return TimeReportApiService;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (TimeReportApiService);
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeReportApiService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeReportApiService.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(6)(module)))
-
-/***/ }),
+/* 208 */,
+/* 209 */,
 /* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40623,10 +40531,10 @@ webpackContext.id = 396;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Doughnut; });
-/* unused harmony export Pie */
+/* WEBPACK VAR INJECTION */(function(process) {/* unused harmony export Doughnut */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Pie; });
 /* unused harmony export Line */
-/* unused harmony export Bar */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Bar; });
 /* unused harmony export HorizontalBar */
 /* unused harmony export Radar */
 /* unused harmony export Polar */
@@ -41875,85 +41783,7 @@ var AuthPage = (function (_super) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(6)(module)))
 
 /***/ }),
-/* 410 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ChartRadioButton__ = __webpack_require__(412);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TimeReportApiService__ = __webpack_require__(209);
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-var ChangeValueForm = (function (_super) {
-    __extends(ChangeValueForm, _super);
-    function ChangeValueForm(props) {
-        var _this = _super.call(this, props) || this;
-        var data = [{}];
-        _this.timeReport = new __WEBPACK_IMPORTED_MODULE_2__TimeReportApiService__["a" /* default */]();
-        _this.state = {
-            chartData: data,
-            selectedActivityId: 0
-        };
-        _this.currentTypedValue = 0;
-        return _this;
-    }
-    ChangeValueForm.prototype.setNewSelectedActivity = function (ActivityId) {
-        this.setState({
-            selectedActivityId: ActivityId
-        });
-    };
-    ChangeValueForm.prototype.updateCurrentTypedValue = function (e) {
-        this.currentTypedValue = e.target.value;
-    };
-    ChangeValueForm.prototype.changeSelectedActivityValue = function (e) {
-        var _this = this;
-        var selectedTimeReport = this.state.chartData
-            .filter(function (dataObject) { return dataObject.Activity.Id == _this.state.selectedActivityId; })[0];
-    };
-    ChangeValueForm.prototype.validateNewActivityTimeValue = function (value) {
-        var leftMinutes = 1440 - this.getActivitiesDurationSumWithoutSelectedActivityId() - value;
-        return leftMinutes >= 0;
-    };
-    ChangeValueForm.prototype.getActivitiesDurationSumWithoutSelectedActivityId = function () {
-        var _this = this;
-        return this.state.chartData
-            .filter(function (timeReport) { return timeReport.Activity.Id !== _this.state.selectedActivityId; })
-            .map(function (timeReport) { return timeReport.Duration; })
-            .reduce(function (accumulator, currentValue) { return accumulator + currentValue; });
-    };
-    ChangeValueForm.prototype.render = function () {
-        var _this = this;
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "formContainer" },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("form", { className: "form", onSubmit: this.changeSelectedActivityValue },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "choise" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "changeValue" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: "number", value: this.currentTypedValue, onChange: this.updateCurrentTypedValue, placeholder: "type your value" }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit" }, "Change value")),
-                    this.state.chartData.map(function (dataObject) {
-                        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__ChartRadioButton__["a" /* default */], { checked: dataObject.Activity.Id == _this.state.selectedActivityId, labelName: dataObject.Activity.Name, handleChange: _this.setNewSelectedActivity });
-                    })))));
-    };
-    return ChangeValueForm;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (ChangeValueForm);
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChangeValueForm.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChangeValueForm.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(6)(module)))
-
-/***/ }),
+/* 410 */,
 /* 411 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -41961,7 +41791,6 @@ var ChangeValueForm = (function (_super) {
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ChangeValueForm__ = __webpack_require__(410);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -41972,7 +41801,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
 
 
 var Chart = (function (_super) {
@@ -41982,32 +41810,43 @@ var Chart = (function (_super) {
     }
     Chart.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "mainPage" },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "center" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "chartContainer" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "chart" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Doughnut */], { data: {
-                                labels: this.state.chartData.map(function (dataObject) { return dataObject.initialChartData.Name; }),
-                                datasets: [{
-                                        label: 'Power',
-                                        data: this.state.chartData.map(function (dataObject) { return dataObject.initialChartData.Duration; }),
-                                        backgroundColor: this.state.chartData.map(function (dataObject) { return dataObject.Activity.ColorValue; }),
-                                        borderWidth: 2,
-                                        borderColor: '#fff',
-                                        hoverBorderWidth: 2,
-                                        hoverBorderColor: '#eee'
-                                    }]
-                            }, options: {
-                                legend: {
-                                    display: true,
-                                    position: 'left',
-                                    labels: {
-                                        fontSize: 15,
-                                        fontColor: '#eee'
-                                    }
-                                }
-                            } }))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__ChangeValueForm__["a" /* default */], null)))));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "chart" },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Pie */], { data: {
+                        labels: ["parasha", "pizda", "huy"],
+                        datasets: [{
+                                label: 'Power',
+                                data: [123, 234, 345],
+                                backgroundColor: ["#fff", "#ddd", "#bbb"],
+                                borderWidth: 2,
+                                borderColor: '#fff',
+                                hoverBorderWidth: 2,
+                                hoverBorderColor: '#eee'
+                            }]
+                    }, options: {
+                        responsive: true,
+                        legend: {
+                            display: true,
+                            position: 'left',
+                            labels: {
+                                fontSize: 15,
+                                fontColor: '#eee'
+                            }
+                        }
+                    } })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "chart" },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["b" /* Bar */], { data: {
+                        labels: ["parasha", "pizda", "huy"],
+                        datasets: [{
+                                label: '',
+                                data: [123, 234, 345],
+                                backgroundColor: ["#fff", "#ddd", "#bbb"],
+                                borderWidth: 2,
+                                borderColor: '#fff',
+                                hoverBorderWidth: 2,
+                                hoverBorderColor: '#eee'
+                            }]
+                    }, options: {} })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null)));
     };
     return Chart;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -42018,25 +41857,7 @@ var Chart = (function (_super) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(6)(module)))
 
 /***/ }),
-/* 412 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-
-var RadioButton = function (props) {
-    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", type: "radio", checked: props.checked, onChange: function () { return props.handleChange(props.selectedActivityId); } }),
-        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, props.labelName)));
-};
-/* harmony default export */ __webpack_exports__["a"] = (RadioButton);
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChartRadioButton.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChartRadioButton.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(6)(module)))
-
-/***/ }),
+/* 412 */,
 /* 413 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -42083,8 +41904,6 @@ var Layout = (function (_super) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AuthorizeHttpRequestService__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TimeReportApiService__ = __webpack_require__(209);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -42096,25 +41915,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 
-
-
 var Test = (function (_super) {
     __extends(Test, _super);
     function Test() {
-        var _this = _super.call(this) || this;
-        _this.Authorize = new __WEBPACK_IMPORTED_MODULE_1__AuthorizeHttpRequestService__["a" /* default */]();
-        _this.timeReport = new __WEBPACK_IMPORTED_MODULE_2__TimeReportApiService__["a" /* default */]();
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    Test.prototype.test = function () {
-        this.Authorize.authorizedGet('/api/TimeReport/GetUserTimeReports', null).then(function (res) { return console.log(res); });
-        this.timeReport.getTimeReports(this.timeReport, this.timeReport, this.timeReport, this.timeReport, this.timeReport).then(function (res) { return console.log("govno: ", res); });
-    };
-    Test.prototype.render = function () {
-        var _this = this;
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit", onClick: function () { return _this.test(); } }, "test")));
-    };
     return Test;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 /* harmony default export */ __webpack_exports__["a"] = (Test);

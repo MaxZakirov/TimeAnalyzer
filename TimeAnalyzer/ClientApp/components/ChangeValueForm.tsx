@@ -5,49 +5,49 @@ import TimeReportApiService from './TimeReportApiService'
 
 
 export default class ChangeValueForm extends React.Component<any,any>{
-    timeReport: TimeReportApiService;
+     timeReport: TimeReportApiService;
 
-    currentTypedValue: any;
+     currentTypedValue: any;
 
     
 
-    constructor(props: any) {
-        super(props);
-        var data = [{ }]
-        this.timeReport = new TimeReportApiService();
-        this.state = {
-            chartData: data,
-            selectedActivityId: 0
-        }
-        this.currentTypedValue = 0;
-    }
+     constructor(props: any) {
+         super(props);
+         var data = [{ }]
+         this.timeReport = new TimeReportApiService();
+         this.state = {
+             chartData: data,
+             selectedActivityId: 0
+         }
+         this.currentTypedValue = 0;
+     }
 
-    setNewSelectedActivity(ActivityId: any) {
-        this.setState({
-            selectedActivityId: ActivityId
-        });
-    }
+     setNewSelectedActivity(ActivityId: any) {
+         this.setState({
+             selectedActivityId: ActivityId
+         });
+     }
 
-    updateCurrentTypedValue(e: any) {
-        this.currentTypedValue = e.target.value;
-    }
+     updateCurrentTypedValue(e: any) {
+         this.currentTypedValue = e.target.value;
+     }
 
-    changeSelectedActivityValue(e: any) {
-        var selectedTimeReport = this.state.chartData
-            .filter((dataObject: any) => dataObject.Activity.Id == this.state.selectedActivityId)[0];
-    }
+     changeSelectedActivityValue(e: any) {
+         var selectedTimeReport = this.state.chartData
+             .filter((dataObject: any) => dataObject.Activity.Id == this.state.selectedActivityId)[0];
+     }
 
-    validateNewActivityTimeValue(value: any) {
-        var leftMinutes = 1440 - this.getActivitiesDurationSumWithoutSelectedActivityId() - value;
-        return leftMinutes >= 0;
-    }
+     validateNewActivityTimeValue(value: any) {
+         var leftMinutes = 1440 - this.getActivitiesDurationSumWithoutSelectedActivityId() - value;
+         return leftMinutes >= 0;
+     }
 
-    getActivitiesDurationSumWithoutSelectedActivityId() {
-        return this.state.chartData
-            .filter((timeReport: any) => timeReport.Activity.Id !== this.state.selectedActivityId)
-            .map((timeReport: any) => timeReport.Duration)
-            .reduce((accumulator: any, currentValue: any) => accumulator + currentValue)
-    }
+     getActivitiesDurationSumWithoutSelectedActivityId() {
+         return this.state.chartData
+             .filter((timeReport: any) => timeReport.Activity.Id !== this.state.selectedActivityId)
+             .map((timeReport: any) => timeReport.Duration)
+             .reduce((accumulator: any, currentValue: any) => accumulator + currentValue)
+     }
     
     render(){
         return(
@@ -71,7 +71,7 @@ export default class ChangeValueForm extends React.Component<any,any>{
                                 })}
                             </div>
 
-                        </form>
+                        </form> 
                     </div>
         )
     }
