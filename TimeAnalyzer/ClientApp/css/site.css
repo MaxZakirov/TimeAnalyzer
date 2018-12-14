@@ -7,7 +7,8 @@
 }
 
 body{
-    background: #1f2933;
+    background:url(../img/loadBack.png) no-repeat top center / cover;
+    color: lightyellow;
 }
 
 
@@ -293,39 +294,6 @@ input:focus {
 }
 
 
-/*AuthPage Mobile Version*/
-@media only screen and (max-width: 769px) {
-    body{
-        background: url(https://cdn.arstechnica.net/wp-content/uploads/2013/10/ACGA_SP_114_CaribbeanSea_NavalMines.jpg) no-repeat top center / cover;
-    }
-    .card{
-        width: 95%;
-        height: 70%;
-    }
-    .leftSide{
-        display: none;
-    }
-    .rightSide {
-        height: 100%;
-        width: 100%;
-        background: #fff;
-        float: right;
-        position: relative;
-    }
-    .btn {
-        margin: 0 auto;
-        margin-top: 2.5vh;
-        width: 100%;
-        height: 7vh;
-        font-size: 3vh;
-        background: transparent;
-        color: rgb(22, 81, 150);
-        border: 1px solid rgb(22, 81, 150);
-        border-radius: 2vh;
-    }
-  }
-
-
 
 
 
@@ -333,6 +301,20 @@ input:focus {
 .mainPage{
     width: 100%;
 }
+
+.mainDateBlock {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.dayRollerBtn {
+    height: 15px;
+}
+
+.date {
+    margin: 4px;
+}
+
 .topbar{
     position: relative;
     widows: 100%;
@@ -372,8 +354,32 @@ input:focus {
     position: relative;
 }
 
+.center{
+    position: absolute;
+    display: block;
+    width: 80vw;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(238, 238, 238, 0.021);
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.356);
+}
+
+.chartContainer{
+    display: block;
+    position: absolute;
+    width: 26.3vw;
+    height: 32vh;
+    margin-left: 2vh;
+    margin-top: 2vh;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.356);
+    background: #2a3846;
+}
+
 .chart{
     display: block;
+    position: absolute;
     width: 29vw;
     height: 30vh;
     padding: 2vh;
@@ -413,22 +419,4 @@ input:focus {
 .form label{
     margin-left: 1vh;
     color: #eee;
-}
-
-
-
-@media (max-width: 769px) {
-    .chart{
-        display: block;
-        position: relative;
-        margin: auto;
-        width: 95%;
-        height: 50vh;
-        border: 1px solid black;
-    }
-}
-
-@media (min-width: 768px) {
-    /* On small screens, convert the nav menu to a vertical sidebar */
-
 }

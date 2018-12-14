@@ -85,8 +85,8 @@ namespace TimeAnalyzer.Persistence
             if (transactionOpened)
                 CommitTransaction();
 
-            sqlTransaction.Dispose();
-            sqlConnection.Dispose();
+            sqlTransaction?.Dispose();
+            sqlConnection?.Dispose();
             ResetAllRepositories();
         }
 

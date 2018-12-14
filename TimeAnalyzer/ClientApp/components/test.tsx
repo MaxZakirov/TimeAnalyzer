@@ -1,28 +1,24 @@
 import * as React from 'react';
-import AuthorizeHttpRequestService from './AuthorizeHttpRequestService';
-import TimeReportApiService from './TimeReportApiService';
+import AuthorizeHttpRequestService from './services/AuthorizeHttpRequestService';
 
 export default class Test extends React.Component<any,any>{
-     Authorize:AuthorizeHttpRequestService;
-     timeReport:TimeReportApiService;
-     constructor(){
-         super();
-         this.Authorize = new AuthorizeHttpRequestService();
-         this.timeReport = new TimeReportApiService();
-     }
+    Authorize:AuthorizeHttpRequestService;
+    constructor(){
+        super();
+        this.Authorize = new AuthorizeHttpRequestService();
+    }
 
-     test(){
-         this.Authorize.authorizedGet('/api/TimeReport/GetUserTimeReports',null).then(res => console.log(res));
-         this.timeReport.getTimeReports(this.timeReport, this.timeReport, this.timeReport, this.timeReport, this.timeReport).then(res => console.log("govno: ",res));
-     }
+    test(){
+        this.Authorize.authorizedGet('/api/TimeReport/GetUserTimeReports',null).then(res => console.log(res));
+    }
 
-     render(){
-         return(
-             <div>
-                 <button type="submit" onClick={() => this.test()}>
-                     test
-                 </button>
-             </div>
-         )
-     }
+    render(){
+        return(
+            <div>
+                <button type="submit" onClick={() => this.test()}>
+                    test
+                </button>
+            </div>
+        )
+    }
 }

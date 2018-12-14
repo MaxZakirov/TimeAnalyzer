@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AuthService from './AuthService';
+import AuthService from './services/AuthService';
 
 
 
