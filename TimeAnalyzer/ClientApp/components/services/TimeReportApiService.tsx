@@ -1,6 +1,7 @@
 import * as React from 'react';
 import AuthorizeHttpRequestService from './AuthorizeHttpRequestService';
 import TimeConverterService from './TimeConverterService';
+import axios from "axios"
 
 export default class TimeReportApiService extends React.Component<any, any>{
     
@@ -29,8 +30,14 @@ export default class TimeReportApiService extends React.Component<any, any>{
         });
     }
 
-    addTimeReport(Id: any, Date: any, Duration: any, ActivityId: any, Activity: any) {
-        
+    addTimeReport( Date: any, Duration: any, ActivityId: any) {
+        console.log("date syka",Date)
+        var jsonDate = this.timeReportApiService.toServerFormatDate(Date);
+        return axios.post(`/api/TimeReport/AddTimeReport`, {
+            jsonDate,
+            Duration,
+            ActivityId
+        })
     }
 
 }

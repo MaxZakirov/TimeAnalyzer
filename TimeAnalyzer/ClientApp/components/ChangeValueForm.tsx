@@ -1,14 +1,14 @@
 import  * as React  from 'react';
 import Chart from './Chart';
 import RadioButton from './ChartRadioButton';
-import TimeReportApiService from './TimeReportApiService'
+import TimeReportApiService from './services/TimeReportApiService'
 
 
 export default class ChangeValueForm extends React.Component<any,any>{
      timeReport: TimeReportApiService;
 
      currentTypedValue: any;
-
+     currentTypedDate:any;
     
 
      constructor(props: any) {
@@ -17,9 +17,11 @@ export default class ChangeValueForm extends React.Component<any,any>{
          this.timeReport = new TimeReportApiService();
          this.state = {
              chartData: data,
-             selectedActivityId: 0
-         }
-         this.currentTypedValue = 0;
+             selectedActivityId: 0       
+         } 
+         this.setNewSelectedActivity = this.setNewSelectedActivity.bind(this);
+         this.updateCurrentTypedDate = this.updateCurrentTypedDate.bind(this);
+         this.updateCurrentTypedValue = this.updateCurrentTypedValue.bind(this);
      }
 
      setNewSelectedActivity(ActivityId: any) {
@@ -28,18 +30,29 @@ export default class ChangeValueForm extends React.Component<any,any>{
          });
      }
 
+     updateCurrentTypedDate(e: any) {
+         this.setState({
+            currentTypedDate : e.currentTarget.value
+         })
+          
+    }
+
      updateCurrentTypedValue(e: any) {
-         this.currentTypedValue = e.target.value;
+        this.setState({
+            currentTypedValue : e.currentTarget.value
+         })
      }
 
      changeSelectedActivityValue(e: any) {
-         var selectedTimeReport = this.state.chartData
-             .filter((dataObject: any) => dataObject.Activity.Id == this.state.selectedActivityId)[0];
-     }
-
-     validateNewActivityTimeValue(value: any) {
-         var leftMinutes = 1440 - this.getActivitiesDurationSumWithoutSelectedActivityId() - value;
-         return leftMinutes >= 0;
+        debugger;
+        var Date = this.currentTypedDate;
+        var Duration = this.currentTypedValue;
+        var ActivityId = this.state.selectedActivityId;
+        return this.timeReport.addTimeReport(Date, Duration, ActivityId).then((response: any) => {
+            return Promise.resolve(response);
+        });
+        //  var selectedTimeReport = this.state.chartData
+        //      .filter((dataObject: any) => dataObject.Activity.Id == this.state.selectedActivityId)[0];
      }
 
      getActivitiesDurationSumWithoutSelectedActivityId() {
@@ -55,17 +68,18 @@ export default class ChangeValueForm extends React.Component<any,any>{
                         <form className="form" onSubmit={this.changeSelectedActivityValue}>
                             <div className="choise">
 
-                                <div className="changeValue">
-                                    <input type="number" value={this.currentTypedValue}
+                                <div className="changeValue" style={{background:"#000", color:"#000"}}>
+                                    <input name="currentTypedDate" type="date" value={this.state.currentTypedDate || ""} onChange={this.updateCurrentTypedDate}></input>
+                                    <input name="currentTypedValue" type="number" value={this.state.currentTypedValue || ""}
                                         onChange={this.updateCurrentTypedValue}
                                         placeholder="type your value"></input>
                                     <button type="submit">Change value</button>
                                 </div>
 
-                                {this.state.chartData.map((dataObject: any) => {
+                                {this.props.chartData.map((dataObject: any) => {
                                     return <RadioButton
-                                        checked={dataObject.Activity.Id == this.state.selectedActivityId}
-                                        labelName={dataObject.Activity.Name}
+                                        checked={dataObject.activity.Id == this.state.selectedActivityId}
+                                        labelName={dataObject.activity.name}
                                         handleChange={this.setNewSelectedActivity}
                                     />
                                 })}

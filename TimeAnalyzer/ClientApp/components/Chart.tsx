@@ -5,6 +5,7 @@ import TimeReportApiService from './services/TimeReportApiService'
 import ChartService from './services/ChartService';
 import DayRoller from './dayRoller';
 import TimeConverterService from "./services/TimeConverterService";
+import ChangeValueForm from './ChangeValueForm';
 
 export default class Chart extends React.Component<any, any> {
 
@@ -31,7 +32,6 @@ export default class Chart extends React.Component<any, any> {
     }
 
     initializeChartData(date: any): any {
-        debugger;
         this.ReportsApi.getDayUserTimeReports(date)
             .then((res: any) => {
                 this.setState({
@@ -70,7 +70,7 @@ export default class Chart extends React.Component<any, any> {
         return {
             labels: chartLabels,
             datasets: [{
-                label: 'Power',
+                label: 'TimeAnalizer',
                 data: chartValues,
                 backgroundColor: chartColors,
                 borderWidth: 2,
@@ -107,6 +107,7 @@ export default class Chart extends React.Component<any, any> {
                         data={this.getChartData()}
                         options={this.getChartOptions()}
                     />
+                <ChangeValueForm chartData={this.state.chartData}/>
                 </div>
             </div>
         )
