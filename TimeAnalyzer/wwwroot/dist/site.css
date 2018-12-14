@@ -251,34 +251,15 @@ input:focus {
     color: #fff;
 }
 
-.btn {
-    margin-top: 2.5vh;
-    width: 15vw;
-    height: 5vh;
-    font-size: 2vh;
-    background: transparent;
-    color: rgb(22, 81, 150);
-    border: 1px solid rgb(22, 81, 150);
-    border-radius: 2vh;
-    float: right;
-    transition: 0.3s;
+.btn {    
     outline: none;
-    box-shadow: 0px 0px 0px 0px #eee;
+    box-shadow: none;
 }
 
-    .btn:hover {
-        background: rgb(22, 81, 150);
-        color: #fff;
-    }
-
-    .btn:active, .btn:focus {
-        outline: none;
-        box-shadow: 0px 0px 0px 0px #eee;
-    }
-    .btn-primary{
-        outline: none;
-        box-shadow: 0px 0px 0px 0px #eee;
-    }
+.btn:active, .btn:focus {
+    outline: none;
+    box-shadow: none;
+}
 
 .inCard {
     width: 90%;
@@ -427,6 +408,18 @@ input:focus {
 .form label{
     margin-left: 1vh;
     color: #eee;
+}
+
+.editWindow {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 20px;
+    background-color: #4189C7;
+    border-radius: 5%;
+}
+
+.windowNuts {
+    margin: 15px;
 }
 
 /*# sourceMappingURL=site.css.map*/

@@ -7,6 +7,7 @@ import TimeRoller from './TimeRoller';
 import TimeConverterService from "./services/TimeConverterService";
 import TimeIntervalOption from "./TimeIntervalOption";
 import MonthChartService from "./services/MonthChartService";
+import ChangeValueForm from './ChangeValueForm';
 
 export default class Chart extends React.Component<any, any> {
 
@@ -22,7 +23,8 @@ export default class Chart extends React.Component<any, any> {
             chartData: initialChartData,
             selectedDate: new Date(),
             monthCounter: new Date(),
-            selectedTimeInterval: this.getTimeIntervalOptions()[0]
+            selectedTimeInterval: this.getTimeIntervalOptions()[0],
+            showEditWindow: false
         }
 
         this.ChartService = new DayChartService();
@@ -128,7 +130,7 @@ export default class Chart extends React.Component<any, any> {
         return {
             labels: chartLabels,
             datasets: [{
-                label: 'Power',
+                label: 'TimeAnalizer',
                 data: chartValues,
                 backgroundColor: chartColors,
                 borderWidth: 2,
@@ -171,9 +173,8 @@ export default class Chart extends React.Component<any, any> {
         };
     }
 
-    onClickChart(e:Event, data: any) {
-        if(data[0])
-        {
+    onClickChart(e: Event, data: any) {
+        if (data[0]) {
             var selectedReport = this.state.chartData[data[0]._index];
         }
     }
@@ -200,6 +201,18 @@ export default class Chart extends React.Component<any, any> {
                         data={this.getChartData()}
                         options={this.getChartOptions()}
                     />
+                    <div>
+                        {if(this.state.showEditWindow) {
+                                <div className="col-sm-4 editWindow">
+                                <ChangeValueForm chartData={this.state.chartData} />
+                            </div>
+                        }}
+                        <div>
+                            <button className="btn btn-primary">
+                                Add new report
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

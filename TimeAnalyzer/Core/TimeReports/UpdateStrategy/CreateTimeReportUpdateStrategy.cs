@@ -9,7 +9,7 @@ namespace TimeAnalyzer.Core.TimeReports.UpdateStrategy
 {
     public class CreateTimeReportUpdateStrategy : NewActivityUpdateTimeReportStrategy
     {
-        private int newTimeReportId;
+        protected int newTimeReportId;
 
         public CreateTimeReportUpdateStrategy(
             ITimeReportRepository timeReportRepository,

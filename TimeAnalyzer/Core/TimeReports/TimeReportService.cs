@@ -93,12 +93,16 @@ namespace TimeAnalyzer.Core.TimeReports
             var dateTimeRepotrs = await timeReportRepository.GetDayUserReports(newTimeReport.UserId, newTimeReport.Date);
             dateTimeRepotrs = dateTimeRepotrs.Where(r => r.Id != newTimeReport.Id).ToList();
 
+            var sameActivityTimeReport = dateTimeRepotrs.FirstOrDefault(r => r.ActivityId == newTimeReport.ActivityId);
+
             if (newTimeReport.Id == GlobalConstants.NullId)
             {
+                if(sameActivityTimeReport != null)
+                {
+                    return new CreateExistingActivityUpdateTimeReportStrtegy(timeReportRepository, dateTimeRepotrs, newTimeReport, sameActivityTimeReport);
+                }
                 return new CreateTimeReportUpdateStrategy(timeReportRepository, dateTimeRepotrs, newTimeReport);
             }
-
-            var sameActivityTimeReport = dateTimeRepotrs.FirstOrDefault(r => r.ActivityId == newTimeReport.ActivityId);
 
             if (sameActivityTimeReport == null)
                 return new NewActivityUpdateTimeReportStrategy(timeReportRepository, dateTimeRepotrs, newTimeReport);
