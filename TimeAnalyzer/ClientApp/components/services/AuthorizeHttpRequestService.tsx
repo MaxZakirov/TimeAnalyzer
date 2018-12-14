@@ -11,21 +11,21 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
 
     getHeaders(): any {
         var token = this.Auth.getToken();
-        return { Authorization: "Bearer ".concat(token.substr(1,token.length-2)) };
+        return { Authorization: "Bearer ".concat(token.substr(1, token.length - 2)) };
     };
 
     authorizedPost(url: any, params: any) {
+        debugger;
         return axios.post(
             url,
             params,
-            this.getHeaders()
+            { headers: this.getHeaders() }
         )
     };
 
     authorizedGet(url: any, params: any) {
-        
-        if(params!=null)
-        {
+
+        if (params != null) {
             url += this.initializeUrlParams(params);
         }
 
@@ -34,7 +34,7 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
         return axios.get(
             url,
             {
-                headers: this.getHeaders() 
+                headers: this.getHeaders()
             }
         )
     };

@@ -9,7 +9,7 @@ const RadioButton = (props: any) => {
                  type="radio"
                  name="check"
                  checked={props.checked}
-                 onChange={() => props.handleChange(props.selectedActivityId)}>
+                 onChange={() => props.handleChange(props.id)}>
              </input>
              <label>{props.labelName}</label>
          </p>

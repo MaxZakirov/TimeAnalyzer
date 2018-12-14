@@ -1,92 +1,119 @@
-import  * as React  from 'react';
+import * as React from 'react';
 import Chart from './Chart';
 import RadioButton from './ChartRadioButton';
-import TimeReportApiService from './services/TimeReportApiService'
+import TimeReportApiService from './services/TimeReportApiService';
+import ActivitiesService from './services/ActivitiesService';
 
 
-export default class ChangeValueForm extends React.Component<any,any>{
-     timeReport: TimeReportApiService;
+export default class ChangeValueForm extends React.Component<any, any>{
+    timeReport: TimeReportApiService;
+    ActivitiesService: ActivitiesService;
 
-     currentTypedValue: any;
-     currentTypedDate:any;
-    
+    currentTypedValue: any;
+    currentTypedDate: any;
 
-     constructor(props: any) {
-         super(props);
-         var data = [{ }]
-         this.timeReport = new TimeReportApiService();
-         this.state = {
-             chartData: data,
-             selectedActivityId: 0       
-         } 
-         this.setNewSelectedActivity = this.setNewSelectedActivity.bind(this);
-         this.updateCurrentTypedDate = this.updateCurrentTypedDate.bind(this);
-         this.updateCurrentTypedValue = this.updateCurrentTypedValue.bind(this);
-     }
 
-     setNewSelectedActivity(ActivityId: any) {
-         this.setState({
-             selectedActivityId: ActivityId
-         });
-     }
+    constructor(props: any) {
+        super(props);
+        var data = [{}]
+        this.timeReport = new TimeReportApiService();
+        this.state = {
+            activities: [],
+            date: new Date(),
+            minutes: 60,
+            selectedActivityId: 0
+        }
+        this.ActivitiesService = new ActivitiesService();
 
-     updateCurrentTypedDate(e: any) {
-         this.setState({
-            currentTypedDate : e.currentTarget.value
-         })
-          
+        this.updateRepotrActivity = this.updateRepotrActivity.bind(this);
+        this.updateReportDate = this.updateReportDate.bind(this);
+        this.updateReportMinutes = this.updateReportMinutes.bind(this);
+        this.onSumbit = this.onSumbit.bind(this);
     }
 
-     updateCurrentTypedValue(e: any) {
+    initializeActivities() {
+        this.ActivitiesService.getAllActivities()
+            .then((res: any) => {
+                this.setState({
+                    selectedActivityId: res.data[0].id,
+                    activities: res.data
+                });
+            })
+    }
+
+    componentDidMount() {
+        this.initializeActivities();
+    }
+
+    updateRepotrActivity(activityId: any) {
         this.setState({
-            currentTypedValue : e.currentTarget.value
-         })
-     }
-
-     changeSelectedActivityValue(e: any) {
-        debugger;
-        var Date = this.currentTypedDate;
-        var Duration = this.currentTypedValue;
-        var ActivityId = this.state.selectedActivityId;
-        return this.timeReport.addTimeReport(Date, Duration, ActivityId).then((response: any) => {
-            return Promise.resolve(response);
+            selectedActivityId: activityId
         });
-        //  var selectedTimeReport = this.state.chartData
-        //      .filter((dataObject: any) => dataObject.Activity.Id == this.state.selectedActivityId)[0];
-     }
+    }
 
-     getActivitiesDurationSumWithoutSelectedActivityId() {
-         return this.state.chartData
-             .filter((timeReport: any) => timeReport.Activity.Id !== this.state.selectedActivityId)
-             .map((timeReport: any) => timeReport.Duration)
-             .reduce((accumulator: any, currentValue: any) => accumulator + currentValue)
-     }
-    
-    render(){
-        return(
-            <div className="formContainer">
-                        <form className="form" onSubmit={this.changeSelectedActivityValue}>
-                            <div className="choise">
+    updateReportDate(e: any) {
+        var date = new Date(e.currentTarget.value);
+        this.setState({
+            date: date
+        })
+    }
 
-                                <div className="changeValue" style={{background:"#000", color:"#000"}}>
-                                    <input name="currentTypedDate" type="date" value={this.state.currentTypedDate || ""} onChange={this.updateCurrentTypedDate}></input>
-                                    <input name="currentTypedValue" type="number" value={this.state.currentTypedValue || ""}
-                                        onChange={this.updateCurrentTypedValue}
-                                        placeholder="type your value"></input>
-                                    <button type="submit">Change value</button>
-                                </div>
+    updateReportMinutes(e: any) {
+        this.setState({
+            minutes: +e.currentTarget.value
+        });
 
-                                {this.props.chartData.map((dataObject: any) => {
-                                    return <RadioButton
-                                        checked={dataObject.activity.Id == this.state.selectedActivityId}
-                                        labelName={dataObject.activity.name}
-                                        handleChange={this.setNewSelectedActivity}
-                                    />
-                                })}
+    }
+
+    onSumbit(e: any) {
+        e.preventDefault();
+        debugger;
+        var date = new Date(this.state.date);
+        var duration = this.state.minutes;
+        var activityId = this.state.selectedActivityId;
+        return this.timeReport.addTimeReport(date, duration, activityId).then((response: any) => {
+            alert('success!');
+        }, (err: any) => {
+            console.log(err);
+        });
+    }
+
+    getHtmlFormatDate(date: any) {
+        return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
+
+    render() {
+        return (
+            <div className="windowNuts">
+                <h2 className="text-center">Add new report</h2>
+                <form onSubmit={this.onSumbit}>
+                    <div>
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="ReportDate">Date</label>
+                                <input className="form-control" name="reportDate"
+                                    type="date" value={this.getHtmlFormatDate(this.state.date)} onChange={this.updateReportDate} />
                             </div>
-
-                        </form> 
+                            <div className="form-group">
+                                <label htmlFor="reportMinutes">Minutes</label>
+                                <input className="form-control" name="reportMinutes" type="number" value={this.state.minutes}
+                                    onChange={this.updateReportMinutes}
+                                    placeholder="type your value"></input>
+                            </div>
+                        </div>
+                        {this.state.activities.map((activity: any) => {
+                            return <RadioButton
+                                key={activity.id}
+                                checked={activity.id == this.state.selectedActivityId}
+                                labelName={activity.name}
+                                handleChange={this.updateRepotrActivity}
+                                id={activity.id}
+                            />
+                        })}
                     </div>
+                    <button className="form-control btn btn-success" type="submit">Add </button>
+                </form>
+            </div>
         )
     }
 }

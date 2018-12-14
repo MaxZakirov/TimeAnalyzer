@@ -32,13 +32,12 @@ export default class TimeReportApiService extends React.Component<any, any>{
      return this.authorizedApi.authorizedGet('/api/TimeReport/GetTimeReportsInInterval', [jsonStartDate, jsonEndDate]);
     }
 
-    addTimeReport(Date: any, Duration: any, ActivityId: any) {
-        console.log("date syka",Date)
-        var jsonDate = this.timeReportApiService.toServerFormatDate(Date);
-        return axios.post(`/api/TimeReport/AddTimeReport`, {
-            jsonDate,
+    addTimeReport(jsDate: any, Duration: any, ActivityId: any) {
+        var date = this.timeReportApiService.toServerFormatDate(jsDate);
+        return this.authorizedApi.authorizedPost(`/api/TimeReport/AddTimeReport`, {
+            date,
             Duration,
             ActivityId
-        })
+        });
     }
 }

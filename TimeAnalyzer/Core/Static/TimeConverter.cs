@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using TimeAnalyzer.Core.Exceptions;
 
 namespace TimeAnalyzer.Core.Static
 {
@@ -7,9 +8,16 @@ namespace TimeAnalyzer.Core.Static
     {
         public static DateTime ToDateTime(string javasciptDateString)
         {
-            javasciptDateString = javasciptDateString.Replace('_', ' ');
-            javasciptDateString = javasciptDateString.Replace('&', '/');
-            return DateTime.ParseExact(javasciptDateString, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            try
+            {
+                javasciptDateString = javasciptDateString.Replace('_', ' ');
+                javasciptDateString = javasciptDateString.Replace('&', '/');
+                return DateTime.ParseExact(javasciptDateString, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            }
+            catch(Exception ex)
+            {
+                throw new IncorrectInputDateException("incorrect date: " + javasciptDateString);
+            }
         }
 
         public static string ToJSONString(DateTime time)

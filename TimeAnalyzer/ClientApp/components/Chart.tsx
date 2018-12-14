@@ -23,7 +23,8 @@ export default class Chart extends React.Component<any, any> {
             chartData: initialChartData,
             selectedDate: new Date(),
             monthCounter: new Date(),
-            selectedTimeInterval: this.getTimeIntervalOptions()[0]
+            selectedTimeInterval: this.getTimeIntervalOptions()[0],
+            showEditWindow: false
         }
 
         this.ChartService = new DayChartService();
@@ -37,6 +38,7 @@ export default class Chart extends React.Component<any, any> {
         this.rollForwardMonth = this.rollForwardMonth.bind(this);
         this.rollBackMonth = this.rollBackMonth.bind(this);
         this.getMonthPresentationView = this.getMonthPresentationView.bind(this);
+        this.onClickChart = this.onClickChart.bind(this);
     }
 
     getTimeIntervalOptions() {
@@ -56,7 +58,6 @@ export default class Chart extends React.Component<any, any> {
     initializeMonthChartData(monthCounter: any): any {
         this.ReportsApi.getUserTimeReportsInInterval(this.ChartService.getMonthStartDate(), this.ChartService.getMonthEndDate())
             .then((res: any) => {
-                debugger;
                 this.setState({
                     monthCounter: monthCounter,
                     chartData: res.data.reports
@@ -85,7 +86,6 @@ export default class Chart extends React.Component<any, any> {
     }
 
     rollBackMonth() {
-        debugger;
         var date = new Date(this.state.monthCounter);
         date.setMonth(date.getMonth() - 1);
         this.ChartService.setMonth(date);
@@ -156,10 +156,10 @@ export default class Chart extends React.Component<any, any> {
                     rollForward={this.rollForwardMonth}
                 />;
         }
-
     }
 
     getChartOptions(): any {
+        var onClick = this.onClickChart;
         return {
             legend: {
                 display: true,
@@ -168,8 +168,15 @@ export default class Chart extends React.Component<any, any> {
                     fontSize: 15,
                     fontColor: '#eee'
                 }
-            }
+            },
+            onClick: onClick
         };
+    }
+
+    onClickChart(e: Event, data: any) {
+        if (data[0]) {
+            var selectedReport = this.state.chartData[data[0]._index];
+        }
     }
 
     render() {
@@ -194,7 +201,18 @@ export default class Chart extends React.Component<any, any> {
                         data={this.getChartData()}
                         options={this.getChartOptions()}
                     />
-                <ChangeValueForm chartData={this.state.chartData}/>
+                    <div>
+                        {if(this.state.showEditWindow) {
+                                <div className="col-sm-4 editWindow">
+                                <ChangeValueForm chartData={this.state.chartData} />
+                            </div>
+                        }}
+                        <div>
+                            <button className="btn btn-primary">
+                                Add new report
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
