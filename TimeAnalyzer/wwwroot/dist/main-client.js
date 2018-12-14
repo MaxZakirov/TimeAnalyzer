@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "15580699c9a1bbb0e8fb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "327db087d7f476e7f486"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -40767,7 +40767,7 @@ webpackContext.id = 399;
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Doughnut; });
 /* unused harmony export Pie */
 /* unused harmony export Line */
-/* unused harmony export Bar */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Bar; });
 /* unused harmony export HorizontalBar */
 /* unused harmony export Radar */
 /* unused harmony export Polar */
@@ -42172,6 +42172,7 @@ var Chart = (function (_super) {
     function Chart(props) {
         var _this = _super.call(this, props) || this;
         _this.chart = _this;
+        _this.buttonToggle = false;
         var initialChartData = [];
         _this.state = {
             chartData: initialChartData,
@@ -42196,6 +42197,18 @@ var Chart = (function (_super) {
     Chart.prototype.toggleForm = function () {
         __WEBPACK_IMPORTED_MODULE_9_jquery__(".addReport").fadeToggle(0);
         __WEBPACK_IMPORTED_MODULE_9_jquery__('.editWindow').toggle("slow");
+    };
+    Chart.prototype.toggleChart = function () {
+        __WEBPACK_IMPORTED_MODULE_9_jquery__(".Doughnut").fadeToggle(0);
+        __WEBPACK_IMPORTED_MODULE_9_jquery__(".Bar").fadeToggle(0);
+        if (__WEBPACK_IMPORTED_MODULE_9_jquery__('.doughnutBtn').prop('disabled', true)) {
+            __WEBPACK_IMPORTED_MODULE_9_jquery__('.barId').prop('disabled', true);
+            __WEBPACK_IMPORTED_MODULE_9_jquery__('.doughnutBtn').prop('disabled', false);
+        }
+        else {
+            __WEBPACK_IMPORTED_MODULE_9_jquery__('.barId').prop('disabled', false);
+            __WEBPACK_IMPORTED_MODULE_9_jquery__('.doughnutBtn').prop('disabled', true);
+        }
     };
     Chart.prototype.getTimeIntervalOptions = function () {
         return ['DAY', 'MONTH'];
@@ -42306,6 +42319,22 @@ var Chart = (function (_super) {
             onClick: onClick
         };
     };
+    Chart.prototype.getChartOptionsBar = function () {
+        var onClick = this.onClickChart;
+        return {
+            legend: {
+                fullWidth: true,
+                display: false,
+                position: 'top',
+                labels: {
+                    boxWidth: 40,
+                    fontSize: 12,
+                    fontColor: '#eee'
+                }
+            },
+            onClick: onClick
+        };
+    };
     Chart.prototype.onClickChart = function (e, data) {
         if (data[0]) {
             var selectedReport = this.state.chartData[data[0]._index];
@@ -42316,13 +42345,19 @@ var Chart = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "mainPage" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "container" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-3" }, this.getRoller()),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, this.getTimeIntervalOptions().map(function (option) {
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-4" }, this.getRoller()),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-4" },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "toggle" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { className: "doughnutBarBtn", onClick: this.toggleChart }, "ToggleChart"))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-4" }, this.getTimeIntervalOptions().map(function (option) {
                         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__TimeIntervalOption__["a" /* default */], { isActive: option == _this.state.selectedTimeInterval, option: option, changeOption: _this.onTimeIntervalChange });
                     }))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Doughnut */], { data: this.getChartData(), options: this.getChartOptions() }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "Doughnut" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Doughnut */], { data: this.getChartData(), options: this.getChartOptions() })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "Bar" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["b" /* Bar */], { data: this.getChartData(), options: this.getChartOptionsBar() })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4 editWindow" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-4 editWindow" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__ChangeValueForm__["a" /* default */], { chartData: this.state.chartData }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "closeAddReport", onClick: this.toggleForm },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", { className: "glyphicon glyphicon-remove" }))),

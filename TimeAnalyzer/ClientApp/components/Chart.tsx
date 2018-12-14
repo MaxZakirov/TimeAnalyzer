@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Pie, Doughnut, Radar, Polar } from 'react-chartjs-2';
+import { Pie, Doughnut, Radar, Polar, Bar } from 'react-chartjs-2';
 import Profile from './ChartRadioButton';
 import TimeReportApiService from './services/TimeReportApiService'
 import DayChartService from './services/DayChartService';
@@ -16,6 +16,8 @@ export default class Chart extends React.Component<any, any> {
     ChartService: any;
     TimeConverterService: TimeConverterService;
     chart: Chart = this;
+
+    buttonToggle = false;
 
     constructor(props: any) {
         super(props);
@@ -43,9 +45,20 @@ export default class Chart extends React.Component<any, any> {
     }
 
     toggleForm() {
-        
         $(".addReport").fadeToggle(0);
-         $('.editWindow').toggle("slow");
+        $('.editWindow').toggle("slow");
+    }
+
+    toggleChart(){
+        $(".Doughnut").fadeToggle(0);
+        $(".Bar").fadeToggle(0);
+        if($('.doughnutBtn').prop('disabled', true)){
+            $('.barId').prop('disabled', true);
+            $('.doughnutBtn').prop('disabled', false);
+        }else{
+            $('.barId').prop('disabled', false);
+            $('.doughnutBtn').prop('disabled', true);
+        }
     }
 
     getTimeIntervalOptions() {
@@ -134,7 +147,7 @@ export default class Chart extends React.Component<any, any> {
         var chartLabels = reports.map((dataObject: any) => dataObject.activity.name);
         var chartColors = reports.map((dataObject: any) => dataObject.activity.colorValue);
 
-        return {
+        return {    
             labels: chartLabels,
             datasets: [{
                 label: 'TimeAnalizer',
@@ -180,6 +193,23 @@ export default class Chart extends React.Component<any, any> {
         };
     }
 
+    getChartOptionsBar(): any {
+        var onClick = this.onClickChart;
+        return {
+            legend: {
+                fullWidth:true,
+                display: false,
+                position: 'top',
+                labels: {
+                    boxWidth:40,
+                    fontSize: 12,
+                    fontColor: '#eee'
+                }
+            },
+            onClick: onClick
+        };
+    }
+
     onClickChart(e: Event, data: any) {
         if (data[0]) {
             var selectedReport = this.state.chartData[data[0]._index];
@@ -191,10 +221,17 @@ export default class Chart extends React.Component<any, any> {
             <div className="mainPage">
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-3">
+                        <div className="col-md-4">
                             {this.getRoller()}
                         </div>
-                        <div>
+                        <div className="col-md-4">
+                        <div className="toggle">
+                            <h2 className="doughnutBarBtn" onClick={this.toggleChart}>
+                                ToggleChart
+                            </h2>
+                        </div>
+                        </div>
+                        <div className="col-md-4">
                             {this.getTimeIntervalOptions().map((option: any) =>
                                 <TimeIntervalOption
                                     isActive={option == this.state.selectedTimeInterval}
@@ -204,12 +241,20 @@ export default class Chart extends React.Component<any, any> {
                             )}
                         </div>
                     </div>
-                    <Doughnut
+                    <div className="Doughnut">
+                        <Doughnut
                         data={this.getChartData()}
                         options={this.getChartOptions()}
                     />
+                    </div>
+                    <div className="Bar">
+                        <Bar
+                        data={this.getChartData()}
+                        options={this.getChartOptionsBar()}
+                    />
+                    </div>
                     <div>
-                        <div className="col-sm-4 editWindow">
+                        <div className="col-md-4 editWindow">
                             <ChangeValueForm chartData={this.state.chartData} />
                             <button className="closeAddReport" onClick={this.toggleForm}>
                             <i className="glyphicon glyphicon-remove"></i>
