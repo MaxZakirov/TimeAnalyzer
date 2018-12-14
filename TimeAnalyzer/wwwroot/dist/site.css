@@ -491,4 +491,17 @@ input:focus {
     color: #eee;
 }
 
+.editWindow {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 20px;
+    background-color: #4189C7;
+    border-radius: 5%;
+}
+
+.windowNuts {
+    margin: 15px;
+}
+
 /*# sourceMappingURL=site.css.map*/

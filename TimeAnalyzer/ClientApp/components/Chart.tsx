@@ -8,6 +8,7 @@ import TimeConverterService from "./services/TimeConverterService";
 import TimeIntervalOption from "./TimeIntervalOption";
 import MonthChartService from "./services/MonthChartService";
 import ChangeValueForm from './ChangeValueForm';
+import * as $ from 'jquery';
 
 export default class Chart extends React.Component<any, any> {
 
@@ -39,6 +40,10 @@ export default class Chart extends React.Component<any, any> {
         this.rollBackMonth = this.rollBackMonth.bind(this);
         this.getMonthPresentationView = this.getMonthPresentationView.bind(this);
         this.onClickChart = this.onClickChart.bind(this);
+    }
+
+    toggleForm() {
+        $('.editWindow').toggle("slow");
     }
 
     getTimeIntervalOptions() {
@@ -202,13 +207,11 @@ export default class Chart extends React.Component<any, any> {
                         options={this.getChartOptions()}
                     />
                     <div>
-                        {if(this.state.showEditWindow) {
-                                <div className="col-sm-4 editWindow">
-                                <ChangeValueForm chartData={this.state.chartData} />
-                            </div>
-                        }}
+                        <div className="col-sm-4 editWindow">
+                            <ChangeValueForm chartData={this.state.chartData} />
+                        </div>
                         <div>
-                            <button className="btn btn-primary">
+                            <button className="btn btn-primary" onClick={this.toggleForm}>
                                 Add new report
                             </button>
                         </div>

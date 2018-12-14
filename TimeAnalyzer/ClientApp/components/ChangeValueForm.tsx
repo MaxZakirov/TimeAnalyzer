@@ -62,7 +62,6 @@ export default class ChangeValueForm extends React.Component<any, any>{
         this.setState({
             minutes: +e.currentTarget.value
         });
-
     }
 
     onSumbit(e: any) {
@@ -111,7 +110,7 @@ export default class ChangeValueForm extends React.Component<any, any>{
                             />
                         })}
                     </div>
-                    <button className="form-control btn btn-success" type="submit">Add </button>
+                    <button className="form-control btn btn-success" type="submit">Add</button>
                 </form>
             </div>
         )
