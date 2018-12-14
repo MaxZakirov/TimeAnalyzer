@@ -67,6 +67,14 @@ namespace TimeAnalyzer.Core.TimeReports
             return timeReports.AsParallel().Select(tr => tr.ToViewTimeReport());
         }
 
+        public async Task<TimeReportsIntervalViewModel> GetTimeReportsInInterval(string stringStartDate, string stringEndDate)
+        {
+            DateTime endDate = TimeConverter.ToDateTime(stringEndDate);
+            DateTime startDate = TimeConverter.ToDateTime(stringStartDate);
+            var timeReports = await timeReportRepository.GetUserReportsInInterval(await GetUserId(), startDate, endDate);
+            return new TimeReportsIntervalViewModel(this.AgregateTimeReports(timeReports), stringStartDate, stringEndDate);
+        }
+
         public async Task Update(DayTimeReportViewModel viewModel)
         {
             TimeReport newTimeReport = viewModel.ToTimeReport(await GetUserId());
@@ -102,5 +110,25 @@ namespace TimeAnalyzer.Core.TimeReports
 
             return userId;
         }
+
+        private IEnumerable<ReportViewModel> AgregateTimeReports(IEnumerable<TimeReport> timeReports)
+        {
+            try
+            {
+                IEnumerable<ReportViewModel> aggregatedTimeReports =
+                timeReports.GroupBy(r => r.ActivityId).Select(reports => new ReportViewModel(
+                        reports.Select(r => (int)r.Duration).Sum(),
+                        reports.Select(r => r.ActivityId).First(),
+                        reports.Select(r => r.Activity).First()
+                    )).GroupBy((r) => r.ActivityId).Select(group => group.First());
+                var check = aggregatedTimeReports.ToArray();
+                return check;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

@@ -40,7 +40,6 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
     };
 
     initializeUrlParams(params: any) {
-        console.log(params);
-        return params.map((p: any) => '/' + p).join();
+        return params.map((p: any) => '/' + p).join('');
     }
 }

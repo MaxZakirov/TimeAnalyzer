@@ -38,6 +38,13 @@ namespace TimeAnalyzer.Controllers
             return Ok(reports);
         }
 
+        [HttpGet("{startDate}/{endDate}")]
+        public async Task<IActionResult> GetTimeReportsInInterval(string startDate, string endDate)
+        {
+            TimeReportsIntervalViewModel reports = await GetReportService().GetTimeReportsInInterval(startDate,endDate);
+            return Ok(reports);
+        }
+
         [HttpPost()]
         public async Task<IActionResult> AddTimeReport([FromBody]DayTimeReportViewModel timeReport)
         {
