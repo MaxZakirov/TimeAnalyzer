@@ -15,7 +15,6 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
     };
 
     authorizedPost(url: any, params: any) {
-        debugger;
         return axios.post(
             url,
             params,

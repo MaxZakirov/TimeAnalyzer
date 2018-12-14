@@ -17,6 +17,13 @@ export default class TimeConverterService extends React.Component<any, any> {
         return day + "&" + month + "&" + year + "_" + hour + ':' + minute + ':' + second;
     }
 
+    fromServerDate(date: any) {
+        date = date.substring(0,10);
+        date = date.split('&');
+
+        return new Date(date[2],+date[1] - 1,date[0]);
+    }
+
     getMonthName(monthId: any) {
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"

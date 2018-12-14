@@ -165,12 +165,10 @@ export default class AuthPage extends React.Component<any, any>{
                                     <h1>H</h1>
                                     <h2>Hey you!</h2>
                                     <h6>You feel you waste your time?</h6>
-                                    <p>However after loading the components the body style is not present in the page.It shows up in the console though. Is there a way to display a background image in the main page whilst having the CSS rule in the CSS file that is loaded by webpack?Is this because reactjs does something I am not aware off?</p>
-                                    <ul>
-                                        <li>Mops</li>
-                                        <li>Beer</li>
-                                        <li>Bar</li>
-                                    </ul>
+                                    <p>However after loading the components the body style is not present in the page.It shows up in the console though.
+                                         Is there a way to display a background image in the main page whilst having
+                                        the CSS rule in the CSS file that is loaded by webpack?
+                                        Is this because reactjs does something I am not aware off?</p>
                                 </div>
                             </div>
 
@@ -180,10 +178,10 @@ export default class AuthPage extends React.Component<any, any>{
                                 <div className="rightSideContent">
 
                                     <div className="inCard">
-                                    <div className="loginReg">
-                                         <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">Registration</h2>
-                                    </div>
-                                       
+                                        <div className="loginReg">
+                                            <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">Registration</h2>
+                                        </div>
+
                                         <form className="registration inv" onSubmit={this.submituserRegistrationForm}>
 
 

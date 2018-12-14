@@ -16,6 +16,7 @@ export default class Chart extends React.Component<any, any> {
     ChartService: any;
     TimeConverterService: TimeConverterService;
     chart: Chart = this;
+    editWindowIsOpen: boolean = false;
 
     buttonToggle = false;
 
@@ -27,7 +28,8 @@ export default class Chart extends React.Component<any, any> {
             selectedDate: new Date(),
             monthCounter: new Date(),
             selectedTimeInterval: this.getTimeIntervalOptions()[0],
-            showEditWindow: false
+            showEditWindow: false,
+            selectedReport: null
         }
 
         this.ChartService = new DayChartService();
@@ -42,11 +44,16 @@ export default class Chart extends React.Component<any, any> {
         this.rollBackMonth = this.rollBackMonth.bind(this);
         this.getMonthPresentationView = this.getMonthPresentationView.bind(this);
         this.onClickChart = this.onClickChart.bind(this);
+        this.toggleForm = this.toggleForm.bind(this);
+        this.openAddNewWindow = this.openAddNewWindow.bind(this);
+        this.submitEditForm = this.submitEditForm.bind(this);
     }
 
     toggleForm() {
+
         $(".addReport").fadeToggle(0);
         $('.editWindow').toggle("slow");
+        this.editWindowIsOpen = !this.editWindowIsOpen;
     }
 
     toggleChart(){
@@ -58,6 +65,27 @@ export default class Chart extends React.Component<any, any> {
         }else{
             $('.barId').prop('disabled', false);
             $('.doughnutBtn').prop('disabled', true);
+        }
+    }
+
+    submitEditForm(date: any) {
+        this.initializeDateChartData(date);
+        this.closeEditWindow();
+    }
+
+    openAddNewWindow() {
+        if (!this.editWindowIsOpen) {
+            this.setState({
+                selectedReport: null
+            });
+        }
+
+        this.toggleForm();
+    }
+
+    closeEditWindow() {
+        if (this.editWindowIsOpen) {
+            this.toggleForm();
         }
     }
 
@@ -124,6 +152,9 @@ export default class Chart extends React.Component<any, any> {
     }
 
     onTimeIntervalChange(newOption: any) {
+        if(newOption === this.state.selectedTimeInterval)
+            return;
+
         this.setState({
             selectedTimeInterval: newOption
         });
@@ -134,6 +165,7 @@ export default class Chart extends React.Component<any, any> {
                 this.initializeDateChartData(this.state.selectedDate);
                 break;
             case 'MONTH':
+                this.closeEditWindow();
                 this.ChartService = new MonthChartService(this.state.monthCounter);
                 this.initializeMonthChartData(this.state.monthCounter);
                 return;
@@ -213,6 +245,24 @@ export default class Chart extends React.Component<any, any> {
     onClickChart(e: Event, data: any) {
         if (data[0]) {
             var selectedReport = this.state.chartData[data[0]._index];
+            if(selectedReport.id > 0)
+            {
+                this.setState({
+                    selectedReport: selectedReport
+                });
+                if (!this.editWindowIsOpen) {
+                    this.toggleForm();
+                }
+            }
+        }
+    }
+
+    getAddNewReportBtn() {
+        if(this.state.selectedTimeInterval === 'DAY')
+        {
+            return <button className="btn btn-primary addReport" onClick={this.openAddNewWindow}>
+                        Add new report
+                    </button>
         }
     }
 
@@ -254,20 +304,21 @@ export default class Chart extends React.Component<any, any> {
                     />
                     </div>
                     <div>
-                        <div className="col-md-4 editWindow">
-                            <ChangeValueForm chartData={this.state.chartData} />
+                        <div className="col-sm-4 editWindow">
+                            <ChangeValueForm
+                                selectedReport={this.state.selectedReport}
+                                onSubmit={this.submitEditForm}
+                                selectedDate={this.state.selectedDate}
+                            />
                             <button className="closeAddReport" onClick={this.toggleForm}>
-                            <i className="glyphicon glyphicon-remove"></i>
+                                <i className="glyphicon glyphicon-remove"></i>
                             </button>
                         </div>
                         <div>
-                            <button className="btn btn-primary addReport" onClick={this.toggleForm}>
-                                Add new report
-                            </button>
+                            {this.getAddNewReportBtn()}
                         </div>
                     </div>
                 </div>
-                    
             </div>
         )
     }
