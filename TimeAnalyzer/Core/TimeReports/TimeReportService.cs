@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TimeAnalyzer.Core.Exceptions;
 using TimeAnalyzer.Core.Static;
 using TimeAnalyzer.Core.TimeReports.UpdateStrategy;
 using TimeAnalyzer.Domain.Interfaces;
@@ -71,6 +72,11 @@ namespace TimeAnalyzer.Core.TimeReports
         {
             DateTime endDate = TimeConverter.ToDateTime(stringEndDate);
             DateTime startDate = TimeConverter.ToDateTime(stringStartDate);
+            if(endDate< startDate)
+            {
+                throw new IncorrectInputDateException("Start date bigger then end date");
+            }
+
             var timeReports = await timeReportRepository.GetUserReportsInInterval(await GetUserId(), startDate, endDate);
             return new TimeReportsIntervalViewModel(this.AgregateTimeReports(timeReports), stringStartDate, stringEndDate);
         }

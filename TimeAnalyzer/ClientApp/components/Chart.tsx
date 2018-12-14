@@ -36,6 +36,7 @@ export default class Chart extends React.Component<any, any> {
         this.rollForwardMonth = this.rollForwardMonth.bind(this);
         this.rollBackMonth = this.rollBackMonth.bind(this);
         this.getMonthPresentationView = this.getMonthPresentationView.bind(this);
+        this.onClickChart = this.onClickChart.bind(this);
     }
 
     getTimeIntervalOptions() {
@@ -55,7 +56,6 @@ export default class Chart extends React.Component<any, any> {
     initializeMonthChartData(monthCounter: any): any {
         this.ReportsApi.getUserTimeReportsInInterval(this.ChartService.getMonthStartDate(), this.ChartService.getMonthEndDate())
             .then((res: any) => {
-                debugger;
                 this.setState({
                     monthCounter: monthCounter,
                     chartData: res.data.reports
@@ -84,7 +84,6 @@ export default class Chart extends React.Component<any, any> {
     }
 
     rollBackMonth() {
-        debugger;
         var date = new Date(this.state.monthCounter);
         date.setMonth(date.getMonth() - 1);
         this.ChartService.setMonth(date);
@@ -155,10 +154,10 @@ export default class Chart extends React.Component<any, any> {
                     rollForward={this.rollForwardMonth}
                 />;
         }
-
     }
 
     getChartOptions(): any {
+        var onClick = this.onClickChart;
         return {
             legend: {
                 display: true,
@@ -167,8 +166,16 @@ export default class Chart extends React.Component<any, any> {
                     fontSize: 15,
                     fontColor: '#eee'
                 }
-            }
+            },
+            onClick: onClick
         };
+    }
+
+    onClickChart(e:Event, data: any) {
+        if(data[0])
+        {
+            var selectedReport = this.state.chartData[data[0]._index];
+        }
     }
 
     render() {

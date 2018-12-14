@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TimeAnalyzer.Core.Exceptions;
 using TimeAnalyzer.Core.TimeReports;
 using TimeAnalyzer.Models;
 using TimeAnalyzer.Models.Reports;
@@ -34,15 +35,29 @@ namespace TimeAnalyzer.Controllers
         [HttpGet("{date}")]
         public async Task<IActionResult> GetDayTimeReports(string date)
         {
-            IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetDayTimeReportAsync(date);
-            return Ok(reports);
+            try
+            {
+                IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetDayTimeReportAsync(date);
+                return Ok(reports);
+            }
+            catch(IncorrectInputDateException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("{startDate}/{endDate}")]
         public async Task<IActionResult> GetTimeReportsInInterval(string startDate, string endDate)
         {
-            TimeReportsIntervalViewModel reports = await GetReportService().GetTimeReportsInInterval(startDate,endDate);
-            return Ok(reports);
+            try
+            {
+                TimeReportsIntervalViewModel reports = await GetReportService().GetTimeReportsInInterval(startDate, endDate);
+                return Ok(reports);
+            }
+            catch (IncorrectInputDateException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost()]

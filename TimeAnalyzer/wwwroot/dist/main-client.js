@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f0e3a4a285686e91e9a1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ae652b9e5db6c371b1e0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -42001,6 +42001,7 @@ var Chart = (function (_super) {
         _this.rollForwardMonth = _this.rollForwardMonth.bind(_this);
         _this.rollBackMonth = _this.rollBackMonth.bind(_this);
         _this.getMonthPresentationView = _this.getMonthPresentationView.bind(_this);
+        _this.onClickChart = _this.onClickChart.bind(_this);
         return _this;
     }
     Chart.prototype.getTimeIntervalOptions = function () {
@@ -42020,7 +42021,6 @@ var Chart = (function (_super) {
         var _this = this;
         this.ReportsApi.getUserTimeReportsInInterval(this.ChartService.getMonthStartDate(), this.ChartService.getMonthEndDate())
             .then(function (res) {
-            debugger;
             _this.setState({
                 monthCounter: monthCounter,
                 chartData: res.data.reports
@@ -42044,7 +42044,6 @@ var Chart = (function (_super) {
         this.initializeDateChartData(date);
     };
     Chart.prototype.rollBackMonth = function () {
-        debugger;
         var date = new Date(this.state.monthCounter);
         date.setMonth(date.getMonth() - 1);
         this.ChartService.setMonth(date);
@@ -42101,6 +42100,7 @@ var Chart = (function (_super) {
         }
     };
     Chart.prototype.getChartOptions = function () {
+        var onClick = this.onClickChart;
         return {
             legend: {
                 display: true,
@@ -42109,8 +42109,14 @@ var Chart = (function (_super) {
                     fontSize: 15,
                     fontColor: '#eee'
                 }
-            }
+            },
+            onClick: onClick
         };
+    };
+    Chart.prototype.onClickChart = function (e, data) {
+        if (data[0]) {
+            var selectedReport = this.state.chartData[data[0]._index];
+        }
     };
     Chart.prototype.render = function () {
         var _this = this;
@@ -42203,9 +42209,9 @@ var TimeIntervalOption = function (props) {
 
 var TimeRoller = function (props) {
     return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "mainDateBlock" },
-        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn-block dayRollerBtn", onClick: props.rollBack }),
+        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn-block dayRollerBtn", onClick: props.rollBack }, "up"),
         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: "text-center date" }, props.dateString),
-        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn-block dayRollerBtn", onClick: props.rollForward })));
+        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn-block dayRollerBtn", onClick: props.rollForward }, "down")));
 };
 /* harmony default export */ __webpack_exports__["a"] = (TimeRoller);
 
