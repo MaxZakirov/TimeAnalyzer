@@ -3,11 +3,15 @@ import { Pie, Doughnut, Radar, Polar } from 'react-chartjs-2';
 import Profile from './ChartRadioButton';
 import TimeReportApiService from './services/TimeReportApiService'
 import ChartService from './services/ChartService';
+import DayRoller from './dayRoller';
+import TimeConverterService from "./services/TimeConverterService";
 
 export default class Chart extends React.Component<any, any> {
 
     ReportsApi: TimeReportApiService;
     ChartService: ChartService;
+    TimeConverterService: TimeConverterService;
+    chart: Chart = this;
 
     constructor(props: any) {
         super(props);
@@ -19,28 +23,49 @@ export default class Chart extends React.Component<any, any> {
 
         this.ChartService = new ChartService();
         this.ReportsApi = new TimeReportApiService();
+        this.TimeConverterService = new TimeConverterService();
+
+        this.rollBackDate = this.rollBackDate.bind(this);
+        this.rollForwardDate = this.rollForwardDate.bind(this);
+        this.initializeChartData = this.initializeChartData.bind(this);
     }
 
-    initializeChartData(): any {
-        this.ReportsApi.getDayUserTimeReports(this.state.selectedDate)
+    initializeChartData(date: any): any {
+        debugger;
+        this.ReportsApi.getDayUserTimeReports(date)
             .then((res: any) => {
                 this.setState({
+                    selectedDate: date,
                     chartData: res.data
                 });
             });
     }
 
     componentDidMount() {
-        this.initializeChartData();
+        this.initializeChartData(new Date());
+    }
+
+    rollBackDate() {
+        var date = new Date(this.state.selectedDate);
+        date.setDate(date.getDate() - 1);
+        this.initializeChartData(date);
+    }
+
+    getDatePresentationView() {
+        return this.state.selectedDate.getDate() + ' ' + this.TimeConverterService.getMonthName(this.state.selectedDate.getMonth());
+    }
+
+    rollForwardDate() {
+        var date = new Date(this.state.selectedDate);
+        date.setDate(date.getDate() + 1);
+        this.initializeChartData(date);
     }
 
     getChartData(): any {
         var reports = this.ChartService.fillEmptyPartOfDay(this.state.chartData);
-        console.log(reports);
         var chartValues = reports.map((dataObject: any) => dataObject.duration);
         var chartLabels = reports.map((dataObject: any) => dataObject.activity.name);
         var chartColors = reports.map((dataObject: any) => dataObject.activity.colorValue);
-        debugger;
 
         return {
             labels: chartLabels,
@@ -73,8 +98,12 @@ export default class Chart extends React.Component<any, any> {
         return (
             <div className="mainPage">
                 <div className="container">
-                    <h3 className="text-left mainDate">13 DECEMBER</h3>
-                    <Doughnut
+                <DayRoller 
+                    dateString={this.getDatePresentationView()}
+                    rollBack={this.rollBackDate}
+                    rollForward={this.rollForwardDate}
+                    />
+                <Doughnut
                         data={this.getChartData()}
                         options={this.getChartOptions()}
                     />

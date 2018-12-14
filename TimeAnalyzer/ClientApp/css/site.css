@@ -302,8 +302,17 @@ input:focus {
     width: 100%;
 }
 
-.mainDate {
+.mainDateBlock {
     margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.dayRollerBtn {
+    height: 15px;
+}
+
+.date {
+    margin: 4px;
 }
 
 .topbar{

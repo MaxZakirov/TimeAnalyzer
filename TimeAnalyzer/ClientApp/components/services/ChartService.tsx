@@ -9,10 +9,6 @@ export default class ChartService extends React.Component<any, any> {
      }
 
      fillEmptyPartOfDay(timeReports: any) {
-         if(timeReports.length === 0)
-         {
-             return [];
-         }
         var newReports = timeReports.slice();
         var sumOfDuration = newReports.map((r: any) => r.duration).reduce((a: any,b: any) => a+b, 0);
         var minutesRemain = this.minutesInDay - sumOfDuration;
