@@ -12,7 +12,7 @@ namespace TimeAnalyzer.Domain.Interfaces
 
         Task<IEnumerable<TimeReport>> GetDayUserReports(int userId, DateTime date);
 
-        Task<IEnumerable<TimeReport>> GetInterimUserReports(int id, DateTime startDate, DateTime endDate);
+        Task<IEnumerable<TimeReport>> GetUserReportsInInterval(int userId, DateTime startDate, DateTime endDate);
 
         Task<IEnumerable<TimeReport>> GetMonthUserReports(int id, byte monthNumber);
 

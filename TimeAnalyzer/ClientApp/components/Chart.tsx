@@ -2,14 +2,16 @@ import * as React from "react";
 import { Pie, Doughnut, Radar, Polar } from 'react-chartjs-2';
 import Profile from './ChartRadioButton';
 import TimeReportApiService from './services/TimeReportApiService'
-import ChartService from './services/ChartService';
-import DayRoller from './dayRoller';
+import DayChartService from './services/DayChartService';
+import TimeRoller from './TimeRoller';
 import TimeConverterService from "./services/TimeConverterService";
+import TimeIntervalOption from "./TimeIntervalOption";
+import MonthChartService from "./services/MonthChartService";
 
 export default class Chart extends React.Component<any, any> {
 
     ReportsApi: TimeReportApiService;
-    ChartService: ChartService;
+    ChartService: any;
     TimeConverterService: TimeConverterService;
     chart: Chart = this;
 
@@ -18,20 +20,29 @@ export default class Chart extends React.Component<any, any> {
         var initialChartData: any[] = [];
         this.state = {
             chartData: initialChartData,
-            selectedDate: new Date()
+            selectedDate: new Date(),
+            monthCounter: new Date(),
+            selectedTimeInterval: this.getTimeIntervalOptions()[0]
         }
 
-        this.ChartService = new ChartService();
+        this.ChartService = new DayChartService();
         this.ReportsApi = new TimeReportApiService();
         this.TimeConverterService = new TimeConverterService();
 
         this.rollBackDate = this.rollBackDate.bind(this);
         this.rollForwardDate = this.rollForwardDate.bind(this);
-        this.initializeChartData = this.initializeChartData.bind(this);
+        this.initializeDateChartData = this.initializeDateChartData.bind(this);
+        this.onTimeIntervalChange = this.onTimeIntervalChange.bind(this);
+        this.rollForwardMonth = this.rollForwardMonth.bind(this);
+        this.rollBackMonth = this.rollBackMonth.bind(this);
+        this.getMonthPresentationView = this.getMonthPresentationView.bind(this);
     }
 
-    initializeChartData(date: any): any {
-        debugger;
+    getTimeIntervalOptions() {
+        return ['DAY', 'MONTH'];
+    }
+
+    initializeDateChartData(date: any): any {
         this.ReportsApi.getDayUserTimeReports(date)
             .then((res: any) => {
                 this.setState({
@@ -41,14 +52,25 @@ export default class Chart extends React.Component<any, any> {
             });
     }
 
+    initializeMonthChartData(monthCounter: any): any {
+        this.ReportsApi.getUserTimeReportsInInterval(this.ChartService.getMonthStartDate(), this.ChartService.getMonthEndDate())
+            .then((res: any) => {
+                debugger;
+                this.setState({
+                    monthCounter: monthCounter,
+                    chartData: res.data.reports
+                });
+            });
+    }
+
     componentDidMount() {
-        this.initializeChartData(new Date());
+        this.initializeDateChartData(new Date());
     }
 
     rollBackDate() {
         var date = new Date(this.state.selectedDate);
         date.setDate(date.getDate() - 1);
-        this.initializeChartData(date);
+        this.initializeDateChartData(date);
     }
 
     getDatePresentationView() {
@@ -58,11 +80,48 @@ export default class Chart extends React.Component<any, any> {
     rollForwardDate() {
         var date = new Date(this.state.selectedDate);
         date.setDate(date.getDate() + 1);
-        this.initializeChartData(date);
+        this.initializeDateChartData(date);
+    }
+
+    rollBackMonth() {
+        debugger;
+        var date = new Date(this.state.monthCounter);
+        date.setMonth(date.getMonth() - 1);
+        this.ChartService.setMonth(date);
+        this.initializeMonthChartData(date);
+    }
+
+    rollForwardMonth() {
+        var date = new Date(this.state.monthCounter);
+        date.setMonth(date.getMonth() + 1);
+        this.ChartService.setMonth(date);
+        this.initializeMonthChartData(date);
+    }
+
+    getMonthPresentationView() {
+        return this.TimeConverterService.getMonthName(this.state.monthCounter.getMonth());
+    }
+
+    onTimeIntervalChange(newOption: any) {
+        this.setState({
+            selectedTimeInterval: newOption
+        });
+
+        switch (newOption) {
+            case 'DAY':
+                this.ChartService = new DayChartService();
+                this.initializeDateChartData(this.state.selectedDate);
+                break;
+            case 'MONTH':
+                this.ChartService = new MonthChartService(this.state.monthCounter);
+                this.initializeMonthChartData(this.state.monthCounter);
+                return;
+        }
     }
 
     getChartData(): any {
-        var reports = this.ChartService.fillEmptyPartOfDay(this.state.chartData);
+        var reports = this.ChartService.fillEmpty(this.state.chartData);
+
         var chartValues = reports.map((dataObject: any) => dataObject.duration);
         var chartLabels = reports.map((dataObject: any) => dataObject.activity.name);
         var chartColors = reports.map((dataObject: any) => dataObject.activity.colorValue);
@@ -79,6 +138,24 @@ export default class Chart extends React.Component<any, any> {
                 hoverBorderColor: '#eee'
             }]
         };
+    }
+
+    getRoller() {
+        switch (this.state.selectedTimeInterval) {
+            case 'DAY':
+                return <TimeRoller
+                    dateString={this.getDatePresentationView()}
+                    rollBack={this.rollBackDate}
+                    rollForward={this.rollForwardDate}
+                />
+            case 'MONTH':
+                return <TimeRoller
+                    dateString={this.getMonthPresentationView()}
+                    rollBack={this.rollBackMonth}
+                    rollForward={this.rollForwardMonth}
+                />;
+        }
+
     }
 
     getChartOptions(): any {
@@ -98,12 +175,21 @@ export default class Chart extends React.Component<any, any> {
         return (
             <div className="mainPage">
                 <div className="container">
-                <DayRoller 
-                    dateString={this.getDatePresentationView()}
-                    rollBack={this.rollBackDate}
-                    rollForward={this.rollForwardDate}
-                    />
-                <Doughnut
+                    <div className="row">
+                        <div className="col-sm-3">
+                            {this.getRoller()}
+                        </div>
+                        <div>
+                            {this.getTimeIntervalOptions().map((option: any) =>
+                                <TimeIntervalOption
+                                    isActive={option == this.state.selectedTimeInterval}
+                                    option={option}
+                                    changeOption={this.onTimeIntervalChange}
+                                />
+                            )}
+                        </div>
+                    </div>
+                    <Doughnut
                         data={this.getChartData()}
                         options={this.getChartOptions()}
                     />

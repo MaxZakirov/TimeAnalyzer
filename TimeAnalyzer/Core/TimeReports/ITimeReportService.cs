@@ -15,5 +15,7 @@ namespace TimeAnalyzer.Core.TimeReports
         void DeleteTimeReport(int timeReportId);
 
         Task<IEnumerable<DayTimeReportViewModel>> GetDayTimeReportAsync(string stringDate);
+
+        Task<TimeReportsIntervalViewModel> GetTimeReportsInInterval(string startDate, string endDate);
     }
 }

@@ -303,16 +303,24 @@ input:focus {
 }
 
 .mainDateBlock {
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .dayRollerBtn {
-    height: 15px;
+    height: 25px;
 }
 
 .date {
     margin: 4px;
+}
+
+.option {
+    color: darkgrey;
+}
+
+.option.active {
+    font-size: 3em;
+    color: white
 }
 
 .topbar{

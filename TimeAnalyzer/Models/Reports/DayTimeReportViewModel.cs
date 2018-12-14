@@ -6,18 +6,20 @@ namespace TimeAnalyzer.Models.Reports
     {
         public DayTimeReportViewModel(
             int id,
-            short duration,
+            long duration,
             int activityId,
             Activity activity,
             string date)
             : base(
-                  id,
                   duration,
                   activityId,
                   activity)
         {
-            Date = date;   
+            Date = date;
+            Id = id;
         }
+
+        public int Id { get; set; }
 
         public string Date { get; set; }
     }

@@ -101,9 +101,23 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
                 param: dbArgs);
         }
 
-        public Task<IEnumerable<TimeReport>> GetInterimUserReports(int id, DateTime startDate, DateTime endDate)
+        public async Task<IEnumerable<TimeReport>> GetUserReportsInInterval(int userId, DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            string query = getAllSQL + $" and Date >= @startDate AND Date <= @endDate";
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("userId", userId);
+            dbArgs.Add("startDate", startDate.Date);
+            dbArgs.Add("endDate", endDate.Date);
+            return await queryExecuter.Connection.QueryAsync<TimeReport, Activity, TimeReport>(query,
+                map: (tr, a) =>
+                {
+                    tr.Activity = a;
+                    tr.ActivityId = a.Id;
+
+                    return tr;
+                },
+                splitOn: "ActivityId",
+                param: dbArgs);
         }
 
         public Task<IEnumerable<TimeReport>> GetMonthUserReports(int id, byte monthNumber)

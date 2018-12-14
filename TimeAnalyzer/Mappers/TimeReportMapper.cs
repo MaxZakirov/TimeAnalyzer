@@ -13,7 +13,7 @@ namespace TimeAnalyzer.Mappers
             return new TimeReport(
                 timeReportView.Id,
                 date,
-                timeReportView.Duration,
+                (short)timeReportView.Duration,
                 timeReportView.ActivityId,
                 timeReportView.Activity,
                 userId);

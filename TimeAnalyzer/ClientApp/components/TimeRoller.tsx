@@ -1,8 +1,8 @@
 import * as React from "react";
 
-const DayRoller = (props: any) => {
+const TimeRoller = (props: any) => {
     return (
-        <div className="col-sm-3 mainDateBlock">
+        <div className="mainDateBlock">
             <button className="btn-block dayRollerBtn" onClick={props.rollBack}></button>
             <h3 className="text-center date">{props.dateString}</h3>
             <button className="btn-block dayRollerBtn" onClick={props.rollForward}></button>
@@ -10,4 +10,4 @@ const DayRoller = (props: any) => {
     );
 };
 
-export default DayRoller;
+export default TimeRoller;
