@@ -22,10 +22,6 @@ export default class AuthService extends React.Component<any, any> {
 
     login(email: any, password: any) {
         // Get a token from api server using the fetch apiF
-        var body = JSON.stringify({
-            email,
-            password,
-        });
         return axios.post(`/api/Authentication/SignIn`, {
             email,
             password
