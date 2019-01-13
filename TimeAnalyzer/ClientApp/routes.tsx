@@ -4,6 +4,7 @@ import { Layout } from './components/Layout';
 import AuthPage from './components/AuthPage';
 import App from './components/App';
 import Test from './/components/test'
+import AdminPage from './components/AdminPage';
 
 
 export const routes =
@@ -11,4 +12,5 @@ export const routes =
         <Route exact path='/' component={App} />
         <Route path='/login' component={AuthPage} />
         <Route path='/t' component={Test} />
+        <Route path='/admin' component={AdminPage} />
     </Layout>;

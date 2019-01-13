@@ -157,7 +157,7 @@ export default class AuthPage extends React.Component<any, any>{
                         <div className="card">
                             <div className="leftSide">
                                 <div className="leftSideContent">
-                                    <h1>H</h1>
+                                    <h1>T</h1>
                                     <h2>Hey you!</h2>
                                     <h6>You feel you waste your time?</h6>
                                     <p>However after loading the components the body style is not present in the page.It shows up in the console though.
