@@ -5,8 +5,8 @@
 	[Duration] INT NOT NULL,
 	[ActivityId] INT NOT NULL,
 	[UserId] INT NOT NULL,
-	CONSTRAINT FK_UserReport FOREIGN KEY (UserId)
-	REFERENCES Users(Id),
+	CONSTRAINT FK_UserReport FOREIGN KEY (UserId) 
+	REFERENCES Users(Id) ON DELETE CASCADE,
 	CONSTRAINT FK_ActivityReport FOREIGN KEY ([ActivityId])
-	REFERENCES Activities(Id)
+	REFERENCES Activities(Id) ON DELETE CASCADE
 )

@@ -13,6 +13,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 {
     public class UserRepository : IUserRepository
     {
+        private readonly string getAllQuery = "SELECT Id, Name, Email, Password FROM Users";
         private readonly IDapperQueryExecuter<User> queryExecuter;
         private const int SqlDuplicateExceptionCode = 2627;
 
@@ -52,17 +53,24 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public void Update(User entity)
         {
-            throw new NotImplementedException();
+            string query = $"UPDATE Users SET Name=@name, Email=@email WHERE Id=@id";
+
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("id", entity.Id);
+            dbArgs.Add("name", entity.Name);
+            dbArgs.Add("email", entity.Email);
+
+            queryExecuter.Execute(query, dbArgs);
         }
 
-        public Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            throw new NotImplementedException();
+            return await queryExecuter.GetManyAsync(getAllQuery);
         }
 
         public async Task<User> GetById(int Id)
         {   
-            string query = $"SELECT Id, Name, Email, Password FROM Users WHERE Id = @id";
+            string query = $"{getAllQuery} WHERE Id = @id";
             var dbArgs = new DynamicParameters();
             dbArgs.Add("id", Id);
             return await queryExecuter.GetAsync(query, dbArgs);
@@ -70,7 +78,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public async Task<User> GetByEmail(string email)
         {
-            string query = $"SELECT Id, Name, Email, Password FROM Users WHERE Email = @email";
+            string query = $"{getAllQuery} WHERE Email = @email";
             var dbArgs = new DynamicParameters();
             dbArgs.Add("email", email);
             return await queryExecuter.GetAsync(query, dbArgs);
@@ -78,12 +86,15 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public void Remove(int Id)
         {
-            throw new NotImplementedException();
+            string query = $"DELETE FROM Users WHERE Id=@id";
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("id", Id);
+            queryExecuter.Execute(query, dbArgs);
         }
 
         public async Task<User> GetByName(string name)
         {
-            string query = $"SELECT Id, Name, Email, Password FROM Users WHERE Name = @name";
+            string query = $"{getAllQuery} WHERE Name = @name";
             var dbArgs = new DynamicParameters();
             dbArgs.Add("name", name);
             return await queryExecuter.GetAsync(query, dbArgs);

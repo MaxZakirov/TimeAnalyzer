@@ -41,7 +41,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public async Task<IEnumerable<ActivityType>> GetAll()
         {
-            string query = $"SELECT Id, Name, ColorValue FROM ActivityTypes";
+            string query = $"SELECT Id, Name, ColorValue, ImportanceFactor FROM ActivityTypes";
             return await queryExecuter.GetManyAsync(query);
         }
 

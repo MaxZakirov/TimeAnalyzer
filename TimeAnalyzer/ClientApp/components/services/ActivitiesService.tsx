@@ -15,4 +15,8 @@ export default class ActivitiesService extends React.Component<any, any>{
     getAllActivities() {
         return this.authorizedApi.authorizedGet('/api/Activity/GetAllActivities', null);
     }
+
+    getAllActivityTypes() {
+        return this.authorizedApi.authorizedGet('/api/ActivityType/GetAllActivityTypes', null);
+    }
 }

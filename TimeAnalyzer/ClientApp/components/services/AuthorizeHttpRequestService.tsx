@@ -28,8 +28,6 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
             url += this.initializeUrlParams(params);
         }
 
-        console.log(url);
-
         return axios.get(
             url,
             {

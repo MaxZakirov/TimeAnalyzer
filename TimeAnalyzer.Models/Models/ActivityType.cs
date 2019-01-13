@@ -7,5 +7,7 @@
         public string Name { get; set; }
 
         public string ColorValue { get; set; }
+
+        public int ImportanceFactor { get; set; }
     }
 }

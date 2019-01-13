@@ -4,7 +4,7 @@ import { Layout } from './components/Layout';
 import AuthPage from './components/AuthPage';
 import App from './components/App';
 import Test from './/components/test'
-import AdminPage from './components/AdminPage';
+import AdminPage from './components/admin page/AdminPage';
 
 
 export const routes =

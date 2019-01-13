@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace TimeAnalyzer.Domain.Models.Users
 {
@@ -19,7 +18,7 @@ namespace TimeAnalyzer.Domain.Models.Users
 
         public int Id { get; set; }
 
-        public string Name { get; }
+        public string Name { get; set; }
 
         public string Email { get; set; }
 
