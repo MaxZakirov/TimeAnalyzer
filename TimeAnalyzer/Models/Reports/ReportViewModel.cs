@@ -4,6 +4,11 @@ namespace TimeAnalyzer.Models.Reports
 {
     public class ReportViewModel
     {
+        public ReportViewModel()
+        {
+
+        }
+
         public ReportViewModel(
             long duration,
             int activityId,

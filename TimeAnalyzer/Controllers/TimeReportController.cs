@@ -87,6 +87,27 @@ namespace TimeAnalyzer.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [HttpPost("{userId}/{activityId}/{duration}")]
+        public async Task<IActionResult> AddReportIOT(int userId, int activityId, int duration)
+        {
+            try
+            {
+                IOTViewModel timeReport = new IOTViewModel()
+                {
+                    UserId = userId,
+                    ActivityId = activityId,
+                    Duration = duration
+                };
+                await GetReportService().AddTimeReportFromIOT(timeReport);
+                return Ok();
+            }
+            catch (IncorrectInputDateException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         private ITimeReportService GetReportService()
         {
             return timeReportService ?? timeReportServiceInsatller.Invoke();

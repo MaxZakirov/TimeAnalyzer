@@ -19,6 +19,18 @@ namespace TimeAnalyzer.Mappers
                 userId);
         }
 
+        public static TimeReport ToTimeReport(this IOTViewModel timeReportView, int userId)
+        {
+            DateTime date = DateTime.Now;
+            return new TimeReport(
+                0,
+                date,
+                (short)timeReportView.Duration,
+                timeReportView.ActivityId,
+                timeReportView.Activity,
+                userId);
+        }
+
         public static DayTimeReportViewModel ToViewTimeReport(this TimeReport timeReport)
         {
             string stringDate = TimeConverter.ToJSONString(timeReport.Date);

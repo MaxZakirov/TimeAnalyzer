@@ -21,4 +21,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ColorValue" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="2d338c12-7974-4d28-b8db-eaba5b655115" ChangeDateTime="01/12/2019 11:21:58">
+    <Property Name="ElementName" Value="[dbo].[Activities].[ActivityType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activities]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ActivityTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a24fe74c-5a9f-4f8b-8f0b-f8dec678d413" ChangeDateTime="01/12/2019 16:34:12">
+    <Property Name="ElementName" Value="[dbo].[Activities].[ActivityTypeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activities]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TypeId" />
+  </Operation>
 </Operations>

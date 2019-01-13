@@ -19,6 +19,7 @@ namespace TimeAnalyzer.Core.TimeReports
         private readonly ITimeReportRepository timeReportRepository;
         private readonly IActivityRepository activityRepository;
         private readonly IUserRepository userRepository;
+        private readonly IActivityTypeRepository activityTypeRepository;
         private int userId;
         private string userName;
 
@@ -26,13 +27,15 @@ namespace TimeAnalyzer.Core.TimeReports
             IUnitOfWork unitOfWork,
             ITimeReportRepository timeReportRepository,
             IActivityRepository activityRepository,
-            IUserRepository userRepository
+            IUserRepository userRepository,
+            IActivityTypeRepository activityTypeRepository
             )
         {
             this.unitOfWork = unitOfWork;
             this.timeReportRepository = timeReportRepository;
             this.activityRepository = activityRepository;
             this.userRepository = userRepository;
+            this.activityTypeRepository = activityTypeRepository;
             userId = UserIdIsUnknownValue;
         }
 
@@ -58,13 +61,15 @@ namespace TimeAnalyzer.Core.TimeReports
         public async Task<IEnumerable<DayTimeReportViewModel>> GetAllUserTimeReports()
         {
             IEnumerable<TimeReport> timeReports = await timeReportRepository.GetAllUserReports(await GetUserId());
-            return timeReports.Select(tr => tr.ToViewTimeReport());
+        
+    return timeReports.Select(tr => tr.ToViewTimeReport());
         }
 
         public async Task<IEnumerable<DayTimeReportViewModel>> GetDayTimeReportAsync(string stringDate)
         {
             DateTime date = TimeConverter.ToDateTime(stringDate);
             var timeReports = await timeReportRepository.GetDayUserReports(await GetUserId(), date);
+            await LoadActivitiesToTimeReports(timeReports);
             return timeReports.AsParallel().Select(tr => tr.ToViewTimeReport());
         }
 
@@ -78,6 +83,7 @@ namespace TimeAnalyzer.Core.TimeReports
             }
 
             var timeReports = await timeReportRepository.GetUserReportsInInterval(await GetUserId(), startDate, endDate);
+            await LoadActivitiesToTimeReports(timeReports);
             return new TimeReportsIntervalViewModel(this.AgregateTimeReports(timeReports), stringStartDate, stringEndDate);
         }
 
@@ -140,5 +146,28 @@ namespace TimeAnalyzer.Core.TimeReports
             }
         }
 
+        private async Task LoadActivitiesToTimeReports(IEnumerable<TimeReport> timeReports)
+        {
+            var activities = await activityRepository.GetAll();
+            var activitiesTypes = await activityTypeRepository.GetAll();
+
+            foreach(var a in activities)
+            {
+                a.Type = activitiesTypes.First(t => t.Id == a.TypeId);
+            }
+
+            foreach (var tr in timeReports)
+            {
+                tr.Activity = activities.First(a => a.Id == tr.ActivityId);
+            }
+        }
+
+        public async Task<int> AddTimeReportFromIOT(IOTViewModel viewModel)
+        {
+            TimeReport timeReport = viewModel.ToTimeReport(viewModel.UserId);
+            CreateTimeReportUpdateStrategy timeReportUpdateStrategy = (CreateTimeReportUpdateStrategy)(await this.GetTimeReportUpdateStrategy(timeReport));
+            timeReportUpdateStrategy.Update();
+            return timeReportUpdateStrategy.NewTimeReportId;
+        }
     }
 }

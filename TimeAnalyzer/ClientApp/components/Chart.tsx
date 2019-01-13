@@ -56,13 +56,13 @@ export default class Chart extends React.Component<any, any> {
         this.editWindowIsOpen = !this.editWindowIsOpen;
     }
 
-    toggleChart(){
+    toggleChart() {
         $(".Doughnut").fadeToggle(0);
         $(".Bar").fadeToggle(0);
-        if($('.doughnutBtn').prop('disabled', true)){
+        if ($('.doughnutBtn').prop('disabled', true)) {
             $('.barId').prop('disabled', true);
             $('.doughnutBtn').prop('disabled', false);
-        }else{
+        } else {
             $('.barId').prop('disabled', false);
             $('.doughnutBtn').prop('disabled', true);
         }
@@ -76,7 +76,7 @@ export default class Chart extends React.Component<any, any> {
     openAddNewWindow() {
         if (!this.editWindowIsOpen) {
             this.setState({
-                selectedReport: null
+                selectedReport: -1
             });
         }
 
@@ -98,7 +98,7 @@ export default class Chart extends React.Component<any, any> {
             .then((res: any) => {
                 this.setState({
                     selectedDate: date,
-                    chartData: res.data
+                    chartData: res.data.sort((a: any, b: any) => a.activity.typeId - b.activity.typeId)
                 });
             });
     }
@@ -152,7 +152,7 @@ export default class Chart extends React.Component<any, any> {
     }
 
     onTimeIntervalChange(newOption: any) {
-        if(newOption === this.state.selectedTimeInterval)
+        if (newOption === this.state.selectedTimeInterval)
             return;
 
         this.setState({
@@ -175,11 +175,12 @@ export default class Chart extends React.Component<any, any> {
     getChartData(): any {
         var reports = this.ChartService.fillEmpty(this.state.chartData);
 
+        debugger;
         var chartValues = reports.map((dataObject: any) => dataObject.duration);
         var chartLabels = reports.map((dataObject: any) => dataObject.activity.name);
-        var chartColors = reports.map((dataObject: any) => dataObject.activity.colorValue);
+        var chartColors = reports.map((dataObject: any) => dataObject.activity.type.colorValue);
 
-        return {    
+        return {
             labels: chartLabels,
             datasets: [{
                 label: 'TimeAnalizer',
@@ -229,11 +230,11 @@ export default class Chart extends React.Component<any, any> {
         var onClick = this.onClickChart;
         return {
             legend: {
-                fullWidth:true,
+                fullWidth: true,
                 display: false,
                 position: 'top',
                 labels: {
-                    boxWidth:40,
+                    boxWidth: 40,
                     fontSize: 12,
                     fontColor: '#eee'
                 }
@@ -245,8 +246,7 @@ export default class Chart extends React.Component<any, any> {
     onClickChart(e: Event, data: any) {
         if (data[0]) {
             var selectedReport = this.state.chartData[data[0]._index];
-            if(selectedReport.id > 0)
-            {
+            if (selectedReport.id > 0) {
                 this.setState({
                     selectedReport: selectedReport
                 });
@@ -258,10 +258,9 @@ export default class Chart extends React.Component<any, any> {
     }
 
     getAddNewReportBtn() {
-        if(this.state.selectedTimeInterval === 'DAY')
-        {
+        if (this.state.selectedTimeInterval === 'DAY') {
             return <button className="btn btn-primary addReport" onClick={this.openAddNewWindow}>
-                        Add new report
+                Add new report
                     </button>
         }
     }
@@ -271,17 +270,17 @@ export default class Chart extends React.Component<any, any> {
             <div className="mainPage">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-sm-4">
                             {this.getRoller()}
                         </div>
-                        <div className="col-md-4">
-                        <div className="toggle">
-                            <h2 className="doughnutBarBtn" onClick={this.toggleChart}>
-                                ToggleChart
-                            </h2>
+                        <div className="col-sm-4">
+                            <div className="toggle">
+                                <button className="doughnutBarBtn" onClick={this.toggleChart}>
+                                    ToggleChart
+                            </button>
+                            </div>
                         </div>
-                        </div>
-                        <div className="col-md-4">
+                        <div className="col-sm-4">
                             {this.getTimeIntervalOptions().map((option: any) =>
                                 <TimeIntervalOption
                                     isActive={option == this.state.selectedTimeInterval}
@@ -293,15 +292,15 @@ export default class Chart extends React.Component<any, any> {
                     </div>
                     <div className="Doughnut">
                         <Doughnut
-                        data={this.getChartData()}
-                        options={this.getChartOptions()}
-                    />
+                            data={this.getChartData()}
+                            options={this.getChartOptions()}
+                        />
                     </div>
                     <div className="Bar">
                         <Bar
-                        data={this.getChartData()}
-                        options={this.getChartOptionsBar()}
-                    />
+                            data={this.getChartData()}
+                            options={this.getChartOptionsBar()}
+                        />
                     </div>
                     <div>
                         <div className="col-sm-4 editWindow">

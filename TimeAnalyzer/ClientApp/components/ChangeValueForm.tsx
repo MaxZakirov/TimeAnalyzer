@@ -25,9 +25,9 @@ export default class ChangeValueForm extends React.Component<any, any>{
             date: new Date(),
             minutes: 60,
             selectedActivityId: -1,
+            selectedActivityTypeId: -1,
             error: null
         };
-
 
         this.ActivitiesService = new ActivitiesService();
         this.TimeConverterService = new TimeConverterService();
@@ -35,19 +35,27 @@ export default class ChangeValueForm extends React.Component<any, any>{
         this.updateRepotrActivity = this.updateRepotrActivity.bind(this);
         this.updateReportDate = this.updateReportDate.bind(this);
         this.updateReportMinutes = this.updateReportMinutes.bind(this);
+        this.updateRepotrActivityType = this.updateRepotrActivityType.bind(this);
         this.onSumbit = this.onSumbit.bind(this);
         this.onError = this.onError.bind(this);
+        this.getDefaultState = this.getDefaultState.bind(this);
     }
 
     initializeActivities() {
         this.ActivitiesService.getAllActivities()
             .then((res: any) => {
-                if (this.state.selectedActivityId == -1)
+                debugger;
+                if (this.state.selectedActivityId == -1) {
+                    var activityTypeId = res.data[0].type.id;
                     var activityId = res.data[0].id;
-                else
+                }
+                else {
+                    var activityTypeId = this.state.selectedActivityTypeId;
                     var activityId = this.state.selectedActivityId;
+                }
 
                 this.setState({
+                    selectedActivityTypeId: activityTypeId,
                     selectedActivityId: activityId,
                     activities: res.data
                 });
@@ -58,36 +66,48 @@ export default class ChangeValueForm extends React.Component<any, any>{
         this.initializeActivities();
     }
 
-    componentWillReceiveProps(props: any)
-    {
-        if(props.selectedReport!=null)
+    componentWillReceiveProps(props: any) {
+        debugger;
+        if(props.selectedReport === -1)
         {
-            var date = this.TimeConverterService.fromServerDate(props.selectedReport.date); 
+            this.setState(this.getDefaultState(props.selectedDate));
+        }
+        if (props.selectedReport != null) {
+            var date = this.TimeConverterService.fromServerDate(props.selectedReport.date);
             this.setState({
                 reportId: props.selectedReport.id,
                 date: date,
                 minutes: props.selectedReport.duration,
-                selectedActivityId: props.selectedReport.activityId
+                selectedActivityId: props.selectedReport.activityId,
+                selectedActivityTypeId: props.selectedReport.activity.typeId,
             });
-        }
-        else 
-        {
-            this.setState(this.getDefaultState(this.props.selectedDate));
         }
     }
 
     getDefaultState(date: any) {
+        var activities = this.state.activities;
         return {
             reportId: null,
             date: date,
             minutes: 60,
-            selectedActivityId: -1
+            selectedActivityId: activities[0].id,
+            selectedActivityTypeId: activities[0].type.id
         }
     }
 
-    updateRepotrActivity(activityId: any) {
+    updateRepotrActivity(event: any) {
         this.setState({
-            selectedActivityId: activityId
+            selectedActivityId: event.target.value
+        });
+    }
+
+    updateRepotrActivityType(event: any) {
+        debugger;
+        var newSelectedActivityTypeId = +event.target.value; 
+        var newActivityId = this.state.activities.filter((a: any) => a.typeId === newSelectedActivityTypeId)[0].id;
+        this.setState({
+            selectedActivityTypeId: newSelectedActivityTypeId,
+            selectedActivityId: newActivityId
         });
     }
 
@@ -109,18 +129,16 @@ export default class ChangeValueForm extends React.Component<any, any>{
         var date = new Date(this.state.date);
         var duration = this.state.minutes;
         var activityId = this.state.selectedActivityId;
-        if(this.state.reportId > 0)
-        {
+        if (this.state.reportId > 0) {
             var reportId = this.state.reportId;
-            this.timeReport.updateTimeReport(reportId,date, duration, activityId).then((response: any) => {
+            this.timeReport.updateTimeReport(reportId, date, duration, activityId).then((response: any) => {
                 this.setState({
                     error: null
                 });
                 this.props.onSubmit(date);
             }, this.onError);
         }
-        else
-        {
+        else {
             this.timeReport.addTimeReport(date, duration, activityId).then((response: any) => {
                 this.props.onSubmit(date);
             }, this.onError);
@@ -128,30 +146,25 @@ export default class ChangeValueForm extends React.Component<any, any>{
     }
 
     getHtmlFormatDate(date: any) {
-        return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+        return date.getFullYear() + '-' + '0' + (date.getMonth() + 1) + '-' + date.getDate();
     }
 
-    getHeader()
-    {
-        if(this.state.reportId > 0)
-        {
+    getHeader() {
+        if (this.state.reportId > 0) {
             return "Update report";
         }
-        else
-        {
+        else {
             return "Add new report";
         }
     }
 
-    onError(err: any)
-    {
+    onError(err: any) {
         this.setState({
             error: err.response.data
         });
     }
 
-    getError()
-    {
+    getError() {
         if (this.state.error != null) {
             return <p className="alert alert-danger">
                 {this.state.error}
@@ -173,23 +186,34 @@ export default class ChangeValueForm extends React.Component<any, any>{
                             </div>
                             <div className="form-group">
                                 <label htmlFor="reportMinutes">Minutes</label>
-                                <input className="form-control" name="reportMinutes" 
+                                <input className="form-control" name="reportMinutes"
                                     min={1}
                                     max={1440}
                                     type="number" value={this.state.minutes}
                                     onChange={this.updateReportMinutes}
                                     placeholder="type your value"></input>
                             </div>
+                            <div className="form-group">
+                                <label htmlFor="reportMinutes">Actvity type</label>
+                                <select className="form-control" value={this.state.selectedActivityTypeId} onChange={this.updateRepotrActivityType}>
+                                    {this.state.activities.map((a: any) => a.type).filter((value: any, index: any, self: any) => self.map((t: any) => t.id).indexOf(value.id) === index).map((activityType: any) => {
+                                        return <option value={activityType.id} key={activityType.id}>
+                                            {activityType.name}
+                                        </option>
+                                    })}
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="reportMinutes">Actvity</label>
+                                <select className="form-control" value={this.state.selectedActivityId} onChange={this.updateRepotrActivity}>
+                                    {this.state.activities.filter((a: any) => a.typeId === this.state.selectedActivityTypeId).map((a: any) =>
+                                        <option value={a.id} key={a.id}>
+                                            {a.name}
+                                        </option>
+                                    )}
+                                </select>
+                            </div>
                         </div>
-                        {this.state.activities.map((activity: any) => {
-                            return <RadioButton
-                                key={activity.id}
-                                checked={activity.id == this.state.selectedActivityId}
-                                labelName={activity.name}
-                                handleChange={this.updateRepotrActivity}
-                                id={activity.id}
-                            />
-                        })}
                     </div>
                     {this.getError()}
                     <button className="form-control btn btn-success" type="submit">Add</button>

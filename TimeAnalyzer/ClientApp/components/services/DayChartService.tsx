@@ -30,8 +30,10 @@ class DayChartService extends React.Component<any, any> {
             activity: {
                 id: 0,
                 name: 'Unknown',
-                iconPath: null,
-                colorValue: '#C6C6C6'
+                type: {
+                    name: 'Unknown',
+                    colorValue: '#C6C6C6'
+                }
             }
         }
     }

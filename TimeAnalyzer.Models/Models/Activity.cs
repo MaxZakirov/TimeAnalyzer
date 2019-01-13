@@ -6,8 +6,8 @@
 
         public string Name { get; set; }
 
-        public string IconPath { get; set; }
+        public int TypeId { get; set; }
 
-        public string ColorValue { get; set; }
+        public ActivityType Type { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
     public class TimeReportRepository : ITimeReportRepository
     {
         private readonly IDapperQueryExecuter<TimeReport> queryExecuter;
-        private readonly string getAllSQL = $"SELECT t.Id,t.Date,t.UserId,t.Duration,t.ActivityId,a.Id,a.IconPath,a.Name,a.ColorValue " +
-                $"FROM TimeReports t JOIN Activities a ON a.Id = t.ActivityId WHERE t.UserId = @userId";
+        private readonly string getAllSQL = $"SELECT t.Id,t.Date,t.UserId,t.Duration,t.ActivityId " +
+                $"FROM TimeReports t WHERE t.UserId = @userId";
 
         public TimeReportRepository(
           IDapperQueryExecuter<TimeReport> queryExecuter)
@@ -67,15 +67,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
         {
             var dbArgs = new DynamicParameters();
             dbArgs.Add("userId", userId);
-            return await queryExecuter.Connection.QueryAsync<TimeReport, Activity, TimeReport>(getAllSQL,
-                map: (tr, a) =>
-                {
-                    tr.Activity = a;
-
-                    return tr;
-                },
-                splitOn: "ActivityId",
-                param: dbArgs);
+            return await queryExecuter.GetManyAsync(getAllSQL, dbArgs);
         }
 
         public Task<TimeReport> GetById(int Id)
@@ -89,16 +81,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             var dbArgs = new DynamicParameters();
             dbArgs.Add("userId", userId);
             dbArgs.Add("date", date.Date);
-            return await queryExecuter.Connection.QueryAsync<TimeReport, Activity, TimeReport>(query,
-                map: (tr, a) =>
-                {
-                    tr.Activity = a;
-                    tr.ActivityId = a.Id;
-
-                    return tr;
-                },
-                splitOn: "ActivityId",
-                param: dbArgs);
+            return await queryExecuter.GetManyAsync(query, dbArgs);
         }
 
         public async Task<IEnumerable<TimeReport>> GetUserReportsInInterval(int userId, DateTime startDate, DateTime endDate)
@@ -108,16 +91,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
             dbArgs.Add("userId", userId);
             dbArgs.Add("startDate", startDate.Date);
             dbArgs.Add("endDate", endDate.Date);
-            return await queryExecuter.Connection.QueryAsync<TimeReport, Activity, TimeReport>(query,
-                map: (tr, a) =>
-                {
-                    tr.Activity = a;
-                    tr.ActivityId = a.Id;
-
-                    return tr;
-                },
-                splitOn: "ActivityId",
-                param: dbArgs);
+            return await queryExecuter.GetManyAsync(query, dbArgs);
         }
 
         public Task<IEnumerable<TimeReport>> GetMonthUserReports(int id, byte monthNumber)

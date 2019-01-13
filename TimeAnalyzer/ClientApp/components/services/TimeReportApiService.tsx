@@ -33,6 +33,7 @@ export default class TimeReportApiService extends React.Component<any, any>{
     }
 
     addTimeReport(jsDate: any, Duration: any, ActivityId: any) {
+        debugger;
         var date = this.timeReportApiService.toServerFormatDate(jsDate);
         return this.authorizedApi.authorizedPost(`/api/TimeReport/AddTimeReport`, {
             date,

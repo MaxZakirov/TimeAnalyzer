@@ -9,7 +9,7 @@ namespace TimeAnalyzer.Controllers
 {
     [Authorize]
     [Produces("application/json")]
-    [Route("api/Activity")]
+    [Route("api/Activity/[action]")]
     public class ActivityController : Controller
     {
         private readonly IActivityService activityService;
@@ -19,11 +19,32 @@ namespace TimeAnalyzer.Controllers
             this.activityService = activityService;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet]
         public async Task<IActionResult> GetAllActivities()
         {
             IEnumerable<Activity> activities = await this.activityService.GetAllActivities();
             return Ok(activities);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] Activity activity)
+        {
+            IEnumerable<Activity> activities = await this.activityService.GetAllActivities();
+            return Ok(activities);
+        }
+
+        [HttpPost]
+        public IActionResult Update([FromBody] Activity activity)
+        {
+            this.activityService.Update(activity);
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult Delete([FromBody] Activity activity)
+        {
+            this.activityService.Remove(activity.Id);
+            return Ok();
         }
     }
 }

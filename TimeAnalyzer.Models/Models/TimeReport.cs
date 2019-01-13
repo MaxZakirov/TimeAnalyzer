@@ -1,5 +1,4 @@
 ﻿using System;
-using TimeAnalyzer.Domain.Enums;
 using TimeAnalyzer.Domain.Models.Users;
 
 namespace TimeAnalyzer.Domain.Models

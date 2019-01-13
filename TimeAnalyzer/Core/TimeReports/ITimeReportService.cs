@@ -17,5 +17,7 @@ namespace TimeAnalyzer.Core.TimeReports
         Task<IEnumerable<DayTimeReportViewModel>> GetDayTimeReportAsync(string stringDate);
 
         Task<TimeReportsIntervalViewModel> GetTimeReportsInInterval(string startDate, string endDate);
+
+        Task<int> AddTimeReportFromIOT(IOTViewModel viewModel);
     }
 }

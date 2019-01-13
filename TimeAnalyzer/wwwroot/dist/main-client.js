@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "298e9a1d02ac3a22862d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4fc800e1ddb55d33df2c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -704,7 +704,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(447)(__webpack_require__.s = 447);
+/******/ 	return hotCreateRequire(446)(__webpack_require__.s = 446);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -7665,7 +7665,7 @@ var AuthService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (AuthService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -8230,10 +8230,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Layout__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Layout__ = __webpack_require__(415);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_AuthPage__ = __webpack_require__(412);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_App__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_test__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_test__ = __webpack_require__(420);
 
 
 
@@ -8246,7 +8246,7 @@ var routes = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPO
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/t', component: __WEBPACK_IMPORTED_MODULE_5__components_test__["a" /* default */] }));
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\routes.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -8256,8 +8256,8 @@ var routes = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPO
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reducers", function() { return reducers; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__WeatherForecasts__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Counter__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__WeatherForecasts__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Counter__ = __webpack_require__(423);
 
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
@@ -8269,7 +8269,7 @@ var reducers = {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\index.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -8780,7 +8780,7 @@ var AuthorizeHttpRequestService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (AuthorizeHttpRequestService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthorizeHttpRequestService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthorizeHttpRequestService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthorizeHttpRequestService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\AuthorizeHttpRequestService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -8816,7 +8816,7 @@ var TimeConverterService = (function (_super) {
         return day + "&" + month + "&" + year + "_" + hour + ':' + minute + ':' + second;
     };
     TimeConverterService.prototype.fromServerDate = function (date) {
-        date = date.substring(0, 10);
+        date = date.substring(0, 9);
         date = date.split('&');
         return new Date(date[2], +date[1] - 1, date[0]);
     };
@@ -8831,7 +8831,7 @@ var TimeConverterService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (TimeConverterService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeConverterService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeConverterService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeConverterService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeConverterService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -24365,8 +24365,10 @@ var DayChartService = (function (_super) {
             activity: {
                 id: 0,
                 name: 'Unknown',
-                iconPath: null,
-                colorValue: '#C6C6C6'
+                type: {
+                    name: 'Unknown',
+                    colorValue: '#C6C6C6'
+                }
             }
         };
     };
@@ -24379,7 +24381,7 @@ var DayChartService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (DayChartService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\DayChartService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\DayChartService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\DayChartService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\DayChartService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -24428,6 +24430,7 @@ var TimeReportApiService = (function (_super) {
         return this.authorizedApi.authorizedGet('/api/TimeReport/GetTimeReportsInInterval', [jsonStartDate, jsonEndDate]);
     };
     TimeReportApiService.prototype.addTimeReport = function (jsDate, Duration, ActivityId) {
+        debugger;
         var date = this.timeReportApiService.toServerFormatDate(jsDate);
         return this.authorizedApi.authorizedPost("/api/TimeReport/AddTimeReport", {
             date: date,
@@ -24449,7 +24452,7 @@ var TimeReportApiService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (TimeReportApiService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeReportApiService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeReportApiService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeReportApiService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\TimeReportApiService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -24512,7 +24515,7 @@ module.exports = __webpack_require__(409);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_site_css__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_site_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__css_site_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap__ = __webpack_require__(438);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_bootstrap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
@@ -24520,10 +24523,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_hot_loader__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_hot_loader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_hot_loader__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux__ = __webpack_require__(442);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux__ = __webpack_require__(441);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_router_redux__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_history__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__configureStore__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_history__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__configureStore__ = __webpack_require__(422);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__routes__ = __webpack_require__(32);
 
 
@@ -24559,7 +24562,7 @@ if (true) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\boot-client.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -24579,7 +24582,7 @@ var options = {
   name: ''
 };
 if (true) {
-  var querystring = __webpack_require__(444);
+  var querystring = __webpack_require__(443);
   var overrides = querystring.parse(__resourceQuery.slice(1));
   if (overrides.path) options.path = overrides.path;
   if (overrides.timeout) options.timeout = overrides.timeout;
@@ -24699,11 +24702,11 @@ if (typeof window !== 'undefined') {
 }
 
 function createReporter() {
-  var strip = __webpack_require__(436);
+  var strip = __webpack_require__(435);
 
   var overlay;
   if (typeof document !== 'undefined' && options.overlay) {
-    overlay = __webpack_require__(437);
+    overlay = __webpack_require__(436);
   }
 
   var styles = {
@@ -24756,7 +24759,7 @@ function createReporter() {
   };
 }
 
-var processUpdate = __webpack_require__(438);
+var processUpdate = __webpack_require__(437);
 
 var customHandler;
 var subscribeAllHandler;
@@ -36133,7 +36136,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
     /* istanbul ignore next */
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(435)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(434)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -41386,7 +41389,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var React = __webpack_require__(4);
 var deepForceUpdate = __webpack_require__(401);
-var Redbox = __webpack_require__(431).default;
+var Redbox = __webpack_require__(430).default;
 var Component = React.Component;
 
 var AppContainer = function (_Component) {
@@ -41569,7 +41572,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var React = __webpack_require__(4);
-var createProxy = __webpack_require__(430).default;
+var createProxy = __webpack_require__(429).default;
 var global = __webpack_require__(284);
 
 var ComponentMap = function () {
@@ -41777,7 +41780,7 @@ if (!module.hot || process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_AuthService__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__withAuth__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__withAuth__ = __webpack_require__(421);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Chart__ = __webpack_require__(414);
 var __extends = (this && this.__extends) || (function () {
@@ -41821,7 +41824,7 @@ var App = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__withAuth__["a" /* default */])(App));
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\App.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -41855,7 +41858,8 @@ var AuthPage = (function (_super) {
         var _this = _super.call(this) || this;
         _this.state = {
             fields: {},
-            errors: {}
+            validationErrors: {},
+            error: null
         };
         _this.handleChange = _this.handleChange.bind(_this);
         _this.loginFormSubmit = _this.loginFormSubmit.bind(_this);
@@ -41907,54 +41911,60 @@ var AuthPage = (function (_super) {
             window.location.replace("/");
         }
     };
+    AuthPage.prototype.getError = function () {
+        if (this.state.error != null) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "alert alert-danger" }, this.state.error);
+        }
+    };
     AuthPage.prototype.validateForm = function () {
         var fields = this.state.fields;
-        var errors = {};
+        var validationErrors = {};
         var formIsValid = true;
         if (!fields["username"]) {
             formIsValid = false;
-            errors["username"] = "*Please enter your username.";
+            validationErrors["username"] = "*Please enter your username.";
         }
         if (typeof fields["username"] !== "undefined") {
             if (!fields["username"]) {
                 formIsValid = false;
-                errors["username"] = "*Please enter your username";
+                validationErrors["username"] = "*Please enter your username";
             }
         }
         if (!fields["email"]) {
             formIsValid = false;
-            errors["email"] = "*Please enter your email-ID.";
+            validationErrors["email"] = "*Please enter your email-ID.";
         }
         if (typeof fields["email"] !== "undefined") {
             //regular expression for email validation
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
             if (!pattern.test(fields["email"])) {
                 formIsValid = false;
-                errors["email"] = "*Please enter valid email-ID.";
+                validationErrors["email"] = "*Please enter valid email-ID.";
             }
         }
         if (!fields["password"].match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/)) {
             formIsValid = false;
-            errors["password"] = "*";
+            validationErrors["password"] = "*";
         }
         if (!fields["password"]) {
             formIsValid = false;
-            errors["password"] = "*Please enter your password.";
+            validationErrors["password"] = "*Please enter your password.";
         }
         if (!fields["passwordConfirm"]) {
             formIsValid = false;
-            errors["passwordConfirm"] = "*Please repeat yourpassword.";
+            validationErrors["passwordConfirm"] = "*Please repeat yourpassword.";
         }
         if (fields["passwordConfirm"] !== fields["password"]) {
             formIsValid = false;
-            errors["passwordConfirm"] = "*Passwords do not matches";
+            validationErrors["passwordConfirm"] = "*Passwords do not matches";
         }
         this.setState({
-            errors: errors
+            validationErrors: validationErrors
         });
         return formIsValid;
     };
     AuthPage.prototype.loginFormSubmit = function (e) {
+        var _this = this;
         e.preventDefault();
         this.Auth.login(this.state.email, this.state.password)
             .then(function (response) {
@@ -41963,7 +41973,9 @@ var AuthPage = (function (_super) {
             window.location.reload();
         })
             .catch(function (err) {
-            alert(err);
+            _this.setState({
+                error: err.response.data
+            });
         });
     };
     AuthPage.prototype.render = function () {
@@ -41991,19 +42003,19 @@ var AuthPage = (function (_super) {
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "username", id: "name" }, "Name"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Username goes here...", type: "text", name: "username", value: this.state.fields.username || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.username)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.username)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "email", id: "email" }, "Email"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Email goes here...", type: "text", name: "email", value: this.state.fields.email || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.email)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.email)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "password", id: "pass" }, "Enter your password"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Password goes here...", type: "password", name: "password", value: this.state.fields.password || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.password)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.password)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "passwordConfirm", id: "passConf" }, "Confirm your password"),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Confirm your password", type: "password", name: "passwordConfirm", value: this.state.fields.passwordConfirm || '', onChange: this.handleChange }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.errors.passwordConfirm)),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "errorMsg" }, this.state.validationErrors.passwordConfirm)),
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "submit", className: "btn btn-primary" }, "SUBMIT"))),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("form", { className: "log", onSubmit: this.loginFormSubmit },
@@ -42015,6 +42027,7 @@ var AuthPage = (function (_super) {
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, "Password"),
                                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", placeholder: "Type your password here...", name: "password", type: "password", onChange: this.handleChange })),
+                                            this.getError(),
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "btn btn-primary", value: "SUBMIT", type: "submit" }, "SUBMIT"))))))))));
         }
     };
@@ -42023,7 +42036,7 @@ var AuthPage = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (AuthPage);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthPage.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthPage.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthPage.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\AuthPage.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -42033,10 +42046,9 @@ var AuthPage = (function (_super) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ChartRadioButton__ = __webpack_require__(415);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_TimeReportApiService__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_ActivitiesService__ = __webpack_require__(419);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_TimeConverterService__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_TimeReportApiService__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_ActivitiesService__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_TimeConverterService__ = __webpack_require__(49);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -42051,36 +42063,46 @@ var __extends = (this && this.__extends) || (function () {
 
 
 
-
 var ChangeValueForm = (function (_super) {
     __extends(ChangeValueForm, _super);
     function ChangeValueForm(props) {
         var _this = _super.call(this, props) || this;
-        _this.timeReport = new __WEBPACK_IMPORTED_MODULE_2__services_TimeReportApiService__["a" /* default */]();
+        _this.timeReport = new __WEBPACK_IMPORTED_MODULE_1__services_TimeReportApiService__["a" /* default */]();
         _this.state = {
             reportId: null,
             activities: [],
             date: new Date(),
             minutes: 60,
-            selectedActivityId: -1
+            selectedActivityId: -1,
+            selectedActivityTypeId: -1,
+            error: null
         };
-        _this.ActivitiesService = new __WEBPACK_IMPORTED_MODULE_3__services_ActivitiesService__["a" /* default */]();
-        _this.TimeConverterService = new __WEBPACK_IMPORTED_MODULE_4__services_TimeConverterService__["a" /* default */]();
+        _this.ActivitiesService = new __WEBPACK_IMPORTED_MODULE_2__services_ActivitiesService__["a" /* default */]();
+        _this.TimeConverterService = new __WEBPACK_IMPORTED_MODULE_3__services_TimeConverterService__["a" /* default */]();
         _this.updateRepotrActivity = _this.updateRepotrActivity.bind(_this);
         _this.updateReportDate = _this.updateReportDate.bind(_this);
         _this.updateReportMinutes = _this.updateReportMinutes.bind(_this);
+        _this.updateRepotrActivityType = _this.updateRepotrActivityType.bind(_this);
         _this.onSumbit = _this.onSumbit.bind(_this);
+        _this.onError = _this.onError.bind(_this);
+        _this.getDefaultState = _this.getDefaultState.bind(_this);
         return _this;
     }
     ChangeValueForm.prototype.initializeActivities = function () {
         var _this = this;
         this.ActivitiesService.getAllActivities()
             .then(function (res) {
-            if (_this.state.selectedActivityId == -1)
+            debugger;
+            if (_this.state.selectedActivityId == -1) {
+                var activityTypeId = res.data[0].type.id;
                 var activityId = res.data[0].id;
-            else
+            }
+            else {
+                var activityTypeId = _this.state.selectedActivityTypeId;
                 var activityId = _this.state.selectedActivityId;
+            }
             _this.setState({
+                selectedActivityTypeId: activityTypeId,
                 selectedActivityId: activityId,
                 activities: res.data
             });
@@ -42091,30 +42113,42 @@ var ChangeValueForm = (function (_super) {
     };
     ChangeValueForm.prototype.componentWillReceiveProps = function (props) {
         debugger;
+        if (props.selectedReport === -1) {
+            this.setState(this.getDefaultState(props.selectedDate));
+        }
         if (props.selectedReport != null) {
             var date = this.TimeConverterService.fromServerDate(props.selectedReport.date);
             this.setState({
                 reportId: props.selectedReport.id,
                 date: date,
                 minutes: props.selectedReport.duration,
-                selectedActivityId: props.selectedReport.activityId
+                selectedActivityId: props.selectedReport.activityId,
+                selectedActivityTypeId: props.selectedReport.activity.typeId,
             });
-        }
-        else {
-            this.setState(this.getDefaultState(this.props.selectedDate));
         }
     };
     ChangeValueForm.prototype.getDefaultState = function (date) {
+        var activities = this.state.activities;
         return {
             reportId: null,
             date: date,
             minutes: 60,
-            selectedActivityId: -1
+            selectedActivityId: activities[0].id,
+            selectedActivityTypeId: activities[0].type.id
         };
     };
-    ChangeValueForm.prototype.updateRepotrActivity = function (activityId) {
+    ChangeValueForm.prototype.updateRepotrActivity = function (event) {
         this.setState({
-            selectedActivityId: activityId
+            selectedActivityId: event.target.value
+        });
+    };
+    ChangeValueForm.prototype.updateRepotrActivityType = function (event) {
+        debugger;
+        var newSelectedActivityTypeId = +event.target.value;
+        var newActivityId = this.state.activities.filter(function (a) { return a.typeId === newSelectedActivityTypeId; })[0].id;
+        this.setState({
+            selectedActivityTypeId: newSelectedActivityTypeId,
+            selectedActivityId: newActivityId
         });
     };
     ChangeValueForm.prototype.updateReportDate = function (e) {
@@ -42137,17 +42171,20 @@ var ChangeValueForm = (function (_super) {
         if (this.state.reportId > 0) {
             var reportId = this.state.reportId;
             this.timeReport.updateTimeReport(reportId, date, duration, activityId).then(function (response) {
+                _this.setState({
+                    error: null
+                });
                 _this.props.onSubmit(date);
-            });
+            }, this.onError);
         }
         else {
             this.timeReport.addTimeReport(date, duration, activityId).then(function (response) {
                 _this.props.onSubmit(date);
-            });
+            }, this.onError);
         }
     };
     ChangeValueForm.prototype.getHtmlFormatDate = function (date) {
-        return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+        return date.getFullYear() + '-' + '0' + (date.getMonth() + 1) + '-' + date.getDate();
     };
     ChangeValueForm.prototype.getHeader = function () {
         if (this.state.reportId > 0) {
@@ -42155,6 +42192,16 @@ var ChangeValueForm = (function (_super) {
         }
         else {
             return "Add new report";
+        }
+    };
+    ChangeValueForm.prototype.onError = function (err) {
+        this.setState({
+            error: err.response.data
+        });
+    };
+    ChangeValueForm.prototype.getError = function () {
+        if (this.state.error != null) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "alert alert-danger" }, this.state.error);
         }
     };
     ChangeValueForm.prototype.render = function () {
@@ -42169,10 +42216,18 @@ var ChangeValueForm = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", name: "reportDate", type: "date", value: this.getHtmlFormatDate(this.state.date), onChange: this.updateReportDate })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "reportMinutes" }, "Minutes"),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", name: "reportMinutes", type: "number", value: this.state.minutes, onChange: this.updateReportMinutes, placeholder: "type your value" }))),
-                    this.state.activities.map(function (activity) {
-                        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__ChartRadioButton__["a" /* default */], { key: activity.id, checked: activity.id == _this.state.selectedActivityId, labelName: activity.name, handleChange: _this.updateRepotrActivity, id: activity.id });
-                    })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "form-control", name: "reportMinutes", min: 1, max: 1440, type: "number", value: this.state.minutes, onChange: this.updateReportMinutes, placeholder: "type your value" })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "reportMinutes" }, "Actvity type"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("select", { className: "form-control", value: this.state.selectedActivityTypeId, onChange: this.updateRepotrActivityType }, this.state.activities.map(function (a) { return a.type; }).filter(function (value, index, self) { return self.map(function (t) { return t.id; }).indexOf(value.id) === index; }).map(function (activityType) {
+                                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("option", { value: activityType.id, key: activityType.id }, activityType.name);
+                            }))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", { htmlFor: "reportMinutes" }, "Actvity"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("select", { className: "form-control", value: this.state.selectedActivityId, onChange: this.updateRepotrActivity }, this.state.activities.filter(function (a) { return a.typeId === _this.state.selectedActivityTypeId; }).map(function (a) {
+                                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("option", { value: a.id, key: a.id }, a.name);
+                            }))))),
+                this.getError(),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "form-control btn btn-success", type: "submit" }, "Add"))));
     };
     return ChangeValueForm;
@@ -42180,7 +42235,7 @@ var ChangeValueForm = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (ChangeValueForm);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChangeValueForm.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChangeValueForm.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChangeValueForm.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChangeValueForm.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
@@ -42193,10 +42248,10 @@ var ChangeValueForm = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__ = __webpack_require__(400);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_TimeReportApiService__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_DayChartService__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TimeRoller__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TimeRoller__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_TimeConverterService__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__TimeIntervalOption__ = __webpack_require__(417);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_MonthChartService__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__TimeIntervalOption__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_MonthChartService__ = __webpack_require__(419);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ChangeValueForm__ = __webpack_require__(413);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_jquery__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_jquery__);
@@ -42276,7 +42331,7 @@ var Chart = (function (_super) {
     Chart.prototype.openAddNewWindow = function () {
         if (!this.editWindowIsOpen) {
             this.setState({
-                selectedReport: null
+                selectedReport: -1
             });
         }
         this.toggleForm();
@@ -42295,7 +42350,7 @@ var Chart = (function (_super) {
             .then(function (res) {
             _this.setState({
                 selectedDate: date,
-                chartData: res.data
+                chartData: res.data.sort(function (a, b) { return a.activity.typeId - b.activity.typeId; })
             });
         });
     };
@@ -42360,9 +42415,10 @@ var Chart = (function (_super) {
     };
     Chart.prototype.getChartData = function () {
         var reports = this.ChartService.fillEmpty(this.state.chartData);
+        debugger;
         var chartValues = reports.map(function (dataObject) { return dataObject.duration; });
         var chartLabels = reports.map(function (dataObject) { return dataObject.activity.name; });
-        var chartColors = reports.map(function (dataObject) { return dataObject.activity.colorValue; });
+        var chartColors = reports.map(function (dataObject) { return dataObject.activity.type.colorValue; });
         return {
             labels: chartLabels,
             datasets: [{
@@ -42437,11 +42493,11 @@ var Chart = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "mainPage" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "container" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "row" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-4" }, this.getRoller()),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-4" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" }, this.getRoller()),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "toggle" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { className: "doughnutBarBtn", onClick: this.toggleChart }, "ToggleChart"))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-4" }, this.getTimeIntervalOptions().map(function (option) {
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: "doughnutBarBtn", onClick: this.toggleChart }, "ToggleChart"))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" }, this.getTimeIntervalOptions().map(function (option) {
                         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__TimeIntervalOption__["a" /* default */], { isActive: option == _this.state.selectedTimeInterval, option: option, changeOption: _this.onTimeIntervalChange });
                     }))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "Doughnut" },
@@ -42460,30 +42516,11 @@ var Chart = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (Chart);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Chart.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
 /* 415 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-
-var RadioButton = function (props) {
-    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", null,
-        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: "check", type: "radio", name: "check", checked: props.checked, onChange: function () { return props.handleChange(props.id); } }),
-        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("label", null, props.labelName)));
-};
-/* harmony default export */ __webpack_exports__["a"] = (RadioButton);
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChartRadioButton.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\ChartRadioButton.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
-
-/***/ }),
-/* 416 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42519,11 +42556,11 @@ var Layout = (function (_super) {
 
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\Layout.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 417 */
+/* 416 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42541,11 +42578,11 @@ var TimeIntervalOption = function (props) {
 /* harmony default export */ __webpack_exports__["a"] = (TimeIntervalOption);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeIntervalOption.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeIntervalOption.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeIntervalOption.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeIntervalOption.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 418 */
+/* 417 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42563,11 +42600,11 @@ var TimeRoller = function (props) {
 /* harmony default export */ __webpack_exports__["a"] = (TimeRoller);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeRoller.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeRoller.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeRoller.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\TimeRoller.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 419 */
+/* 418 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42601,11 +42638,11 @@ var ActivitiesService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (ActivitiesService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\ActivitiesService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\ActivitiesService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\ActivitiesService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\ActivitiesService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 420 */
+/* 419 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42660,11 +42697,11 @@ var MonthChartService = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (MonthChartService);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\MonthChartService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\MonthChartService.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\MonthChartService.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\services\\MonthChartService.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 421 */
+/* 420 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42703,11 +42740,11 @@ var Test = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (Test);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\test.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\test.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\test.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\test.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 422 */
+/* 421 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42772,17 +42809,17 @@ function withAuth(AuthComponent) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\components\\withAuth.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 423 */
+/* 422 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = configureStore;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk__ = __webpack_require__(442);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_thunk__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_redux__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(33);
@@ -42813,11 +42850,11 @@ function buildRootReducer(allReducers) {
 }
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\configureStore.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 424 */
+/* 423 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42848,17 +42885,17 @@ var reducer = function (state, action) {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\Counter.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 425 */
+/* 424 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export actionCreators */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reducer; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_domain_task__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_domain_task__ = __webpack_require__(439);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_domain_task___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_domain_task__);
 
 // ----------------
@@ -42909,11 +42946,11 @@ var reducer = function (state, incomingAction) {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "D:\\ProjectOfDolboiob\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\Users\\maksy\\source\\repos\\TimeAnalyzer\\TimeAnalyzer\\ClientApp\\store\\WeatherForecasts.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(5)(module)))
 
 /***/ }),
-/* 426 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43012,7 +43049,7 @@ function bindAutoBindMethodsFromArray(component) {
 }
 
 /***/ }),
-/* 427 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43032,15 +43069,15 @@ var _find = __webpack_require__(82);
 
 var _find2 = _interopRequireDefault(_find);
 
-var _createPrototypeProxy = __webpack_require__(428);
+var _createPrototypeProxy = __webpack_require__(427);
 
 var _createPrototypeProxy2 = _interopRequireDefault(_createPrototypeProxy);
 
-var _bindAutoBindMethods = __webpack_require__(426);
+var _bindAutoBindMethods = __webpack_require__(425);
 
 var _bindAutoBindMethods2 = _interopRequireDefault(_bindAutoBindMethods);
 
-var _deleteUnknownAutoBindMethods = __webpack_require__(429);
+var _deleteUnknownAutoBindMethods = __webpack_require__(428);
 
 var _deleteUnknownAutoBindMethods2 = _interopRequireDefault(_deleteUnknownAutoBindMethods);
 
@@ -43308,7 +43345,7 @@ function createClassProxy(Component) {
 }
 
 /***/ }),
-/* 428 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43521,7 +43558,7 @@ function createPrototypeProxy() {
 };
 
 /***/ }),
-/* 429 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43610,7 +43647,7 @@ function deleteUnknownAutoBindMethods(component) {
 }
 
 /***/ }),
-/* 430 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43624,7 +43661,7 @@ var _supportsProtoAssignment = __webpack_require__(212);
 
 var _supportsProtoAssignment2 = _interopRequireDefault(_supportsProtoAssignment);
 
-var _createClassProxy = __webpack_require__(427);
+var _createClassProxy = __webpack_require__(426);
 
 var _createClassProxy2 = _interopRequireDefault(_createClassProxy);
 
@@ -43637,7 +43674,7 @@ if (!(0, _supportsProtoAssignment2.default)()) {
 exports.default = _createClassProxy2.default;
 
 /***/ }),
-/* 431 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43666,7 +43703,7 @@ var _reactDom = __webpack_require__(213);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _style = __webpack_require__(433);
+var _style = __webpack_require__(432);
 
 var _style2 = _interopRequireDefault(_style);
 
@@ -43674,13 +43711,13 @@ var _errorStackParser = __webpack_require__(282);
 
 var _errorStackParser2 = _interopRequireDefault(_errorStackParser);
 
-var _objectAssign = __webpack_require__(445);
+var _objectAssign = __webpack_require__(444);
 
 var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-var _lib = __webpack_require__(432);
+var _lib = __webpack_require__(431);
 
-var _sourcemappedStacktrace = __webpack_require__(434);
+var _sourcemappedStacktrace = __webpack_require__(433);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44236,7 +44273,7 @@ exports.__RewireAPI__ = _RewireAPI__;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-/* 432 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44529,7 +44566,7 @@ exports.default = _RewireAPI__;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-/* 433 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44579,7 +44616,7 @@ var _DefaultExportValue = {
 exports.default = _DefaultExportValue;
 
 /***/ }),
-/* 434 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -46977,7 +47014,7 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 435 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
@@ -47093,7 +47130,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 436 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47106,7 +47143,7 @@ module.exports = function (str) {
 
 
 /***/ }),
-/* 437 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*eslint-env browser*/
@@ -47191,7 +47228,7 @@ function problemType (type) {
 
 
 /***/ }),
-/* 438 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -47329,55 +47366,55 @@ module.exports = function(hash, moduleMap, options) {
 
 
 /***/ }),
-/* 439 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(137);
 
 /***/ }),
-/* 440 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(138);
 
 /***/ }),
-/* 441 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(141);
 
 /***/ }),
-/* 442 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(143);
 
 /***/ }),
-/* 443 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(146);
 
 /***/ }),
-/* 444 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(202);
 
 /***/ }),
-/* 445 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(3);
 
 /***/ }),
-/* 446 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(6))(74);
 
 /***/ }),
-/* 447 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(217);

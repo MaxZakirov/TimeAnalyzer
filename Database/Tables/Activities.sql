@@ -2,6 +2,7 @@
 (
 	[Id] INT NOT NULL IDENTITY PRIMARY KEY,
 	[Name] NVARCHAR(50) NOT NULL,
-	[IconPath] NVARCHAR(50) NULL, 
-    [ColorValue] NCHAR(7) NULL DEFAULT 'E5F50B'
+    [TypeId] INT NOT NULL,
+	CONSTRAINT FK_Activities FOREIGN KEY ([TypeId])
+	REFERENCES ActivityTypes(Id)
 )
