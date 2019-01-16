@@ -41,7 +41,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
 
         public void Update(Activity entity)
         {
-            string query = $"UPDATE ActivityTypes SET Name=@name, ActivityTypeId=@typeId WHERE Id=@id";
+            string query = $"UPDATE Activities SET Name=@name, TypeId=@typeId WHERE Id=@id";
 
             var dbArgs = new DynamicParameters();
             dbArgs.Add("id", entity.Id);

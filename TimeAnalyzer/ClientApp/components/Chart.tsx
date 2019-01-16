@@ -175,7 +175,6 @@ export default class Chart extends React.Component<any, any> {
     getChartData(): any {
         var reports = this.ChartService.fillEmpty(this.state.chartData);
 
-        debugger;
         var chartValues = reports.map((dataObject: any) => dataObject.duration);
         var chartLabels = reports.map((dataObject: any) => dataObject.activity.name);
         var chartColors = reports.map((dataObject: any) => dataObject.activity.type.colorValue);

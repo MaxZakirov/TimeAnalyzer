@@ -7,7 +7,8 @@ export default class TableActivityTypes extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            data: []
+            data: [],
+            activities: []
         }
         this.service = new ActivitiesService();
     }
@@ -17,23 +18,31 @@ export default class TableActivityTypes extends React.Component<any, any>{
         this.service.getAllActivityTypes()
             .then((res: any) => {
                 this.setState({
-                    data: res.data
+                    activities: res.data
                 });
             });
 
     }
 
+    deleteActivityType(activityType: any) {
+        this.service.deleteActivityType(activityType)
+            .then((res: any) => {
+                this.setState({
+                    activities: this.state.activities.filter((at: any) => at.id !== activityType.id)
+                });
+            });
+    }
+
     render() {
-        const { data } = this.state
         return (
-            <div>
+            <div style={{border: "1px solid #eee", marginTop: "1em", paddingBottom: "1em"}}>
                 <label className="tableLabels">Activity Types</label>
-                <div className="scrolltable">
-                    <table className='table table-bordered table-striped'>
+                <div className="scrolltable style-scroll">
+                    <table className='table '>
 
                         <thead>
                             <tr>
-                                <th className="col-md-6">Name</th>
+                                <th className="col-md-3">Name</th>
                                 <th className="col-md-3">Importance factor</th>
                                 <th className="col-md-3">Type Color</th>
                             </tr>
@@ -42,12 +51,17 @@ export default class TableActivityTypes extends React.Component<any, any>{
                         <tbody>
                             {
 
-                                data.map((item: any) => {
+                                this.state.activities.map((item: any) => {
                                     return (
                                         <tr key={item._id}>
-                                            <td className="col-md-6">{item.name}</td>
+                                            <td className="col-md-3">{item.name}</td>
                                             <td className="col-md-3">{item.importanceFactor}</td>
                                             <td className="col-md-3" style={{ background: item.colorValue }}>{item.colorValue}</td>
+                                            <td className="col-md-3" style={{background: "none"}}>
+                                                <button className="deleteButton" onClick={() => this.deleteActivityType(item)}>
+                                                    delete
+                                                </button>
+                                            </td>
                                         </tr>
                                     )
                                 })

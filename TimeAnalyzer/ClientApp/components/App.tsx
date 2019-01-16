@@ -30,10 +30,7 @@ class App extends Component<any, any>{
                     </div>
                     <Chart />                 
                 </div>
-            )
-
-        
-        
+            )        
     }
 }
 

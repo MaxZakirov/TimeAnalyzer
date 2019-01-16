@@ -44,7 +44,7 @@ export default class ChangeValueForm extends React.Component<any, any>{
     initializeActivities() {
         this.ActivitiesService.getAllActivities()
             .then((res: any) => {
-                debugger;
+                
                 if (this.state.selectedActivityId == -1) {
                     var activityTypeId = res.data[0].type.id;
                     var activityId = res.data[0].id;
@@ -67,7 +67,7 @@ export default class ChangeValueForm extends React.Component<any, any>{
     }
 
     componentWillReceiveProps(props: any) {
-        debugger;
+        
         if(props.selectedReport === -1)
         {
             this.setState(this.getDefaultState(props.selectedDate));
@@ -102,7 +102,7 @@ export default class ChangeValueForm extends React.Component<any, any>{
     }
 
     updateRepotrActivityType(event: any) {
-        debugger;
+        
         var newSelectedActivityTypeId = +event.target.value; 
         var newActivityId = this.state.activities.filter((a: any) => a.typeId === newSelectedActivityTypeId)[0].id;
         this.setState({
