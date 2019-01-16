@@ -533,42 +533,95 @@ input:focus {
     }
 }
 .tables{
-    background: #eee;
+    background: #1f2933;
+    width: 80em;
+    margin: 0 auto;
+    margin-top: 2em;
+    border-radius: 2%;
     padding: 1em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
 }
 .tableLabels{
     display: block;
     width: 100%;
     text-align: center;
     margin-top: 1em;
-    color: #1f2933;
+    color: #eee;
 }
 .table{
-    width: 40em;
+    width: 73em;
+    margin: 0 auto;
     height: 100px;
     overflow: scroll;
 }
 .table tr{
-    background: #2a3846;
     height: 20px;
 }
 .table td{
-    background: #2a38468e;
+    background: #2a3846;
+}
+
+.addButton{
+    display: block;
+    width: 20em;
+    height: 2em;
+    margin: 0 auto;
+    margin-top: 1em;
+    background: #358f44;
+    border: 0px;
+    transition: 0.2s;
+}
+.editButton{
+    width: 100%;
+    height: 100%;
+    background: #1565C0;
+    border: 0px;
+    transition: 0.2s;
 }
 .deleteButton{
     width: 100%;
     height: 100%;
-    background: #8f3535;
+    background: #E53935;
     border: 0px;
+    transition: 0.2s;
 }
 .deleteButton:hover{
     background: #8f3535dc;
 }
+.tableSection{
+    position: relative;
+    height: 52.1em;
+}
+.btnTable{
+    background: transparent;
+}
+.style-scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #1f2933;
+}
 
-.scrolltable { width: 41.1em; height: 15em; overflow: auto; }
+.style-scroll::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #1f2933;
+}
+
+.style-scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #8C9EFF;
+}
+
+.modalEditButton{
+    position: fixed;
+}
+.modalBack{
+    background: #2a3846;
+}
+
+
+.scrolltable { width: 76.7em; height: 13em; overflow: auto;  }
 .scrolltable th div { position: absolute; margin-top: -20px; }
 /*# sourceMappingURL=site.css.map*/

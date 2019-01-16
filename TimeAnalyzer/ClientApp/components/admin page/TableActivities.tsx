@@ -1,5 +1,9 @@
 import * as React from 'react';
 import ActivitiesService from '../services/ActivitiesService';
+import * as $ from 'jquery'
+import ModalComponent from './EditModal';
+import AddModalComponent from './AddModal';
+
 
 export default class TableActivities extends React.Component<any, any>{
 
@@ -7,7 +11,8 @@ export default class TableActivities extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            data: []
+            data: [],
+            activities: []
         }
         this.service = new ActivitiesService();
     }
@@ -16,35 +21,60 @@ export default class TableActivities extends React.Component<any, any>{
         this.service.getAllActivities()
             .then((res: any) => {
                 this.setState({
-                    data: res.data
+                    activities: res.data
                 });
             });
+    }
 
+    initializeTable() {
+        this.service.getAllActivities()
+            .then((res: any) => {
+                this.setState({
+                    activities: res.data
+                });
+            });
+    }
+
+    deleteActivity(activity: any) {
+        this.service.deleteActivity(activity)
+            .then((res: any) => {
+                this.setState({
+                    activities: this.state.activities.filter((a: any) => a.id !== activity.id)
+                });
+            });
     }
 
     render() {
-        const { data } = this.state
+
         return (
-            <div>
+            <div style={{border: "1px solid #eee", marginTop: "1em", paddingBottom: "1em"}}>
+
                 <label className="tableLabels">Activities</label>
-                <div className="scrolltable">
-                    <table className='table table-bordered table-striped'>
+                <div className="scrolltable style-scroll">
+                    <table className='table'>
 
                         <thead>
                             <tr>
-                                <th className="col-md-6">Name</th>
-                                <th className="col-md-6">Activity type</th>
+                                <th className="col-md-4">Name</th>
+                                <th className="col-md-4">Activity type</th>
                             </tr>
 
                         </thead>
                         <tbody>
                             {
-
-                                data.map((item: any) => {
+                                this.state.activities.map((item: any) => {
                                     return (
                                         <tr key={item._id}>
-                                            <td className="col-md-6">{item.name}</td>
-                                            <td className="col-md-6">{item.type.name}</td>
+                                            <td className="col-md-3">{item.name}</td>
+                                            <td className="col-md-3">{item.type.name}</td>
+                                            <td className="col-md-3 btnTable" style={{ background: "none" }}>
+                                                <ModalComponent item={item} initializeTable={this.initializeTable()} />
+                                            </td>
+                                            <td className="col-md-3 btnTable" style={{ background: "none" }}>
+                                                <button className="deleteButton" onClick={() => this.deleteActivity(item)}>
+                                                    Delete
+                                                </button>
+                                            </td>
                                         </tr>
                                     )
                                 })
@@ -52,6 +82,9 @@ export default class TableActivities extends React.Component<any, any>{
                         </tbody>
                     </table>
                 </div>
+                <td className="col-md-3 addButton">
+                        <AddModalComponent initializeTable={this.initializeTable()}/>
+                </td>
             </div>
 
         )
