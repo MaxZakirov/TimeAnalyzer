@@ -98,6 +98,8 @@ namespace TimeAnalyzer
             services.AddTransient<ITimeReportService, TimeReportService>();
             services.AddTransient<ITimeReportServiceFactory, TimeReportServiceFactory>();
             services.AddTransient<IActivityTypeRepository, ActivityTypeRepository>();
+            services.AddTransient<ISuggestionsService, SuggestionsService>();
+            services.AddTransient<IReferenceLoader, ReferenceLoader>();
         }
 
         private void ConfigureJWTAuthentication(IServiceCollection services, byte[] key)

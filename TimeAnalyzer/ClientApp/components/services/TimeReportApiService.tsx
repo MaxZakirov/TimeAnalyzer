@@ -3,15 +3,15 @@ import AuthorizeHttpRequestService from './AuthorizeHttpRequestService';
 import TimeConverterService from './TimeConverterService';
 import axios from "axios"
 
-export default class TimeReportApiService extends React.Component<any, any>{
+export default class TimeReportsApiService extends React.Component<any, any>{
 
     authorizedApi: AuthorizeHttpRequestService;
-    timeReportApiService: TimeConverterService;
+    timeConverterService: TimeConverterService;
 
     constructor() {
         super();
         this.authorizedApi = new AuthorizeHttpRequestService();
-        this.timeReportApiService = new TimeConverterService();
+        this.timeConverterService = new TimeConverterService();
     }
 
     getAllUserTimeReports() {
@@ -22,19 +22,18 @@ export default class TimeReportApiService extends React.Component<any, any>{
     }
 
     getDayUserTimeReports(date: any) {
-        var jsonDate = this.timeReportApiService.toServerFormatDate(date);
+        var jsonDate = this.timeConverterService.toServerFormatDate(date);
         return this.authorizedApi.authorizedGet('/api/TimeReport/GetDayTimeReports', [jsonDate]);
     }
 
     getUserTimeReportsInInterval(startDate: any, endDate: any) {
-        var jsonStartDate = this.timeReportApiService.toServerFormatDate(startDate);
-        var jsonEndDate = this.timeReportApiService.toServerFormatDate(endDate);
+        var jsonStartDate = this.timeConverterService.toServerFormatDate(startDate);
+        var jsonEndDate = this.timeConverterService.toServerFormatDate(endDate);
         return this.authorizedApi.authorizedGet('/api/TimeReport/GetTimeReportsInInterval', [jsonStartDate, jsonEndDate]);
     }
 
     addTimeReport(jsDate: any, Duration: any, ActivityId: any) {
-        debugger;
-        var date = this.timeReportApiService.toServerFormatDate(jsDate);
+        var date = this.timeConverterService.toServerFormatDate(jsDate);
         return this.authorizedApi.authorizedPost(`/api/TimeReport/AddTimeReport`, {
             date,
             Duration,
@@ -43,7 +42,7 @@ export default class TimeReportApiService extends React.Component<any, any>{
     }
 
     updateTimeReport(id: any, jsDate: any, Duration: any, ActivityId: any) {
-        var date = this.timeReportApiService.toServerFormatDate(jsDate);
+        var date = this.timeConverterService.toServerFormatDate(jsDate);
         return this.authorizedApi.authorizedPost(`/api/TimeReport/UpdateTimeReport`, {
             id,
             date,

@@ -24,13 +24,6 @@ namespace TimeAnalyzer.Controllers
             timeReportServiceInsatller = () => timeReportServiceFactory.CreateTimeReportService(HttpContext.User.Identity.Name);
         }
 
-        [HttpGet()]
-        public async Task<IActionResult> GetAllTimeReports()
-        {
-            IEnumerable<DayTimeReportViewModel> reports = await GetReportService().GetAllUserTimeReports();
-            return Ok(reports);
-        }
-
         [HttpGet("{date}")]
         public async Task<IActionResult> GetDayTimeReports(string date)
         {

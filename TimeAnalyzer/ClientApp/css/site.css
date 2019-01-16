@@ -27,6 +27,10 @@ body{
     background: #1f2933;
 }
 
+.suggestionsBlock {
+    margin-top: 150px;
+}
+
 h1 {
     text-align: center;
 }
@@ -494,12 +498,15 @@ input:focus {
 }
 
 .toggle{
+    margin-top: 50px;
     width: 100%;
     height: 100%;
     position: relative;
+    margin-bottom: 50px;
 }
 
 .doughnutBarBtn{
+    height: 40px;
     width: 80%;
     float: right;
     text-align: center;

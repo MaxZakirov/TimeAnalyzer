@@ -26,6 +26,6 @@ namespace TimeAnalyzer.Domain.Models.Users
 
         public string Token { get; set; }
 
-        public ICollection<TimeReport> TimeReports { get; set; }
+        public IEnumerable<TimeReport> TimeReports { get; set; }
     }
 }

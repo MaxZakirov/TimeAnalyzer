@@ -20,6 +20,7 @@ namespace TimeAnalyzer.Core.TimeReports
         private readonly IActivityRepository activityRepository;
         private readonly IUserRepository userRepository;
         private readonly IActivityTypeRepository activityTypeRepository;
+        private readonly IReferenceLoader referenceLoader;
         private int userId;
         private string userName;
 
@@ -28,14 +29,15 @@ namespace TimeAnalyzer.Core.TimeReports
             ITimeReportRepository timeReportRepository,
             IActivityRepository activityRepository,
             IUserRepository userRepository,
-            IActivityTypeRepository activityTypeRepository
-            )
+            IActivityTypeRepository activityTypeRepository,
+            IReferenceLoader referenceLoader)
         {
             this.unitOfWork = unitOfWork;
             this.timeReportRepository = timeReportRepository;
             this.activityRepository = activityRepository;
             this.userRepository = userRepository;
             this.activityTypeRepository = activityTypeRepository;
+            this.referenceLoader = referenceLoader;
             userId = UserIdIsUnknownValue;
         }
 
@@ -53,7 +55,7 @@ namespace TimeAnalyzer.Core.TimeReports
         {
             TimeReport timeReport = viewModel.ToTimeReport(await GetUserId());
             timeReport.Id = GlobalConstants.NullId;
-            CreateTimeReportUpdateStrategy timeReportUpdateStrategy = (CreateTimeReportUpdateStrategy)(await this.GetTimeReportUpdateStrategy(timeReport));
+            CreateTimeReportUpdateStrategy timeReportUpdateStrategy = (CreateTimeReportUpdateStrategy)(await GetTimeReportUpdateStrategy(timeReport));
             timeReportUpdateStrategy.Update();
             return timeReportUpdateStrategy.NewTimeReportId;
         }
@@ -61,15 +63,15 @@ namespace TimeAnalyzer.Core.TimeReports
         public async Task<IEnumerable<DayTimeReportViewModel>> GetAllUserTimeReports()
         {
             IEnumerable<TimeReport> timeReports = await timeReportRepository.GetAllUserReports(await GetUserId());
-        
-    return timeReports.Select(tr => tr.ToViewTimeReport());
+
+            return timeReports.Select(tr => tr.ToViewTimeReport());
         }
 
         public async Task<IEnumerable<DayTimeReportViewModel>> GetDayTimeReportAsync(string stringDate)
         {
             DateTime date = TimeConverter.ToDateTime(stringDate);
             var timeReports = await timeReportRepository.GetDayUserReports(await GetUserId(), date);
-            await LoadActivitiesToTimeReports(timeReports);
+            await referenceLoader.LoadForTimeReports(timeReports);
             return timeReports.AsParallel().Select(tr => tr.ToViewTimeReport());
         }
 
@@ -77,20 +79,25 @@ namespace TimeAnalyzer.Core.TimeReports
         {
             DateTime endDate = TimeConverter.ToDateTime(stringEndDate);
             DateTime startDate = TimeConverter.ToDateTime(stringStartDate);
-            if(endDate< startDate)
+            return await GetTimeReportsInInterval(startDate, endDate);
+        }
+
+        public async Task<TimeReportsIntervalViewModel> GetTimeReportsInInterval(DateTime startDate, DateTime endDate)
+        {
+            if (endDate < startDate)
             {
                 throw new IncorrectInputDateException("Start date bigger then end date");
             }
 
             var timeReports = await timeReportRepository.GetUserReportsInInterval(await GetUserId(), startDate, endDate);
-            await LoadActivitiesToTimeReports(timeReports);
-            return new TimeReportsIntervalViewModel(this.AgregateTimeReports(timeReports), stringStartDate, stringEndDate);
+            await referenceLoader.LoadForTimeReports(timeReports);
+            return new TimeReportsIntervalViewModel(AgregateTimeReports(timeReports), TimeConverter.ToJSONString(startDate), TimeConverter.ToJSONString(endDate));
         }
 
         public async Task Update(DayTimeReportViewModel viewModel)
         {
             TimeReport newTimeReport = viewModel.ToTimeReport(await GetUserId());
-            TimeReportUpdateStrategy timeReportUpdateStrategy = await this.GetTimeReportUpdateStrategy(newTimeReport);
+            TimeReportUpdateStrategy timeReportUpdateStrategy = await GetTimeReportUpdateStrategy(newTimeReport);
             timeReportUpdateStrategy.Update();
         }
 
@@ -103,7 +110,7 @@ namespace TimeAnalyzer.Core.TimeReports
 
             if (newTimeReport.Id == GlobalConstants.NullId)
             {
-                if(sameActivityTimeReport != null)
+                if (sameActivityTimeReport != null)
                 {
                     return new CreateExistingActivityUpdateTimeReportStrtegy(timeReportRepository, dateTimeRepotrs, newTimeReport, sameActivityTimeReport);
                 }
@@ -140,32 +147,16 @@ namespace TimeAnalyzer.Core.TimeReports
                 var check = aggregatedTimeReports.ToArray();
                 return check;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
-            }
-        }
-
-        private async Task LoadActivitiesToTimeReports(IEnumerable<TimeReport> timeReports)
-        {
-            var activities = await activityRepository.GetAll();
-            var activitiesTypes = await activityTypeRepository.GetAll();
-
-            foreach(var a in activities)
-            {
-                a.Type = activitiesTypes.First(t => t.Id == a.TypeId);
-            }
-
-            foreach (var tr in timeReports)
-            {
-                tr.Activity = activities.First(a => a.Id == tr.ActivityId);
             }
         }
 
         public async Task<int> AddTimeReportFromIOT(IOTViewModel viewModel)
         {
             TimeReport timeReport = viewModel.ToTimeReport(viewModel.UserId);
-            CreateTimeReportUpdateStrategy timeReportUpdateStrategy = (CreateTimeReportUpdateStrategy)(await this.GetTimeReportUpdateStrategy(timeReport));
+            CreateTimeReportUpdateStrategy timeReportUpdateStrategy = (CreateTimeReportUpdateStrategy)(await GetTimeReportUpdateStrategy(timeReport));
             timeReportUpdateStrategy.Update();
             return timeReportUpdateStrategy.NewTimeReportId;
         }

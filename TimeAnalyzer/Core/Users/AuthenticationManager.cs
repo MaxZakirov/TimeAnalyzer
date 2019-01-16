@@ -1,21 +1,19 @@
-﻿using TimeAnalyzer.Domain.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using TimeAnalyzer.Core.Interfaces;
-using TimeAnalyzer.Models;
-using System.Security.Claims;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using TimeAnalyzer.Domain.Models.Users;
-using System;
-using TimeAnalyzer.Core.Static;
-using TimeAnalyzer.Core.Exceptions;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using TimeAnalyzer.Core.Exceptions;
+using TimeAnalyzer.Core.Interfaces;
+using TimeAnalyzer.Core.Static;
+using TimeAnalyzer.Domain.Interfaces;
+using TimeAnalyzer.Domain.Models.Users;
+using TimeAnalyzer.Models;
 
 namespace TimeAnalyzer.Core.Users
 {
@@ -35,7 +33,7 @@ namespace TimeAnalyzer.Core.Users
 
         public async Task<User> Authenticate(UserLoginModel userLoginInfo)
         {
-            User user = await this.GetApprovedUser(userLoginInfo);
+            User user = await GetApprovedUser(userLoginInfo);
 
             if (user == null)
             {
@@ -84,9 +82,9 @@ namespace TimeAnalyzer.Core.Users
 
         private async Task<User> GetApprovedUser(UserLoginModel userLoginInfo)
         {
-            User user = await this.userRepository.GetByEmail(userLoginInfo.Email);
+            User user = await userRepository.GetByEmail(userLoginInfo.Email);
 
-            if (user != null && this.UserPasswordIsValid(user, userLoginInfo))
+            if (user != null && UserPasswordIsValid(user, userLoginInfo))
             {
                 return user;
             }

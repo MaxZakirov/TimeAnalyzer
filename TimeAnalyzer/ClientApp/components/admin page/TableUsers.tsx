@@ -23,7 +23,6 @@ export default class TableUsers extends React.Component<any, any>{
     }
 
     deleteUser(user: any) {
-        debugger;
         this.userService.deleteUser(user)
             .then((res: any) => {
                 this.setState({

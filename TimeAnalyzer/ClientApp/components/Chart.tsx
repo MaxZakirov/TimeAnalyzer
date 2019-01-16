@@ -8,6 +8,7 @@ import TimeConverterService from "./services/TimeConverterService";
 import TimeIntervalOption from "./TimeIntervalOption";
 import MonthChartService from "./services/MonthChartService";
 import ChangeValueForm from './ChangeValueForm';
+import Suggestions from './Suggestions';
 import * as $ from 'jquery';
 
 export default class Chart extends React.Component<any, any> {
@@ -175,7 +176,6 @@ export default class Chart extends React.Component<any, any> {
     getChartData(): any {
         var reports = this.ChartService.fillEmpty(this.state.chartData);
 
-        debugger;
         var chartValues = reports.map((dataObject: any) => dataObject.duration);
         var chartLabels = reports.map((dataObject: any) => dataObject.activity.name);
         var chartColors = reports.map((dataObject: any) => dataObject.activity.type.colorValue);
@@ -270,31 +270,42 @@ export default class Chart extends React.Component<any, any> {
             <div className="mainPage">
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-4">
-                            {this.getRoller()}
+                        <div className="col-sm-9">
+                            <div className="row">
+                                <div className="col-sm-3">
+                                    {this.getRoller()}
+                                </div>
+                                <div className="col-sm-5">
+
+                                </div>
+                                <div className="col-sm-4">
+                                    {this.getTimeIntervalOptions().map((option: any) =>
+                                        <TimeIntervalOption
+                                            isActive={option == this.state.selectedTimeInterval}
+                                            option={option}
+                                            changeOption={this.onTimeIntervalChange}
+                                        />
+                                    )}
+                                </div>
+                                <div className="col-sm-4">
+
+                                </div>
+                            </div>
+                            <div className="Doughnut">
+                                <Doughnut
+                                    data={this.getChartData()}
+                                    options={this.getChartOptions()}
+                                />
+                            </div>
                         </div>
-                        <div className="col-sm-4">
+                        <div className="col-sm-3">
                             <div className="toggle">
                                 <button className="doughnutBarBtn" onClick={this.toggleChart}>
                                     ToggleChart
-                            </button>
+                                </button>
                             </div>
+                            <Suggestions />
                         </div>
-                        <div className="col-sm-4">
-                            {this.getTimeIntervalOptions().map((option: any) =>
-                                <TimeIntervalOption
-                                    isActive={option == this.state.selectedTimeInterval}
-                                    option={option}
-                                    changeOption={this.onTimeIntervalChange}
-                                />
-                            )}
-                        </div>
-                    </div>
-                    <div className="Doughnut">
-                        <Doughnut
-                            data={this.getChartData()}
-                            options={this.getChartOptions()}
-                        />
                     </div>
                     <div className="Bar">
                         <Bar
