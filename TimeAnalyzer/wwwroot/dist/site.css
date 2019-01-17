@@ -532,6 +532,12 @@ input:focus {
         width: 93%;
     }
 }
+
+.TableAddBtn {
+    margin-top: 15px;
+    right: 0px;
+}
+
 .tables{
     background: #1f2933;
     width: 80em;

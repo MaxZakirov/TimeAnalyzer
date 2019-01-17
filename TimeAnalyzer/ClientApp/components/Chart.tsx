@@ -198,13 +198,13 @@ export default class Chart extends React.Component<any, any> {
         switch (this.state.selectedTimeInterval) {
             case 'DAY':
                 return <TimeRoller
-                    dateString={this.getDatePresentationView()}
+                    dateString={this.TimeConverterService.getDatePresentationView(this.state.selectedDate)}
                     rollBack={this.rollBackDate}
                     rollForward={this.rollForwardDate}
                 />
             case 'MONTH':
                 return <TimeRoller
-                    dateString={this.getMonthPresentationView()}
+                    dateString={this.TimeConverterService.getMonthPresentationView(this.state.monthCounter)}
                     rollBack={this.rollBackMonth}
                     rollForward={this.rollForwardMonth}
                 />;
@@ -304,7 +304,8 @@ export default class Chart extends React.Component<any, any> {
                                     ToggleChart
                                 </button>
                             </div>
-                            <Suggestions />
+                            <Suggestions 
+                                selectedDate={this.state.selectedDate}/>
                         </div>
                     </div>
                     <div className="Bar">

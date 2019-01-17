@@ -23,7 +23,7 @@ namespace TimeAnalyzer.Persistence.DapperRepositories
         {
             try
             {
-                string query = $"INSERT INTO Activities(Name,ActivityTypeId) " +
+                string query = $"INSERT INTO Activities(Name,TypeId) " +
                     $"VALUES (@name, @typeId); SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 var dbArgs = new DynamicParameters();

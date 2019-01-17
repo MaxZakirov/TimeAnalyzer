@@ -53,15 +53,10 @@ export default class TableActivityTypes extends React.Component<any, any>{
 
                                 this.state.activities.map((item: any) => {
                                     return (
-                                        <tr key={item._id}>
+                                        <tr key={item.id}>
                                             <td className="col-md-3">{item.name}</td>
                                             <td className="col-md-3">{item.importanceFactor}</td>
                                             <td className="col-md-3" style={{ background: item.colorValue }}>{item.colorValue}</td>
-                                            <td className="col-md-3" style={{background: "none"}}>
-                                                <button className="deleteButton" onClick={() => this.deleteActivityType(item)}>
-                                                    delete
-                                                </button>
-                                            </td>
                                         </tr>
                                     )
                                 })

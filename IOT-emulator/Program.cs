@@ -4,17 +4,17 @@ namespace IOT_emulator
 {
     class Program
     {
-        static int activityId = 0;
+        static int activityId = 78;
         static int duration = 560;
 
         static void Main(string[] args)
         {
-            OnEventHappened(5);
+            OnEventHappened(1, 100);
         }
 
-        public static void OnEventHappened(int UserId)
+        public static void OnEventHappened(int UserId, int duration)
         {
-            string url = buildUrl(5,activityId, duration);
+            string url = buildUrl(UserId, activityId, duration);
             HttpPost(url,String.Empty);
             Console.WriteLine("Okey");
             Console.ReadLine();

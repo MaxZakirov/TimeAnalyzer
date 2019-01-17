@@ -17,20 +17,21 @@ class App extends Component<any, any>{
 
     public render() {
 
-            return (
-                <div className="App">
-                    <div className="topbar">
-                        <div className="navbarBrand">
-                            <Link to="/" style={{color: "#eee", textDecoration: "none"}}>TimeAnalyzer</Link>
+        return (
+            <div className="App">
+                <div className="topbar">
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <h2><Link to="/" style={{ color: "#eee", textDecoration: "none" }}>TimeAnalyzer</Link></h2>
                         </div>
-                        <div className="getOutBtn">   
-                        <Link to="/login" onClick={()=>Auth.logout()} className="getOut">Get Out</Link>
+                        <div className="getOutBtn col-sm-4">
+                            <Link to="/login" onClick={() => Auth.logout()} className="getOut">Get Out</Link>
                         </div>
-                          
                     </div>
-                    <Chart />                 
                 </div>
-            )        
+                <Chart />
+            </div>
+        )
     }
 }
 

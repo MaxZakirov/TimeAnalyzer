@@ -13,6 +13,7 @@ export default class ActivitiesService extends React.Component<any, any>{
     }
 
     getAllActivities() {
+        debugger;
         return this.authorizedApi.authorizedGet('/api/Activity/GetAllActivities', null);
     }
 
@@ -32,15 +33,16 @@ export default class ActivitiesService extends React.Component<any, any>{
                 return Promise.resolve(response);
             });
     }
-    editActivity(name:any){
-        return this.authorizedApi.authorizedPost('/api/Activity/Update', name)
+
+    editActivity(activity:any){
+        return this.authorizedApi.authorizedPost('/api/Activity/Update', activity)
             .then((response) => {
                 return Promise.resolve(response);
             });
     }
-    addActivity(name:any, typeId:any){
-        
-        return this.authorizedApi.authorizedPost('/api/Activity/Create', {name,typeId})
+
+    addActivity(activity:any){
+        return this.authorizedApi.authorizedPost('/api/Activity/Create', activity)
             .then((response) => {
                 return Promise.resolve(response);
             });

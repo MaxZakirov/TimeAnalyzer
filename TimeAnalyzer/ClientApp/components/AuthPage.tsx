@@ -2,10 +2,13 @@ import * as React from 'react';
 import AuthService from './services/AuthService';
 import { Route, Redirect, Router, Switch } from 'react-router-dom';
 import * as $ from 'jquery';
+import Localizer from './services/Localizer';
 
 
 export default class AuthPage extends React.Component<any, any>{
     Auth: AuthService;
+    Localizer: Localizer;
+
     constructor() {
         super();
         this.state = {
@@ -17,6 +20,7 @@ export default class AuthPage extends React.Component<any, any>{
         this.loginFormSubmit = this.loginFormSubmit.bind(this);
         this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
         this.Auth = new AuthService();
+        this.Localizer = new Localizer();
     }
 
     handleChange(e: any) {
@@ -158,62 +162,59 @@ export default class AuthPage extends React.Component<any, any>{
                             <div className="leftSide">
                                 <div className="leftSideContent">
                                     <h1>T</h1>
-                                    <h2>Hey you!</h2>
-                                    <h6>You feel you waste your time?</h6>
-                                    <p>However after loading the components the body style is not present in the page.It shows up in the console though.
-                                         Is there a way to display a background image in the main page whilst having
-                                        the CSS rule in the CSS file that is loaded by webpack?
-                                        Is this because reactjs does something I am not aware off?</p>
+                                    <h2>{this.Localizer.getString("Hello")}</h2>
+                                    <h6>{this.Localizer.getString("LoginQ")}</h6>
+                                    <p>{this.Localizer.getString("LoginText")}</p>
                                 </div>
                             </div>
                             <div className="rightSide">
                                 <div className="rightSideContent">
                                     <div className="inCard">
                                         <div className="loginReg">
-                                            <h2 onClick={this.log} className="logLabel blue">Login</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">Registration</h2>
+                                            <h2 onClick={this.log} className="logLabel blue">{this.Localizer.getString("login")}</h2><h1>/</h1><h2 onClick={this.registration} className="registrationLabel">{this.Localizer.getString("registration")}</h2>
                                         </div>
                                         <form className="registration inv" onSubmit={this.submituserRegistrationForm}>
                                             <div className="group">
-                                                <label htmlFor="username" id="name">Name</label>
-                                                <input className="form-control" placeholder="Username goes here..." type="text" name="username" value={this.state.fields.username || ''} onChange={this.handleChange} />
+                                                <label htmlFor="username" id="name">{this.Localizer.getString("Name")}</label>
+                                                <input className="form-control" placeholder={this.Localizer.getString("NamePlaceholder")} type="text" name="username" value={this.state.fields.username || ''} onChange={this.handleChange} />
                                                 <div className="errorMsg">{this.state.validationErrors.username}</div>
                                             </div>
                                             <div className="group">
                                                 <label htmlFor="email" id="email">Email</label>
-                                                <input className="form-control" placeholder="Email goes here..." type="text" name="email" value={this.state.fields.email || ''} onChange={this.handleChange} />
+                                                <input className="form-control" placeholder={this.Localizer.getString("EmailPlaceholder")} type="text" name="email" value={this.state.fields.email || ''} onChange={this.handleChange} />
                                                 <div className="errorMsg">{this.state.validationErrors.email}</div>
                                             </div>
                                             <div className="group">
-                                                <label htmlFor="password" id="pass">Enter your password</label>
-                                                <input className="form-control" placeholder="Password goes here..." type="password" name="password" value={this.state.fields.password || ''} onChange={this.handleChange} />
+                                                <label htmlFor="password" id="pass">{this.Localizer.getString("Password")}</label>
+                                                <input className="form-control" placeholder={this.Localizer.getString("PasswordPlaceholder")} type="password" name="password" value={this.state.fields.password || ''} onChange={this.handleChange} />
                                                 <div className="errorMsg">{this.state.validationErrors.password}</div>
                                             </div>
                                             <div className="group">
-                                                <label htmlFor="passwordConfirm" id="passConf">Confirm your password</label>
-                                                <input className="form-control" placeholder="Confirm your password" type="password" name="passwordConfirm" value={this.state.fields.passwordConfirm || ''} onChange={this.handleChange} />
+                                                <label htmlFor="passwordConfirm" id="passConf">{this.Localizer.getString("ConfirmPassword")}</label>
+                                                <input className="form-control" placeholder={this.Localizer.getString("ConfirmPasswordPlaceholder")} type="password" name="passwordConfirm" value={this.state.fields.passwordConfirm || ''} onChange={this.handleChange} />
                                                 <div className="errorMsg">{this.state.validationErrors.passwordConfirm}</div>
                                             </div>
                                             <div className="form-group">
-                                                <button type="submit" className="btn btn-primary">SUBMIT</button>
+                                                <button type="submit" className="btn btn-primary">{this.Localizer.getString("SUBMIT")}</button>
                                             </div>
                                         </form>
                                         <form className="log" onSubmit={this.loginFormSubmit}>
-                                            <h3>Welcome to our community!</h3>
+                                            <h3>{this.Localizer.getString("Welcome")}</h3>
                                             <div className="inputs">
                                                 <div className="form-group">
                                                     <label>Email</label>
                                                     <input
                                                         className="form-control"
-                                                        placeholder="Type your email here..."
+                                                        placeholder={this.Localizer.getString("EmailPlaceholder")}
                                                         name="email"
                                                         type="email"
                                                         onChange={this.handleChange} />
                                                 </div>
                                                 <div className="form-group">
-                                                    <label>Password</label>
+                                                    <label>{this.Localizer.getString("Password")}</label>
                                                     <input
                                                         className="form-control"
-                                                        placeholder="Type your password here..."
+                                                        placeholder={this.Localizer.getString("PasswordPlaceholder")}
                                                         name="password"
                                                         type="password"
                                                         onChange={this.handleChange} />
@@ -222,9 +223,16 @@ export default class AuthPage extends React.Component<any, any>{
                                                 <button
                                                     className="btn btn-primary"
                                                     value="SUBMIT"
-                                                    type="submit">SUBMIT</button>
+                                                    type="submit">{this.Localizer.getString("SUBMIT")}</button>
                                             </div>
                                         </form>
+                                        <hr />
+                                        <button className="btn btn-primary" onClick={() => (window as any).location="/login?culture=en"}>
+                                            EN
+                                        </button>
+                                        <button className="btn btn-primary" onClick={() => (window as any).location="/login?culture=ru"}>
+                                            RU
+                                        </button>
                                     </div>
                                 </div>
                             </div>

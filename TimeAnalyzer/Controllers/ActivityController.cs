@@ -27,10 +27,10 @@ namespace TimeAnalyzer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Activity activity)
+        public IActionResult Create([FromBody] Activity activity)
         {
-            IEnumerable<Activity> activities = await this.activityService.GetAllActivities();
-            return Ok(activities);
+            this.activityService.Create(activity);
+            return Ok();
         }
 
         [HttpPost]

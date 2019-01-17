@@ -18,7 +18,7 @@ namespace TimeAnalyzer.Core.Activities
         private DateTime suggestionEndDate;
         private DateTime suggestionStartDate;
         private User currentUser;
-        private int actualDaysCount = 30;
+        private int actualDaysCount = 14;
 
         public SuggestionsService(
             IActivityService activityService,

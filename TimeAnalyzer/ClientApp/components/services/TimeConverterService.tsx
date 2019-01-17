@@ -4,6 +4,9 @@ export default class TimeConverterService extends React.Component<any, any> {
 
     constructor() {
         super();
+
+        this.getDatePresentationView = this.getDatePresentationView.bind(this);
+        this.getMonthPresentationView = this.getMonthPresentationView.bind(this);
     }
 
     toServerFormatDate(date: any) {
@@ -31,5 +34,13 @@ export default class TimeConverterService extends React.Component<any, any> {
         ];
 
         return monthNames[monthId];
+    }
+
+    getDatePresentationView(date: any) {
+        return date.getDate() + ' ' + this.getMonthName(date.getMonth());
+    }
+
+    getMonthPresentationView(date: any) {
+        return this.getMonthName(date.getMonth());
     }
 }

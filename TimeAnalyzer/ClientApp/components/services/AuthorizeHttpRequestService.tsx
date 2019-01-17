@@ -10,14 +10,12 @@ export default class AuthorizeHttpRequestService extends React.Component<any, an
     }
 
     getHeaders(): any {
-        if(typeof(window) !== undefined)
-        {
-            var token = this.Auth.getToken();
-            return { Authorization: "Bearer ".concat(token.substr(1, token.length - 2)) };
-        }
+        var token = this.Auth.getToken();
+        return { Authorization: "Bearer ".concat(token.substr(1, token.length - 2)) };
     };
 
     authorizedPost(url: any, params: any) {
+        debugger;
         return axios.post(
             url,
             params,
