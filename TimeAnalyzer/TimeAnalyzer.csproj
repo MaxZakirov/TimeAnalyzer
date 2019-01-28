@@ -39,6 +39,10 @@
     <ProjectReference Include="..\TimeAnalyzer.Models\TimeAnalyzer.Domain.csproj" />
     <ProjectReference Include="..\TimeAnalyzer.Persistence\TimeAnalyzer.Persistence.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Controllers\" />
+  </ItemGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>

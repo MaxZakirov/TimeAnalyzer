@@ -49,8 +49,8 @@ export default class TableActivities extends React.Component<any, any>{
 
         return (
             <div>
-                <h3 className="tableLabels">Activities</h3>
                 <div style={{ border: "1px solid #eee", marginTop: "1em", paddingBottom: "1em" }}>
+                <label className="tableLabels">Activities</label>
                     <div className="scrolltable style-scroll">
                         <table className='table'>
 

@@ -7,8 +7,9 @@
 }
 
 body{
-    background: #1f2933;
-    color: lightyellow;
+    background-image: linear-gradient(#0e1b2e, #187cad);
+    color: #c5c3c0;
+    overflow-x: hidden;
 }
 
 
@@ -78,7 +79,7 @@ h1 {
 
     .leftSideContent h1 {
         height: 6vh;
-        font-size: 7vh;
+        font-size: 5vh;
     }
 
     .leftSideContent h2 {
@@ -355,25 +356,28 @@ input:focus {
     position: relative;
     widows: 100%;
     height: 8vh;
-    background: rgba(22, 81, 150, 1);
+    background: #171a21;
+    box-shadow: 1px 0px 5px 1px rgba(99, 99, 99, 0.5);
 }
+.topbar h2{
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}
+
 
 .getOutBtn{
     position: relative;
     float: right;
     height: 8vh;
     width: 15vh;
-    border: 0;
-    
+    border: 0; 
     font-weight: bold;
-    color: #eee;
-    
+    color: #c5c3c0;   
     transition: 0.3s;
-    
 }
 .getOut{
     font-size: 1.8vh;
-    color: #fff;
+    color: #c5c3c0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -386,7 +390,91 @@ input:focus {
     color: #4189C7;
     text-decoration: none;  
 }
+.adminBtn{
+    position: relative;
+    float: right;
+    height: 8vh;
+    width: 14vh;
+    border: 0; 
+    font-weight: bold;
+    color: #c5c3c0;   
+    transition: 0.3s;
+}
 
+.admPgBtn{
+    font-size: 1.8vh;
+    color: #c5c3c0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%,-50%);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.admPgBtn:hover{
+    color: #4189C7;
+    text-decoration: none;  
+}
+
+.homeBtn{
+    position: relative;
+    float: right;
+    height: 8vh;
+    width: 7.5vh;
+    border: 0; 
+    font-weight: bold;
+    color: #c5c3c0;   
+    transition: 0.3s;
+}
+
+.hmPgBtn{
+    font-size: 1.8vh;
+    color: #c5c3c0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%,-50%);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.hmPgBtn:hover{
+    color: #4189C7;
+    text-decoration: none;  
+}
+
+/* .adminPageButton{
+    position: relative;
+    float: right;
+    height: 8vh;
+    width: 17vh;
+    border: 0; 
+    font-weight: bold;
+    color: #c5c3c0;   
+    transition: 0.3s;
+}
+.adminBtn{
+    font-size: 1.8vh;
+    background: linear-gradient(to bottom right, #ee4c77cc, #f7674ecc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 2px solid ;
+    border-image: linear-gradient(to bottom right, #ee4c77cc 0%, #f7674ecc 100%);
+    border-image-slice: 1;
+    border-width: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%,-50%);
+    text-decoration: none;
+    transition: 0.2s;
+    padding: 10px;
+}
+
+.adminBtn:hover{
+    background: linear-gradient(to bottom right, #ee4c77cc, #f7674ecc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #eee;
+    text-decoration: none;  
+} */
 
 .navbarBrand{
     position: absolute;
@@ -399,10 +487,10 @@ input:focus {
 }
 
 .mainPage{
-    width: 100%;
-    height: 100%;
-    background: #1f2933;
+    width: 100vw;
+    height: 89.7vh;
     position: relative;
+    color: #1f2933;
 }
 
 .center{
@@ -479,10 +567,13 @@ input:focus {
 .editWindow {
     display: none;
     position: absolute;
-    bottom: 0px;
+    width: 30em;
+    top: 1.6em;
+    right: 1.3em;
     margin-bottom: 20px;
-    border-radius: 10px;
-    background-color: #4189C7;
+    background-color: #171a216c;
+    color: #eee;
+    box-shadow: inset 0px 0px 1px 2px rgba(0, 0, 0, 0.55);
 }
 
 .closeAddReport{
@@ -510,12 +601,20 @@ input:focus {
     width: 80%;
     float: right;
     text-align: center;
-    background: rgba(22, 81, 150, 1);
-    transition: 0.3s;
+    font-weight: bold;
+    border: none;
+    color: #eee;
+    background: #367096;
     cursor: pointer;
 }
+.doughnutBarBtn:nth-child(1){
+    margin-top: -2em;
+}
+.doughnutBarBtn:nth-child(2){
+    margin-top: 0.5em;
+}
 .doughnutBarBtn:hover{
-    background: #4189C7;
+    background: linear-gradient(to bottom right, #ee4c77cc, #f7674ecc);
 }
 
 .Bar{
@@ -534,16 +633,17 @@ input:focus {
 }
 
 .TableAddBtn {
-    margin-top: 15px;
-    right: 0px;
+    width: 100%;
+    margin-top: 2.6em;
+    right: 0;
+    background: #358f44!important;
 }
 
 .tables{
-    background: #1f2933;
-    width: 80em;
     margin: 0 auto;
-    margin-top: 2em;
-    border-radius: 2%;
+    background: #1f2933b6;
+    width: 80em;
+    height: 45em;
     padding: 1em;
 }
 .tableLabels{
@@ -595,10 +695,13 @@ input:focus {
 }
 .tableSection{
     position: relative;
-    height: 52.1em;
+    height: 52.3em;
+    padding: 3.5em;
+
 }
 .btnTable{
     background: transparent;
+    color: #eee;
 }
 .style-scroll::-webkit-scrollbar-track
 {
@@ -625,6 +728,29 @@ input:focus {
 }
 .modalBack{
     background: #2a3846;
+}
+.content{
+
+    margin-top: 1.3em;
+    margin-left: 1.3em;
+    width: 80em;
+    height: 50em;
+    color: #eee;
+    border-radius: 10px;
+
+}
+.row{
+    margin-bottom: 1em;
+}
+.btnEdit{
+    width: 100%;
+    height: 3em;
+    border: 0px;
+    transition: 0.2s;
+    background: #367096;
+}
+.btnEdit:hover{
+    background: #3670969d;
 }
 
 

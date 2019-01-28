@@ -22,13 +22,13 @@ namespace IOT_emulator
 
         private static string buildUrl(int userId,int activityId, int duration)
         {
-            return "http://43a77d1f.ngrok.io/" + userId + "/" + activityId + "/" + duration;
+            return "http://aeb75e34.ngrok.io/" + userId + "/" + activityId + "/" + duration;
         }
 
         public static string HttpPost(string URI, string Parameters)
         {
             System.Net.WebRequest req = System.Net.WebRequest.Create(URI);
-            req.Proxy = new System.Net.WebProxy("http://43a77d1f.ngrok.io", true);
+            req.Proxy = new System.Net.WebProxy("http://aeb75e34.ngrok.io/", true);
             //Add these, as we're doing a POST
             req.ContentType = "application/x-www-form-urlencoded";
             req.Method = "POST";

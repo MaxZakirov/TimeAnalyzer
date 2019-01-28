@@ -123,7 +123,7 @@ export default class ModalComponent extends React.Component<any, any>{
         <button
           onClick={this.showModal}
           type="button"
-          className={this.getBtnStyles()}
+          className="btnTable btnEdit"
           data-toggle="modal"
           data-target={"#myModal" + this.props.id}>{this.getBtnText()}
         </button>

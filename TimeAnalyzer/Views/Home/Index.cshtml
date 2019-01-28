@@ -4,12 +4,6 @@
     ViewData["Meta"] = "utf-8";
 }
 
-<script>
-    if (typeof (window) !== undefined) {
-        window.resources = @Json.Serialize(ViewData["loc"]);
-    }
-</script>
-
 <div id="react-app" asp-prerender-module="ClientApp/dist/main-server">Loading...</div>
 
 @section scripts {

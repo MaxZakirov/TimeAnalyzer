@@ -53,19 +53,19 @@ export default class Chart extends React.Component<any, any> {
     toggleForm() {
 
         $(".addReport").fadeToggle(0);
-        $('.editWindow').toggle("slow");
+        $('.editWindow').fadeToggle("slow");
         this.editWindowIsOpen = !this.editWindowIsOpen;
     }
 
-    toggleChart() {
-        $(".Doughnut").fadeToggle(0);
-        $(".Bar").fadeToggle(0);
+    toggleChart() {        
+            $(".Doughnut").toggle("slow");
+            $(".Bar").toggle("slow");
         if ($('.doughnutBtn').prop('disabled', true)) {
             $('.barId').prop('disabled', true);
-            $('.doughnutBtn').prop('disabled', false);
+            $('.doughnutBtn').prop('disabled', false);            
         } else {
             $('.barId').prop('disabled', false);
-            $('.doughnutBtn').prop('disabled', true);
+            $('.doughnutBtn').prop('disabled', true); 
         }
     }
 
@@ -259,7 +259,7 @@ export default class Chart extends React.Component<any, any> {
 
     getAddNewReportBtn() {
         if (this.state.selectedTimeInterval === 'DAY') {
-            return <button className="btn btn-primary addReport" onClick={this.openAddNewWindow}>
+            return <button className="doughnutBarBtn" onClick={this.openAddNewWindow}>
                 Add new report
                     </button>
         }
@@ -268,8 +268,8 @@ export default class Chart extends React.Component<any, any> {
     render() {
         return (
             <div className="mainPage">
-                <div className="container">
-                    <div className="row">
+                <div className="">
+                    <div className="content">
                         <div className="col-sm-9">
                             <div className="row">
                                 <div className="col-sm-3">
@@ -297,23 +297,25 @@ export default class Chart extends React.Component<any, any> {
                                     options={this.getChartOptions()}
                                 />
                             </div>
+                            <div className="Bar">
+                        <Bar
+                            data={this.getChartData()}
+                            options={this.getChartOptionsBar()}
+                        />
+                    </div>
                         </div>
                         <div className="col-sm-3">
                             <div className="toggle">
                                 <button className="doughnutBarBtn" onClick={this.toggleChart}>
                                     ToggleChart
                                 </button>
+                                {this.getAddNewReportBtn()}
                             </div>
                             <Suggestions 
                                 selectedDate={this.state.selectedDate}/>
                         </div>
                     </div>
-                    <div className="Bar">
-                        <Bar
-                            data={this.getChartData()}
-                            options={this.getChartOptionsBar()}
-                        />
-                    </div>
+                    
                     <div>
                         <div className="col-sm-4 editWindow">
                             <ChangeValueForm
@@ -324,9 +326,6 @@ export default class Chart extends React.Component<any, any> {
                             <button className="closeAddReport" onClick={this.toggleForm}>
                                 <i className="glyphicon glyphicon-remove"></i>
                             </button>
-                        </div>
-                        <div>
-                            {this.getAddNewReportBtn()}
                         </div>
                     </div>
                 </div>

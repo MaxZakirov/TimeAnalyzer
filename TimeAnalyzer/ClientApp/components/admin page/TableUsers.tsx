@@ -33,7 +33,7 @@ export default class TableUsers extends React.Component<any, any>{
 
     render() {
         return (
-            <div style={{border: "1px solid #eee", marginTop: "1em", paddingBottom: "1em"}}>
+            <div style={{border: "1px solid #eee", display: "block", marginTop: "1em", paddingBottom: "1em"}}>
                 <label className="tableLabels">Users</label>
                 <div className="scrolltable style-scroll">
                     <table className='table'>
@@ -51,9 +51,9 @@ export default class TableUsers extends React.Component<any, any>{
                                         <tr key={item._id}>
                                             <td className="col-md-4">{item.name}</td>
                                             <td className="col-md-4">{item.email}</td>
-                                            <td className="col-md-4" style={{background: "none"}}>
+                                            <td className="col-md-4 btnTable" style={{background: "none"}}>
                                                 <button className="deleteButton" onClick={() => this.deleteUser(item)}>
-                                                    delete
+                                                    Delete
                                                 </button>
                                             </td>
                                         </tr>
